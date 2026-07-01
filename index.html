@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAÍZ — Restauración de Muebles</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#" class="navbar__logo" aria-label="RAÍZ inicio">
+        <img src="assets/logo.svg" alt="RAÍZ" width="90" height="33" />
+      </a>
+      <nav class="navbar__nav" aria-label="Navegación principal">
+        <a href="#sobre" class="navbar__link">Sobre Raíz</a>
+        <a href="#proceso" class="navbar__link">Servicios</a>
+        <a href="#proyectos" class="navbar__link">Proyectos</a>
+        <a href="#cursos" class="navbar__link navbar__link--active">Cursos</a>
+        <a href="#capsula" class="navbar__link">Cápsula</a>
+      </nav>
+      <!-- Hamburger for mobile -->
+      <button class="navbar__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile nav drawer -->
+    <nav class="navbar__mobile" id="mobileNav" aria-label="Menú móvil">
+      <a href="#sobre" class="navbar__link">Sobre Raíz</a>
+      <a href="#proceso" class="navbar__link">Servicios</a>
+      <a href="#proyectos" class="navbar__link">Proyectos</a>
+      <a href="#cursos" class="navbar__link">Cursos</a>
+      <a href="#capsula" class="navbar__link">Cápsula</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero">
+      <div class="hero__content">
+        <h1 class="hero__title">Dale un toque<br>moderno y creá<br>piezas únicas</h1>
+        <p class="hero__sub">Cada mueble puede tener más de una vida</p>
+        <a href="#cursos" class="btn btn--naranja hero__cta js-scroll-cursos">Conocer más</a>
+      </div>
+      <div class="hero__visual">
+        <img src="assets/hero.gif" alt="Mueble restaurado por RAÍZ" class="hero__gif" />
+      </div>
+    </section>
+
+<div class="brand-block-wrapper" style="position: relative; overflow: hidden; width: 100%;">
+  
+  <svg viewBox="0 0 1934 2213" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;">
+    <path d="M1020.97 48.1915C1203.35 11.9297 1588.47 -38.7941 1933.68 47.4396V2137.31C1592.88 2057.68 1198.85 2117.93 1018.68 2151.11C483.083 2262.58 124.85 2197.56 12.6826 2151.11L0 48.3322C114.228 99.2362 477.736 170.271 1020.97 48.1915Z" fill="#FD96C0"/>
+  </svg>
+
+  <section class="sobre" id="sobre" style="position: relative; z-index: 2; background: transparent; padding-top: 180px; padding-bottom: 60px;">
+    <p class="section-eyebrow">SOBRE RAÍZ</p>
+    <h2 class="sobre__title">No "arreglamos" muebles,<br>los transformamos.</h2>
+    <p class="sobre__body">
+      Inspirados por la filosofía del dueñero decor, transformamos muebles con<br>
+      identidad en piezas vibrantes. Ofrecemos cursos para que vos también puedas.
+    </p>
+    <a href="#cursos" class="btn btn--naranja js-scroll-cursos">Ver cursos</a>
+  </section>
+
+  <section class="proceso" id="proceso" style="position: relative; z-index: 2; background: transparent; padding-top: 40px; padding-bottom: 120px;">
+    <p class="section-eyebrow">NUESTRO PROCESO</p>
+
+    <h2 class="proceso__title">DEL POTENCIAL A PIEZA FINAL</h2>
+  
+    <div class="proceso__timeline">
+      <div class="proceso__line" aria-hidden="true"></div>
+
+      <div class="proceso__icons">
+       <button class="proceso__icon-btn" data-step="diagnostico">
+    <img src="assets/diagnostico.svg" alt="" class="proceso__icon-img">
+</button>
+
+<button class="proceso__icon-btn" data-step="reparacion">
+    <img src="assets/reparacion.svg" alt="" class="proceso__icon-img">
+</button>
+
+<button class="proceso__icon-btn" data-step="diseno">
+    <img src="assets/diseno.svg" alt="" class="proceso__icon-img">
+</button>
+      </div>
+    </div>
+
+    <div class="proceso__cards">
+      <div class="proceso__card" id="card-diagnostico" data-step="diagnostico" hidden>
+        <h3 class="proceso__card-title" style="color: var(--amarillo);">DIAGNÓSTICO</h3>
+        <p>Analizamos la estructura, los materiales y el estado de conservación del mueble para definir la mejor intervención, siempre respetando su valor<br>original y esencia.</p>
+      </div>
+      <div class="proceso__card" id="card-reparacion" data-step="reparacion" hidden>
+        <h3 class="proceso__card-title" style="color: var(--verde);">REPARACIÓN</h3>
+        <p>Recuperamos la estabilidad y funcionalidad del mueble a través de nuevas técnicas de restauración que preservan su estructura, uniones, superficie y prolongan su vida útil.</p>
+      </div>
+      <div class="proceso__card" id="card-diseno" data-step="diseno" hidden>
+        <h3 class="proceso__card-title" style="color: var(--azul);">DISEÑO</h3>
+        <p>Una vez restaurada, la pieza se reinterpreta con una mirada actual. Colores, acabados y nuevas combinaciones le dan una identidad renovada sin perder su carácter.</p>
+      </div>
+    </div>
+  </section>
+
+</div> ```
+
+   <!-- ===================== PROYECTOS ===================== -->
+<section class="proyectos" id="proyectos">
+  <p class="section-eyebrow">PROYECTOS</p>
+  <h2 class="proyectos__title">Pintá para transformar</h2>
+
+  <div class="proyectos__carousel">
+
+    <!-- Flecha izquierda -->
+    <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Proyecto anterior">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 6L9 14L17 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div class="proyectos__grid">
+
+      <!-- Proyecto anterior (lateral izquierdo) -->
+      <article class="proyecto-card proyecto-card--side proyecto-card--prev" id="card-prev">
+        <div class="proyecto-card__inner proyecto-card__inner--side">
+          <img class="side-card__img" id="img-prev" src="" alt="Proyecto anterior" />
+        </div>
+      </article>
+
+      <!-- Proyecto activo — Main con Paint Reveal -->
+      <article class="proyecto-card proyecto-card--main">
+        <div class="proyecto-reveal" id="reveal-1">
+          <canvas class="reveal-canvas" aria-label="Efecto de revelado: arrastrá para descubrir el mueble restaurado"></canvas>
+          <div class="proyecto-reveal__label">
+            <span class="proyecto-reveal__name" id="reveal-name">RECUPERACIÓN INTEGRAL</span>
+            <span class="proyecto-reveal__date" id="reveal-date">14/04/2026</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Proyecto siguiente (lateral derecho) -->
+      <article class="proyecto-card proyecto-card--side proyecto-card--next" id="card-next">
+        <div class="proyecto-card__inner proyecto-card__inner--side">
+          <img class="side-card__img" id="img-next" src="" alt="Proyecto siguiente" />
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Flecha derecha -->
+    <button class="carousel-arrow carousel-arrow--next" id="carousel-next" aria-label="Proyecto siguiente">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 6L19 14L11 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+  </div>
+</section>
+
+    </div>
+
+    <!-- ===================== CURSOS ===================== -->
+    <section class="cursos" id="cursos">
+      <p class="section-eyebrow">CURSOS</p>
+      <p class="cursos__intro">Con Raíz vas a aprender técnicas de restauración mediante propuestas prácticas y creativas. Vas a poder darle una nueva vida a los muebles que ya son tuyos.</p>
+
+      <div class="cursos__grid">
+
+        <!-- Curso 1 -->
+        <div class="curso-flip" role="group" aria-label="Curso 01: Reparación inicial de muebles">
+          <div class="curso-flip__inner">
+            <!-- Frente -->
+            <div class="curso-flip__front" style="background: var(--amarillo);">
+              <span class="curso-num">01</span>
+              <img src="assets/card-01.png" alt="Reparación inicial de muebles" class="curso-img" />
+              <p class="curso-name">Reparación inicial<br>de muebles</p>
+            </div>
+            <!-- Reverso -->
+            <div class="curso-flip__back" style="background: var(--naranja);">
+              <p class="curso-back-desc">Aprendé a diagnosticar y reparar la estructura de muebles dañados. Técnicas de ensamblado, lijado y preparación de superficie para dejar la pieza lista para su transformación.</p>
+              <a href="#" class="btn btn--white">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curso 2 -->
+        <div class="curso-flip" role="group" aria-label="Curso 02: Técnicas de color, textura y diseño">
+          <div class="curso-flip__inner">
+            <div class="curso-flip__front" style="background: var(--verde);">
+              <span class="curso-num">02</span>
+              <img src="assets/card-02.png" alt="Técnicas de color, textura y diseño" class="curso-img" />
+              <p class="curso-name">Técnicas de color,<br>textura y diseño</p>
+            </div>
+            <div class="curso-flip__back" style="background: var(--rosa);">
+              <p class="curso-back-desc">Dominá el uso del color, lacas, patinas y texturas decorativas. Descubrí cómo combinar paletas modernas y acabados para crear una identidad visual única en cada pieza.</p>
+              <a href="#" class="btn btn--white">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curso 3 -->
+        <div class="curso-flip" role="group" aria-label="Curso 03: Restauración integral de la pieza">
+          <div class="curso-flip__inner">
+            <div class="curso-flip__front" style="background: var(--azul);">
+              <span class="curso-num">03</span>
+              <img src="assets/card-03.png" alt="Restauración integral de la pieza" class="curso-img" />
+              <p class="curso-name">Restauración<br>integral de la pieza</p>
+            </div>
+            <div class="curso-flip__back" style="background: var(--naranja);">
+              <p class="curso-back-desc">El proceso completo de principio a fin: análisis, reparación estructural, tratamiento de superficie y diseño final. Transformá un mueble de otra época en una pieza contemporánea.</p>
+              <a href="#" class="btn btn--white">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== DIVIDER CHECKERED ===================== -->
+    <div class="checkered-divider" aria-hidden="true"></div>
+
+    <!-- ===================== CÁPSULA ===================== -->
+    <section class="capsula" id="capsula">
+  <p class="section-eyebrow section-eyebrow--dark">CÁPSULA</p>
+  <h2 class="capsula__title">Próximamente</h2>
+  <p class="capsula__sub">Piezas únicas ensambladas 100% a partir de retazos de muebles irrecuperables.</p>
+
+  <div class="capsula__grid">
+
+    <div class="capsula__item">
+      <div class="capsula__img-wrap">
+        <img src="assets/capsula-01.jpg" alt="Pieza de cápsula 1" class="capsula__img" />
+        <div class="capsula__overlay">
+          <p class="capsula__overlay-text">Estructura de roble macizo recuperado de cómodas antiguas. Revestimiento laminado de madera de eucaliptus reciclado.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="capsula__item">
+      <div class="capsula__img-wrap">
+        <img src="assets/capsula-02.jpg" alt="Pieza de cápsula 2" class="capsula__img" />
+        <div class="capsula__overlay">
+          <p class="capsula__overlay-text">Tableros de MDF reciclado pintados con lacas sin solventes. Patas torneadas de<br>pino de pallets recuperados.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="capsula__item">
+      <div class="capsula__img-wrap">
+        <img src="assets/capsula-03.jpg" alt="Pieza de cápsula 3" class="capsula__img" />
+        <div class="capsula__overlay">
+          <p class="capsula__overlay-text">Estantería construida con listones de cedro provenientes de marcos y puertas antiguas. Terminación en aceite natural de linaza.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+
+      <div class="footer__brand">
+        <img src="logo.svg" alt="RAÍZ" class="footer__logo" width="80" height="29" />
+        <p class="footer__tagline">Cada mueble puede<br>tener más de una vida.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Navegación del footer">
+        <a href="#sobre">Sobre Raíz</a>
+        <a href="#proceso">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#capsula">Cápsula</a>
+      </nav>
+
+      <div class="footer__contact">
+        <p class="footer__contact-title">Contacto</p>
+        <a href="mailto:hola@raiz.com.ar">hola@raiz.com.ar</a>
+        <a href="tel:+5491112345678">+54 9 11 1234-5678</a>
+        <p>Buenos Aires, Argentina</p>
+      </div>
+
+      <div class="footer__social">
+        <p class="footer__contact-title">Seguinos</p>
+        <div class="footer__social-links">
+          <a href="#" aria-label="Instagram de RAÍZ" class="footer__social-icon">
+            <!-- Instagram SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok de RAÍZ" class="footer__social-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.73a8.2 8.2 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
+          </a>
+          <a href="#" aria-label="Pinterest de RAÍZ" class="footer__social-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 RAÍZ. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

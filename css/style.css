@@ -1,0 +1,1055 @@
+/* ============================================================
+   RAÍZ — style.css
+   Diseño pixel-perfect sobre frame 1920px
+   ============================================================ */
+
+/* ── Custom Properties ───────────────────────────────────── */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('./assets/fonts/Bricolage_Grotesque.ttf') format('truetype-variations');
+  font-weight: 100 900; 
+  font-stretch: 75% 125%; 
+
+}
+
+:root {
+  --rosa:    #FD96C0;
+  --amarillo:#FFE148;
+  --verde:   #137448;
+  --azul:    #264D9D;
+  --naranja: #F18446;
+
+  --negro:   #111111;
+  --blanco:  #FFFFFF;
+  --fondo:   #fffef1;
+
+  /* Typography */
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* Spacing scale */
+  --sp-xs:  0.5rem;
+  --sp-sm:  1rem;
+  --sp-md:  2rem;
+  --sp-lg:  4rem;
+  --sp-xl:  6rem;
+
+  /* Max content width */
+  --max-w: 1280px;
+
+  /* Navbar height */
+  --nav-h: 72px;
+}
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--fondo);
+  color: var(--negro);
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { text-decoration: none; color: inherit; }
+
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ── Utility: eyebrow label ──────────────────────────────── */
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--blanco);
+  margin-bottom: 1.2rem;
+}
+.section-eyebrow--dark { color: var(--verde); }
+
+/* — Utility: Buttons ————————————————————————————————————— */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.3rem; 
+  border-radius: 100px;    
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+  text-decoration: none;   
+  border: none;            
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.btn:hover { 
+  transform: translateY(-2px); 
+  opacity: 0.95; 
+}
+.btn:active { 
+  transform: translateY(0); 
+}
+
+/* Modificadores */
+.btn--dark  { background: var(--negro); color: var(--blanco); }
+.btn--green { background: var(--verde); color: var(--blanco); }
+.btn--white { background: var(--blanco); color: var(--negro); }
+.btn--naranja { background: var(--naranja); color: var(--blanco); }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--fondo);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+.navbar--hidden { transform: translateY(-100%); }
+
+.navbar__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__logo img { height: 28px; width: auto; }
+
+.navbar__nav {
+  display: flex;
+  gap: 2.4rem;
+  align-items: center;
+}
+.navbar__link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--negro);
+  transition: color 0.15s;
+}
+.navbar__link:hover { color: var(--naranja); }
+.navbar__link--active {
+  color: var(--naranja);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Burger — hidden on desktop */
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+.navbar__burger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--negro);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.navbar__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.navbar__burger.is-open span:nth-child(2) { opacity: 0; }
+.navbar__burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav */
+.navbar__mobile {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  background: var(--fondo);
+  border-top: 1px solid rgba(0,0,0,0.07);
+  padding: 1rem 2rem 1.5rem;
+}
+.navbar__mobile.is-open { display: flex; }
+.navbar__mobile .navbar__link {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+
+  padding-left: 60px;
+  padding-right: 2rem;
+}
+
+.hero__content {
+  flex: 0 0 auto;
+  max-width: 800px;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: 4.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--negro);
+  margin-bottom: 1rem;
+}
+
+.hero__sub {
+  font-size: 1rem;
+  color: var(--negro);
+  margin-bottom: 1rem;
+  opacity: 100%;
+}
+
+.hero__visual {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end; /* Cambiamos center por flex-end para pegarlo a la derecha */
+  align-items: center;
+  margin-top: -6rem;
+  margin-right: -1rem;
+}
+
+.hero__gif {
+  width: 100%;
+  max-width: 580px;          /* Lo agrandamos (estaba en 520px) */
+  object-fit: contain;
+  transform: scale(1.05);    /* Un extra de escala si querés que tenga más impacto */
+}
+}
+
+/* ============================================================
+   WAVE TRANSITIONS
+   ============================================================ */
+.wave { line-height: 0; overflow: hidden; }
+.wave svg { width: 100%; display: block; }
+
+.wave--into-pink  { background: var(--fondo); margin-bottom: -1px; }
+.wave--out-pink   { background: var(--rosa);  margin-top: -1px; margin-bottom: -1px; }
+.wave--into-white { background: var(--rosa);  margin-top: -1px; }
+.wave--into-pink2 { background: var(--blanco); margin-bottom: -1px; }
+
+/* ============================================================
+   SOBRE RAÍZ
+   ============================================================ */
+.sobre {
+  background: var(--rosa);
+  text-align: center;
+  padding: var(--sp-xl) 2rem;
+}
+
+.sobre__title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5.5vw, 5rem);
+  color: var(--blanco);
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 1.4rem;
+}
+
+.sobre__body {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--blanco);
+  opacity: 100%;
+  max-width: 620px;
+  margin: 0 auto 2rem;
+}
+
+/* ============================================================
+   PROCESO
+   ============================================================ */
+.proceso {
+  background: var(--blanco);
+  padding: var(--sp-lg) 2rem var(--sp-xl);
+  text-align: center;
+}
+
+.proceso__title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80; /* Ancho condensado de Figma */
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5.5vw, 5rem); /* El mismo escalado perfecto */
+  color: var(--blanco);
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.05;
+  letter-spacing: 0; /* Letras juntas y potentes */
+  margin-bottom: 4rem; /* Le da aire al título respecto de la línea de emojis */
+}
+/* Timeline row */
+.proceso__timeline {
+  position: relative;
+  max-width: 720px;
+  margin: 1.6rem auto 2rem;
+}
+
+.proceso__line {
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  height: 6px;
+  background: var(--blanco);
+  transform: translateY(-50%);
+}
+
+.proceso__icons {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.proceso__icon-btn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.proceso__icon-img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    display:block;
+    pointer-events:none;
+}
+
+.proceso__icon-btn:hover { transform: scale(1.12); background: var(--amarillo); }
+.proceso__icon-btn.is-active { background: var(--amarillo); transform: scale(1.15); }
+
+/* Cards Container */
+.proceso__cards {
+  max-width: 1140px; /* Ancho máximo ideal para que coincida con los iconos de arriba */
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 👈 Creamos las 3 columnas fijas de Figma */
+  width: 100%;
+  padding: 0 3.4rem;
+}
+
+.proceso__card {
+  background: var(--blanco);
+  border-radius: 40px; /* 👈 Bordes redondeados y orgánicos de tu Figma */
+  padding: 2rem 2rem; /* Más aire interno para un look editorial */
+  border: none !important; /* 👈 Chau al borde negro grueso que cortaba el diseño */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06); /* Sutil sombra suave para despegar del fondo */
+  text-align: center;
+  width: 100%;
+  
+  /* Mantenemos tu hermosa animación intacta */
+  animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Positions fijas por columna para que no se muevan al medio */
+#card-diagnostico {
+  grid-column: 1;
+}
+
+#card-reparacion {
+  grid-column: 2;
+}
+
+#card-diseno {
+  grid-column: 3;
+}
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.proceso__card-title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.proceso__card p {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--negro);
+  opacity: 100%;
+}
+
+/* ============================================================
+   PROYECTOS
+   ============================================================ */
+.proyectos {
+  background: var(--fondo);
+  padding: var(--sp-lg) 2rem var(--sp-xl);
+  text-align: center;
+}
+
+.proyectos .section-eyebrow {
+  color: var(--negro); /* O el tono institucional que resalte con elegancia */
+  text-align: center;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.proyectos__title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  color: var(--naranja);
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.proyectos__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 1.6rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* Side placeholder cards */
+.proyecto-card--side {
+  border-radius: 19px;
+  border: 3px solid var(--rosa);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.proyecto-card__inner--plain {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+/* Main reveal card */
+.proyecto-card--main {
+  border-radius: 16px;
+  overflow: visible;
+  position: relative;
+}
+
+/* ── Paint-Reveal Widget ─────────────────────────────────── */
+.proyecto-reveal {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid var(--rosa);
+  background: var(--rosa);
+}
+
+.reveal-canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/4;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='8' fill='%23F18446' opacity='0.9'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23fff'/%3E%3C/svg%3E") 16 16, crosshair;
+  touch-action: none;
+}
+
+.proyecto-reveal__label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: var(--rosa);
+  padding: 0.7rem 1.2rem;
+  text-align: center;
+}
+.proyecto-reveal__name {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+  color: var(--blanco);
+}
+.proyecto-reveal__date {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--blanco);
+  opacity: 100%;
+  margin-top: 0.2rem;
+}
+
+/* ============================================================
+   CURSOS
+   ============================================================ */
+.cursos {
+  background: var(--fondo);
+  padding: var(--sp-xl) 2rem;
+  text-align: center;
+}
+
+.cursos .section-eyebrow {
+  color: var(--negro); /* O el tono institucional que resalte con elegancia */
+  text-align: center;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.cursos__intro {
+  font-size: 1rem;
+  line-height: 1.4;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  color: var(--negro);
+  opacity: 100%;
+}
+
+.cursos__grid { /* Asegurate de usar el nombre exacto de tu clase de grilla */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;                  /* Espaciado intermedio idéntico al diseño */
+  max-width: 960px;             /* ◄ CLAVE: Limita el ancho para que no se estiren */
+  margin: 0 auto;               /* Centra el bloque de tarjetas en la pantalla */
+  padding: 2rem;
+}
+
+/* 2. Las tarjetas individuales */
+.curso-card { /* Buscá la clase que represente a cada tarjeta de curso */
+  width: 100%;
+  aspect-ratio: 24 / 32;        /* ◄ CLAVE: Clava la proporción geométrica vertical del diseño */
+  border-radius: 40px;          /* ◄ CLAVE: Curvatura idéntica a tus tarjetas originales */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem 2rem;         /* Margen interno para empujar textos e imágenes */
+  box-sizing: border-box;
+}
+
+/* ── Flip cards ──────────────────────────────────────────── */
+.curso-flip {
+  perspective: 1200px;
+  height: 340px;
+}
+
+.curso-flip__inner {
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+  border-radius: 16px;
+}
+
+/* Flip only one at a time — handled in JS by toggling .is-flipped */
+.curso-flip.is-flipped .curso-flip__inner { transform: rotateY(180deg); }
+
+.curso-flip__front,
+.curso-flip__back {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem;
+  overflow: hidden;
+}
+
+.curso-flip__back {
+  transform: rotateY(180deg);
+  gap: 1.2rem;
+}
+
+.curso-num {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--blanco);
+  align-self: center;
+  margin-bottom: 0.3rem;
+}
+
+.curso-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  margin: auto;
+}
+
+.curso-name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--blanco);
+  text-align: center;
+  line-height: 1.2;
+  margin-top: 0.6rem;
+}
+
+.curso-back-desc {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--blanco);
+  text-align: center;
+  max-width: 240px;
+}
+
+.btn--white {
+  background: var(--blanco, #ffffff);
+  
+  /* ── CAMBIÁ ESTA LÍNEA ── */
+  color: var(--naranja); /* En lugar de var(--blanco) o #fff */
+}
+
+/* ============================================================
+   CHECKERED DIVIDER
+   ============================================================ */
+.checkered-divider {
+  height: 48px;
+  background-image:
+    repeating-conic-gradient(var(--negro) 0% 25%, var(--blanco) 0% 50%);
+  background-size: 24px 24px;
+}
+
+/* ============================================================
+   CÁPSULA
+   ============================================================ */
+.capsula {
+  background: var(--naranja);
+  padding: var(--sp-xl) 2rem var(--sp-lg);
+  text-align: center;
+}
+
+.capsula .section-eyebrow {
+  color: var(--blanco); /* O el tono institucional que resalte con elegancia */
+  text-align: center;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.capsula__title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: clamp(3rem, 8vw, 8rem);
+  color: var(--blanco);
+  text-transform: uppercase;
+  line-height: 0.95;
+  margin-bottom: 1rem;
+}
+
+.capsula__sub {
+  font-size: 1rem;
+  color: var(--blanco);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.2;
+  opacity: 100%;
+}
+
+.capsula__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.capsula__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  
+  /* ── CLAVE: Hace que el zoom y la vuelta al tamaño original sean suaves ── */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+/* 2. El efecto de escala cuando pasás el mouse por arriba de la tarjeta */
+.capsula__img-wrap:hover .capsula__img {
+  /* ── CLAVE: 1.06 significa un 6% de zoom. Sutil, elegante y no deforma ── */
+  transform: scale(1.06);
+}
+
+/* Asegura que el contenedor corte el texto que está abajo escondido */
+.capsula__img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 48px; /* Mantiene las esquinas súper redondeadas de tu diseño */
+}
+
+/* El bloque negro semitransparente que se esconde abajo */
+.capsula__overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  min-height: 10%; /* Cubre la zona inferior de manera elegante */
+  
+  /* Color de fondo con transparencia ajustable (negro al 75%) */
+  background: rgba(0, 0, 0, 0.50); 
+
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  
+  /* Estado inicial: empujado 100% hacia abajo (invisible) */
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ── LA ANIMACIÓN AL HACER HOVER ── */
+.capsula__img-wrap:hover .capsula__overlay {
+  transform: translateY(0); /* Sube la persiana de forma súper fluida */
+}
+
+/* Estilo del texto dentro del cuadro transparente */
+.capsula__overlay-text {
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-align: center;
+  margin: 0;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--negro);
+  color: var(--blanco);
+  padding: var(--sp-lg) 2rem var(--sp-md);
+}
+
+.footer__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer__logo { filter: brightness(0) invert(1); margin-bottom: 1rem; }
+
+.footer__tagline {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  opacity: 0.6;
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.footer__nav a {
+  font-size: 0.82rem;
+  opacity: 0.75;
+  transition: opacity 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.footer__nav a:hover { opacity: 1; color: var(--naranja); }
+
+.footer__contact-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.45;
+  margin-bottom: 0.8rem;
+}
+
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer__contact a,
+.footer__contact p {
+  font-size: 0.82rem;
+  opacity: 0.75;
+  transition: opacity 0.15s;
+}
+.footer__contact a:hover { opacity: 1; color: var(--rosa); }
+
+.footer__social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.2rem;
+}
+.footer__social-icon {
+  color: var(--blanco);
+  opacity: 0.7;
+  transition: opacity 0.15s, color 0.15s;
+}
+.footer__social-icon:hover { opacity: 1; color: var(--naranja); }
+
+.footer__bottom {
+  max-width: var(--max-w);
+  margin: 1.5rem auto 0;
+  font-size: 0.75rem;
+  opacity: 0.4;
+  text-align: center;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET  (≤ 1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+
+  /* Navbar */
+  .navbar__nav { gap: 1.4rem; }
+
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+    padding-top: calc(var(--nav-h) + 3rem);
+    padding-bottom: 3rem;
+  }
+  .hero__content { max-width: 100%; }
+  .hero__title { font-size: clamp(2.4rem, 5vw, 4rem); }
+  .hero__visual { width: 100%; }
+  .hero__gif { max-width: 380px; }
+
+  /* Sobre */
+  .sobre__title { font-size: clamp(1.6rem, 3vw, 2.6rem); }
+
+  /* Proceso */
+  .proceso__timeline { max-width: 560px; }
+
+  /* Proyectos */
+  .proyectos__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  .proyecto-card--side { display: none; }
+
+  /* Cursos */
+  .cursos__grid { grid-template-columns: 1fr 1fr; }
+  .curso-flip { height: 300px; }
+
+  /* Capsula */
+  .capsula__grid { grid-template-columns: 1fr 1fr; }
+
+  /* Footer */
+  .footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE  (≤ 640px)
+   ============================================================ */
+@media (max-width: 640px) {
+
+  :root { --nav-h: 60px; }
+
+  /* Navbar */
+  .navbar__nav { display: none; }
+  .navbar__burger { display: flex; }
+
+  /* Hero */
+  .hero {
+    padding-top: calc(var(--nav-h) + 2rem);
+    padding-bottom: 2rem;
+    gap: 1.5rem;
+  }
+  .hero__title { font-size: clamp(2.2rem, 8vw, 3rem); }
+  .hero__gif { max-width: 280px; }
+
+  /* Sobre */
+  .sobre { padding: 4rem 1.5rem; }
+  .sobre__title { font-size: clamp(1.4rem, 6vw, 2rem); }
+  .sobre__body br { display: none; }
+
+  /* Proceso */
+  .proceso { padding: 3rem 1.5rem; }
+  .proceso__icon-btn { width: 52px; height: 52px; font-size: 1.4rem; }
+  .proceso__card { max-width: 100%; padding: 1.4rem; }
+
+  /* Proyectos */
+  .proyectos { padding: 3rem 1.5rem; }
+  .proyectos__grid { max-width: 100%; }
+
+  /* Cursos */
+  .cursos { padding: 3rem 1.5rem; }
+  .cursos__grid { grid-template-columns: 1fr; }
+  .curso-flip { height: 320px; }
+
+  /* Checkered */
+  .checkered-divider { height: 36px; background-size: 18px 18px; }
+
+  /* Capsula */
+  .capsula { padding: 3rem 1.5rem; }
+  .capsula__grid { grid-template-columns: 1fr; max-width: 340px; }
+
+  /* Footer */
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer { padding: 3rem 1.5rem 2rem; }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .reveal-canvas { cursor: crosshair; }
+}
+
+/* ============================================================
+   PROYECTOS — CARRUSEL
+   ============================================================ */
+
+/* Wrapper que contiene flechas + grid */
+.proyectos__carousel {
+  position: relative;
+  max-width: calc(var(--max-w) + 8rem);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* El grid ya existía; solo aseguramos que ocupe el espacio central */
+.proyectos__carousel .proyectos__grid {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Flechas ─────────────────────────────────────────────── */
+.carousel-arrow {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid var(--rosa);
+  background: var(--fondo);
+  color: var(--rosa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+  z-index: 2;
+  padding: 0;
+}
+
+.carousel-arrow:hover {
+  background: var(--naranja);
+  border-color: var(--naranja);
+  color: #fff;
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
+}
+
+.carousel-arrow--prev { margin-right: 0.8rem; }
+.carousel-arrow--next { margin-left: 0.8rem; }
+
+/* ── Cards laterales con imagen ──────────────────────────── */
+.proyecto-card__inner--side {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.side-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+  transition: opacity 0.25s ease;
+}
+
+/* Overlay de color semitransparente sobre las laterales */
+.proyecto-card--side .proyecto-card__inner--side::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: var(--rosa, transparent);
+  opacity: 0.45;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+/* Indicador de que las laterales son navegables */
+.proyecto-card--side {
+  cursor: pointer;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+  opacity: 0.72;
+}
+
+.proyecto-card--side:hover {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+/* ── Transición suave al cambiar proyecto ────────────────── */
+.reveal-canvas {
+  transition: opacity 0.2s ease;
+}
+.reveal-canvas.is-loading {
+  opacity: 0;
+}
+
+/* ── Borde dinámico del widget central ───────────────────── */
+.proyecto-reveal {
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+/* ── Mobile: ocultar flechas, habilitar swipe ────────────── */
+@media (max-width: 680px) {
+  .carousel-arrow {
+    display: none;
+  }
+
+  .proyectos__carousel {
+    gap: 0;
+  }
+}

@@ -285,6 +285,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--blanco);
   padding: var(--sp-lg) 2rem var(--sp-xl);
   text-align: center;
+  margin-top: 100px;
 }
 
 .proceso__title {
@@ -1056,3 +1057,344 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     gap: 0;
   }
 }
+
+/* ============================================================
+   VERSION MOBILE (Pantallas de menos de 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* --- NAVBAR MOBILE FIX --- */
+  .navbar__nav {
+    display: none;
+  }
+  .navbar__burger {
+    display: flex;
+    cursor: pointer;
+  }
+
+  /* ============================================================
+   VERSION MOBILE (Pantallas de menos de 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* --- NAVBAR MOBILE --- */
+  .navbar__nav { display: none; }
+  .navbar__burger { display: flex; cursor: pointer; }
+
+
+  /* --- HERO MOBILE --- */
+  .hero {
+    min-height: auto;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: calc(var(--nav-h) + 1.5rem); 
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 0px; 
+    gap: 0px; 
+  }
+  .hero__content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  .hero__title {
+    font-size: 2.1rem; 
+    line-height: 1.2;
+    margin-bottom: 0.8rem; 
+    max-width: 18ch;   
+  }
+  .hero__sub {
+    font-size: 0.95rem;
+    line-height: 1.3;
+    margin-bottom: 1rem; 
+    max-width: 280px; 
+  }
+  .hero__cta { margin-bottom: 0px; }
+  .hero__visual {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: -3.5rem;    
+    margin-bottom: -2.5rem; 
+    margin-right: 0;
+  }
+  .hero__gif {
+    max-width: 260px;       
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transform: scale(1);    
+  }
+
+
+  /* --- SOBRE RAÍZ MOBILE --- */
+  .sobre {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-top: 100px !important; 
+    padding-bottom: 40px !important;
+  }
+  .sobre__title {
+    font-size: 1.8rem; 
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+  }
+  .sobre__body {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    max-width: 100%; 
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .sobre__title br,
+  .sobre__body br {
+    display: none;
+  }
+
+/* --- NUESTRO PROCESO MOBILE --- */
+  .proceso {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-top: 40px !important;
+    padding-bottom: 100px !important;
+  }
+
+  .proceso__title {
+    font-size: 1.8rem;
+    line-height: 1.15;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  /* Contenedor del timeline horizontal centrado */
+  .proceso__timeline {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 2.5rem;
+    max-width: 280px; /* Acotamos el ancho para que no se disperse */
+    padding: 0;
+  }
+
+  /* La línea vuelve a ser horizontal y perfectamente centrada */
+  .proceso__line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    width: 100%;
+    background: var(--blanco);
+    z-index: 1;
+  }
+
+  /* Los botones se distribuyen de forma pareja sobre la línea */
+  .proceso__icons {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .proceso__icon-btn {
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .proceso__icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Contenedor de las tarjetas de texto */
+  .proceso__cards {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  /* Tarjeta blanca centrada y compacta */
+  .proceso__card {
+    width: 100%;
+    max-width: 320px; /* Evita que desborde los lados del teléfono */
+    padding: 1.5rem;
+    border-radius: 20px;
+    background: var(--blanco);
+    text-align: center; /* Alineación centrada, más estética para este bloque */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+  }
+
+  .proceso__card-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .proceso__card p {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--negro);
+  }
+
+  /* Anula los saltos de línea (<br>) internos de la tarjeta en mobile */
+  .proceso__card br {
+    display: none;
+  }
+
+  /* ============================================================
+   VERSION MOBILE (Dentro de tu @media max-width: 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* --- CAROUSEL PROYECTOS MOBILE --- */
+  .proyectos__grid {
+    grid-template-columns: 1fr !important; /* Pasamos a una columna solo en mobile */
+    gap: 0 !important;
+  }
+
+  /* Escondemos las tarjetas laterales SOLO en celulares */
+  .proyectos__grid .proyecto-card--side {
+    display: none !important;
+  }
+
+  /* Estilizado exclusivo de las flechas en Mobile para que floten sobre la card */
+  .proyectos__carousel .carousel-arrow {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 10 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: none !important;
+    color: var(--naranja) !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+  }
+
+  /* Posicionamiento exacto en los extremos de la pantalla móvil */
+  .proyectos__carousel .carousel-arrow--prev {
+    left: 5px !important;
+  }
+
+  .proyectos__carousel .carousel-arrow--next {
+    right: 5px !important;
+  }
+
+  /* Mostramos los puntitos únicamente en mobile */
+  .carousel-dots {
+    display: flex !important;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+}
+
+/* --- SECCIÓN CÁPSULA MOBILE --- */
+  .capsula {
+    /* Agregamos un colchón lateral más amplio para que los textos respiren bien */
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .capsula__title {
+    /* Bajamos un poco el tamaño para que no rompa o se corte por el ancho */
+    font-size: clamp(2.2rem, 8vw, 3.5rem); 
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+
+  .capsula__sub {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Transformamos la grilla en un contenedor de scroll horizontal suave */
+  .capsula__grid {
+    display: flex !important;
+    flex-direction: row !important;
+    grid-template-columns: none !important; /* Desactivamos las columnas de desktop */
+    gap: 1.2rem;
+    overflow-x: auto; /* Permite el deslizamiento con el dedo */
+    scroll-snap-type: x mandatory; /* Hace que las tarjetas se encastren de forma magnética */
+    padding-bottom: 1.5rem; /* Espacio para que no tape la barra de scroll nativa */
+    
+    /* Ocultamos las barras de scroll feas en Chrome/Safari/Firefox para mantener la fineza visual */
+    scrollbar-width: none; 
+    -webkit-overflow-scrolling: touch;
+  }
+  .capsula__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Ajustamos cada tarjeta para el flujo horizontal */
+  .capsula__item {
+    flex: 0 0 82%; /* Cada tarjeta ocupa el 82% del ancho, dejando ver que hay otra al lado */
+    scroll-snap-align: center; /* Centra la tarjeta cuando el usuario suelta el dedo */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Marco de la imagen */
+  .capsula__img-wrap {
+    border-radius: 32px; /* Redondeado sutilmente más compacto para mobile */
+    aspect-ratio: 4/4; /* Las hacemos cuadradas perfectas para optimizar la altura */
+    width: 100%;
+  }
+
+  /* Desactivamos por completo el overlay oculto de desktop */
+  .capsula__overlay {
+    position: static !important;
+    transform: none !important;
+    background: var(--blanco) !important; /* Usamos fondo claro para contrastar con el naranja base */
+    height: auto !important;
+    min-height: auto !important;
+    padding: 1.5rem !important;
+    border-radius: 0 0 32px 32px; /* Redondeamos solo las esquinas de abajo */
+    margin-top: -20px; /* Hack sutil para emparchar el bloque con la imagen de arriba */
+    z-index: 1;
+  }
+
+  /* Estilo del texto que ahora queda 100% visible abajo */
+  .capsula__overlay-text {
+    color: var(--negro) !important; /* Cambiamos a texto oscuro para que sea ultra legible */
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+  }
+
+  /* Quitamos los saltos de línea forzados de escritorio */
+  .capsula__overlay-text br {
+    display: none;
+  }
+
+} /* <-- REVISÁ QUE ESTA ÚLTIMA LLAVE ESTÉ PUESTA. Cierra el @media */
+
+

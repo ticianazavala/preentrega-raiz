@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restauración Integral — RAÍZ</title>
+
+  <!-- Google Fonts (idénticas al Home) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Hoja base del sitio (variables, tipografía, botones, navbar, footer) -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Hoja específica de esta página -->
+  <link rel="stylesheet" href="css/curso-restauracion.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <!-- Reutiliza la estructura .navbar del Home; en esta página no hay
+       menú de anclas, solo logo + CTA, tal como indica el diseño. -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="RAÍZ inicio">
+        <img src="assets/logo.svg" alt="RAÍZ" width="90" height="33" />
+      </a>
+      <a href="#inscripcion" class="btn btn--naranja js-scroll-inscripcion">Inscribirme</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="curso-hero" id="curso-hero">
+      <div class="curso-hero__content">
+        <p class="section-eyebrow section-eyebrow--dark">CURSO 01</p>
+        <h1 class="curso-hero__title">Restauración<br>Integral</h1>
+        <p class="curso-hero__desc">Aprendé a restaurar y reinterpretar muebles con una mirada contemporánea.</p>
+        <a href="#programa" class="btn btn--naranja">Ver programa</a>
+      </div>
+
+
+      <div class="curso-hero__visual">
+        <!-- ===== Comparador Before / After ===== -->
+        <div class="ba-slider" id="baSlider">
+          <div class="ba-slider__img ba-slider__img--after">
+            <img src="assets/despues.png" alt="Mueble restaurado, resultado final" draggable="false" />
+          </div>
+          <div class="ba-slider__img ba-slider__img--before" id="baBefore">
+            <img src="assets/antes.png" alt="Mueble antes de la restauración" draggable="false" />
+          </div>
+          <div class="ba-slider__handle" id="baHandle" role="slider" tabindex="0"
+               aria-label="Comparar antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <span class="ba-slider__line" aria-hidden="true"></span>
+            <span class="ba-slider__grip" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 3L2 8L6 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 3L14 8L10 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FRANJA NARANJA ===================== -->
+    <!-- Sección de identidad visual sin contenido definido: animación
+         propia (barniz/pincelada) hecha en CSS puro, sin librerías. -->
+    <section class="curso-franja" id="curso-franja" aria-hidden="true">
+      <div class="curso-franja__inner">
+        <span class="curso-franja__stroke curso-franja__stroke--1"></span>
+        <span class="curso-franja__stroke curso-franja__stroke--2"></span>
+        <span class="curso-franja__stroke curso-franja__stroke--3"></span>
+        <span class="curso-franja__grain" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <!-- ===================== DE QUÉ SE TRATA ===================== -->
+    <section class="curso-info" id="curso-info">
+      <p class="section-eyebrow section-eyebrow--dark">DE QUÉ SE TRATA</p>
+
+      <div class="curso-info__grid">
+        <div class="curso-info__text">
+          <h2 class="curso-info__title">Reinventar piezas</h2>
+          <p class="curso-info__desc">
+            El curso combina la restauración de muebles con una mirada creativa sobre el diseño.
+            Vas a aprender a identificar material, reparar los daños estructurales, preparar la
+            superficie y elegir acabados que respeten la esencia de cada mueble, para convertirlo
+            en una pieza única.
+          </p>
+
+          <!-- 4 bloques informativos — placeholders fáciles de editar -->
+          <div class="curso-info__facts">
+            <div class="curso-fact">
+              <span class="curso-fact__value">COSTO<br>$65.000</span>
+            </div>
+            <div class="curso-fact">
+              <span class="curso-fact__value">CLASES<br>PRESENCIALES</span>
+            </div>
+            <div class="curso-fact">
+              <span class="curso-fact__value">DÍAS<br>SÁBADOS</span>
+            </div>
+            <div class="curso-fact">
+              <span class="curso-fact__value">MATERIAL<br />INCLUÍDO</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="curso-info__media">
+          <img src="assets/curso-info.png" alt="Detalle del proceso de restauración" class="curso-info__img" />
+          <a href="#inscripcion" class="btn btn--naranja curso-info__cta">Inscribirme</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROGRAMA ===================== -->
+<section class="curso-programa" id="programa">
+  <p class="section-eyebrow section-eyebrow--dark">PROGRAMA</p>
+
+<p class="programa__intro">
+    Cuatro clases, un recorrido completo. Cada una está pensada para que avances paso a paso.
+  </p>
+
+  <div class="programa__accordion" id="programaAccordion">
+
+    <!-- CLASE 01 -->
+    <article class="programa__item" style="--ficha-color: var(--naranja);">
+      <h3 class="programa__trigger-wrap">
+        <button
+          class="programa__trigger"
+          type="button"
+          aria-expanded="true"
+          aria-controls="clase-panel-1"
+          id="clase-btn-1"
+        >
+          <span class="programa__trigger-label">Clase 01.</span>
+          <span class="programa__trigger-subtitle">Diagnóstico</span>
+          <span class="programa__trigger-icon" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div
+        class="programa__panel is-open"
+        id="clase-panel-1"
+        role="region"
+        aria-labelledby="clase-btn-1"
+      >
+        <div class="programa__panel-inner">
+          <div class="programa__ficha-media">
+            <img src="assets/clase-01.jpg" alt="Clase 1 — Diagnóstico inicial" />
+          </div>
+          <div class="programa__ficha-body">
+            <p><strong>Objetivo:</strong> identificar el estado del mueble y definir el plan de intervención.</p>
+            <p><strong>Contenidos:</strong> diagnóstico estructural, herramientas y técnicas de desarme seguro.</p>
+            <p><strong>Resultado:</strong> mueble listo para reparar con un plan de trabajo definido.</p>
+            <span class="programa__ficha-duracion">90m.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CLASE 02 -->
+    <article class="programa__item" style="--ficha-color: var(--naranja);">
+      <h3 class="programa__trigger-wrap">
+        <button
+          class="programa__trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="clase-panel-2"
+          id="clase-btn-2"
+        >
+          <span class="programa__trigger-label">Clase 02.</span>
+          <span class="programa__trigger-subtitle">Estructura</span>
+          <span class="programa__trigger-icon" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div
+        class="programa__panel"
+        id="clase-panel-2"
+        role="region"
+        aria-labelledby="clase-btn-2"
+      >
+        <div class="programa__panel-inner">
+          <div class="programa__ficha-media">
+            <img src="assets/clase-02.jpg" alt="Clase 2 — Reparación estructural" />
+          </div>
+          <div class="programa__ficha-body">
+            <p><strong>Objetivo:</strong> reparar uniones, rellenar faltantes y estabilizar la estructura.</p>
+            <p><strong>Contenidos:</strong> encolados, prensado, refuerzos y reemplazo de piezas dañadas.</p>
+            <p><strong>Resultado:</strong> estructura firme y lista para el tratamiento de superficie.</p>
+            <span class="programa__ficha-duracion">90m.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CLASE 03 -->
+    <article class="programa__item" style="--ficha-color: var(--naranja);">
+      <h3 class="programa__trigger-wrap">
+        <button
+          class="programa__trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="clase-panel-3"
+          id="clase-btn-3"
+        >
+          <span class="programa__trigger-label">Clase 03.</span>
+          <span class="programa__trigger-subtitle">Superficie</span>
+          <span class="programa__trigger-icon" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div
+        class="programa__panel"
+        id="clase-panel-3"
+        role="region"
+        aria-labelledby="clase-btn-3"
+      >
+        <div class="programa__panel-inner">
+          <div class="programa__ficha-media">
+            <img src="assets/clase-03.jpg" alt="Clase 3 — Preparación de superficie" />
+          </div>
+          <div class="programa__ficha-body">
+            <p><strong>Objetivo:</strong> preparar la superficie y elegir el acabado según la pieza.</p>
+            <p><strong>Contenidos:</strong> lijado, sellado, lacas, pátinas y texturas decorativas.</p>
+            <p><strong>Resultado:</strong> superficie lista para la intervención final de diseño.</p>
+            <span class="programa__ficha-duracion">90m.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CLASE 04 -->
+    <article class="programa__item" style="--ficha-color: var(--naranja);">
+      <h3 class="programa__trigger-wrap">
+        <button
+          class="programa__trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="clase-panel-4"
+          id="clase-btn-4"
+        >
+          <span class="programa__trigger-label">Clase 04.</span>
+          <span class="programa__trigger-subtitle">Identidad</span>
+          <span class="programa__trigger-icon" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div
+        class="programa__panel"
+        id="clase-panel-4"
+        role="region"
+        aria-labelledby="clase-btn-4"
+      >
+        <div class="programa__panel-inner">
+          <div class="programa__ficha-media">
+            <img src="assets/clase-04.jpg" alt="Clase 4 — Identidad y acabado final" />
+          </div>
+          <div class="programa__ficha-body">
+            <p><strong>Objetivo:</strong> definir la identidad final de la pieza y aplicar el acabado elegido.</p>
+            <p><strong>Contenidos:</strong> paletas de color, combinaciones y terminación profesional.</p>
+            <p><strong>Resultado:</strong> pieza única, restaurada y reinterpretada.</p>
+            <span class="programa__ficha-duracion">90m.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+    <!-- ===================== VIDEO ===================== -->
+    <section class="curso-video" id="curso-video">
+      <p class="section-eyebrow">RESULTADOS</p>
+      <div class="curso-video__frame">
+  <video
+    class="curso-video__media"
+    controls
+    preload="metadata"
+    playsinline
+  >
+    <source src="assets/video-curso.mp4" type="video/mp4">
+    Tu navegador no soporta el elemento video.
+  </video>
+</div>
+
+    <!-- ===================== TESTIMONIOS ===================== -->
+<section class="curso-testimonios" id="testimonios">
+  
+  <div class="testimonios-bg" aria-hidden="true">
+    <div class="curva-sup"></div>
+    <div class="cuerpo-relleno"></div>
+    <div class="curva-inf"></div>
+  </div>
+
+  <div class="testimonios-contenido">
+    <p class="section-eyebrow">TESTIMONIOS</p>
+
+    <div class="testimonios__carousel">
+      <button class="carousel-arrow carousel-arrow--prev" id="testiPrev" aria-label="Testimonio anterior">
+        <svg width="20" height="20" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 6L9 14L17 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="testimonios__track" id="testiTrack">
+        <blockquote class="testimonio is-active" data-index="0">
+          <p class="testimonio__quote">"Ahora mi casa está llena de piezas únicas"</p>
+          <cite class="testimonio__author">Malena, 09/2025.</cite>
+        </blockquote>
+        <blockquote class="testimonio" data-index="1">
+          <p class="testimonio__quote">"Le di una segunda vida a muebles que iba a tirar"</p>
+          <cite class="testimonio__author">Julián, 11/2025.</cite>
+        </blockquote>
+        <blockquote class="testimonio" data-index="2">
+          <p class="testimonio__quote">"Aprendí una técnica que uso en todos mis proyectos"</p>
+          <cite class="testimonio__author">Sofía, 02/2026.</cite>
+        </blockquote>
+      </div>
+
+      <button class="carousel-arrow carousel-arrow--next" id="testiNext" aria-label="Testimonio siguiente">
+        <svg width="20" height="20" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 6L19 14L11 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+    <!-- ===================== INSCRIPCIÓN ===================== -->
+<section class="inscripcion" id="inscripcion">
+  <div class="inscripcion__inner">
+
+    <p class="inscripcion__eyebrow">INSCRIPCIÓN</p>
+
+    <div class="inscripcion__layout">
+
+      <!-- Columna izquierda -->
+      <div class="inscripcion__left">
+        <h2 class="inscripcion__title">
+          Asegurá tu lugar<br>y empezá a crear
+        </h2>
+        <p class="inscripcion__desc">
+          Un espacio práctico para transformar tus ideas en piezas
+          tangibles. Aprendé las técnicas, dominá los materiales y
+          dale una nueva perspectiva a tus proyectos.
+        </p>
+        <ul class="inscripcion__facts">
+          <li><strong>Modalidad:</strong> presencial</li>
+          <li><strong>Cupos:</strong> Limitados</li>
+          <li><strong>Incluye:</strong> materiales y acceso</li>
+        </ul>
+      </div>
+
+      <!-- Columna derecha — Card formulario -->
+      <div class="inscripcion__right">
+        <div class="inscripcion__card">
+
+          <div class="inscripcion__field">
+            <label class="inscripcion__label" for="insc-nombre">
+              Nombre completo:
+            </label>
+            <input
+              class="inscripcion__input"
+              type="text"
+              id="insc-nombre"
+              name="nombre"
+              autocomplete="name"
+              placeholder=" "
+              required
+            />
+          </div>
+
+          <div class="inscripcion__field">
+            <label class="inscripcion__label" for="insc-email">
+              Correo electrónico:
+            </label>
+            <input
+              class="inscripcion__input"
+              type="email"
+              id="insc-email"
+              name="email"
+              autocomplete="email"
+              placeholder=" "
+              required
+            />
+          </div>
+
+          <div class="inscripcion__field">
+            <label class="inscripcion__label" for="insc-celular">
+              Celular:
+            </label>
+            <input
+              class="inscripcion__input"
+              type="tel"
+              id="insc-celular"
+              name="celular"
+              autocomplete="tel"
+              placeholder=" "
+            />
+          </div>
+
+          <button class="inscripcion__btn" type="button" id="inscripcionBtn">
+            Solicitar inscripción
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+
+      <div class="footer__brand">
+        <img src="assets/logo.svg" alt="RAÍZ" class="footer__logo" width="80" height="29" />
+        <p class="footer__tagline">Cada mueble puede<br>tener más de una vida.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Navegación del footer">
+        <a href="#sobre">Sobre Raíz</a>
+        <a href="#proceso">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#capsula">Cápsula</a>
+      </nav>
+
+      <div class="footer__contact">
+        <p class="footer__contact-title">Contacto</p>
+        <a href="mailto:hola@raiz.com.ar">hola@raiz.com.ar</a>
+        <a href="tel:+5491112345678">+54 9 11 1234-5678</a>
+        <p>Buenos Aires, Argentina</p>
+      </div>
+
+      <div class="footer__social">
+        <p class="footer__contact-title">Seguinos</p>
+        <div class="footer__social-links">
+          <a href="#" aria-label="Instagram de RAÍZ" class="footer__social-icon">
+            <!-- Instagram SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok de RAÍZ" class="footer__social-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.73a8.2 8.2 0 0 0 4.78 1.52V6.79a4.85 4.85 0 0 1-1.01-.1z"/></svg>
+          </a>
+          <a href="#" aria-label="Pinterest de RAÍZ" class="footer__social-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 RAÍZ. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  
+  <script src="js/curso-restauracion.js"></script>
+</body>
+</html>

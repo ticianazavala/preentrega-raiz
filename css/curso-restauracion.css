@@ -1,0 +1,925 @@
+/* ============================================================
+   RAÍZ — curso-restauracion.css
+   Estilos EXCLUSIVOS de la página "Restauración Integral".
+   Reutiliza variables, tipografía, botones y .section-eyebrow
+   definidos en style.css — no se redefine nada de eso acá.
+   ============================================================ */
+
+/* ============================================================
+   NAVBAR (variante simple: logo + CTA, sin menú de anclas)
+   ============================================================ */
+.navbar__inner:has(.js-scroll-inscripcion) {
+  justify-content: space-between;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.curso-hero {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-lg);
+  padding-left: 60px;
+  padding-right: 4rem;
+}
+
+.curso-hero__content {
+  flex: 0 0 auto;
+  max-width: 520px;
+}
+
+.curso-hero .section-eyebrow {
+  color: var(--negro);
+}
+
+.curso-hero__title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: 5rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--negro);
+  margin: 0.6rem 0 1.2rem;
+}
+
+.curso-hero__desc {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: var(--negro);
+  max-width: 400px;
+  margin-bottom: 1.4rem;
+}
+
+.curso-hero__visual {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* ── Comparador Before / After ─────────────────────────────── */
+.ba-slider {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 4 / 3;
+  user-select: none;
+  touch-action: none;
+}
+
+.ba-slider__img {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ba-slider__img img {
+  width: 135%;
+  height: 135%;
+  object-fit: contain;
+  pointer-events: none;
+}
+/* La imagen "antes" se recorta con clip-path según la posición del handle */
+.ba-slider__img--before {
+  clip-path: inset(0 50% 0 0);
+  transition: clip-path 0.05s linear;
+}
+
+.ba-slider__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  cursor: ew-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ba-slider__line {
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  width: 5px;
+  background: var(--naranja);
+}
+
+.ba-slider__grip {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--blanco);
+  border: 2px solid var(--negro);
+  color: var(--negro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  transition: transform 0.15s ease;
+}
+
+.ba-slider__handle:hover .ba-slider__grip,
+.ba-slider__handle:focus-visible .ba-slider__grip {
+  transform: scale(1.08);
+}
+
+/* ============================================================
+   FRANJA NARANJA — animación decorativa (barniz / pincelada)
+   ============================================================ */
+.curso-franja {
+  background: var(--naranja);
+  height: 140px;
+  overflow: hidden;
+  position: relative;
+}
+
+.curso-franja__inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+}
+
+.curso-franja__stroke {
+  position: absolute;
+  height: 3px;
+  width: 40%;
+  background: rgba(255,255,255,0.55);
+  border-radius: 2px;
+  animation: franjaSlide 7s ease-in-out infinite;
+}
+.curso-franja__stroke--1 { top: 30%; animation-duration: 8s; }
+.curso-franja__stroke--2 { top: 52%; height: 2px; width: 28%; animation-duration: 6s; animation-delay: -2s; background: rgba(255,255,255,0.35); }
+.curso-franja__stroke--3 { top: 70%; height: 4px; width: 34%; animation-duration: 9.5s; animation-delay: -4s; background: rgba(255,255,255,0.4); }
+
+@keyframes franjaSlide {
+  0%   { left: -40%; opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { left: 60%; opacity: 1; }
+  90%  { opacity: 0; }
+  100% { left: 100%; opacity: 0; }
+}
+
+.curso-franja__grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px);
+  background-size: 14px 14px;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   DE QUÉ SE TRATA
+   ============================================================ */
+.curso-info {
+  background: var(--fondo);
+  padding: var(--sp-xl) 3.5rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  text-align: center;
+  
+}
+
+/* 1. Aseguramos que el Grid le permita estirarse */
+.curso-info__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-lg);
+  align-items: stretch; /* Esto estira ambas columnas al mismo alto */
+  margin-top: 2rem;
+  text-align: left;
+}
+
+/* 2. Forzamos al bloque izquierdo a ocupar todo el alto disponible y distribuir el espacio */
+.curso-info__grid > div:first-child, 
+.curso-info__content { /* Usá la clase que tenga tu contenedor izquierdo */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Clave para que use el alto total estirado por el grid */
+}
+
+.curso-info__title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: clamp(3.5rem, 4vw, 5rem);
+  color: var(--rosa);
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+
+.curso-info__desc {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--negro);
+  max-width: 580px;
+  margin-bottom: 2rem;
+}
+
+.curso-info__facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+  max-width: 580px;
+}
+
+.curso-fact {
+  background: var(--rosa);
+  border-radius: 14px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 0.6rem;
+  text-align: center;
+}
+
+.curso-fact__value {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--blanco);
+  line-height: 1.3;
+}
+
+.curso-info__media {
+  position: relative;
+  background: var(--rosa);
+  border-radius: 24px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.curso-info__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.curso-info__cta {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.5rem;
+}
+
+/* Corrección de la volanta (eyebrow) específicamente para esta sección */
+.curso-info .section-eyebrow--dark {
+  color: #000000 !important;   /* Forzamos el color a negro puro */
+  letter-spacing: 0px;         /* Le damos el espaciado/interlineado entre letras */
+}
+
+/* ============================================================
+   PROGRAMA — accordion de clases
+   ============================================================ */
+.curso-programa {
+  background: var(--fondo);
+  padding: var(--sp-xl) 2rem;
+  text-align: center;
+}
+
+.curso-programa .section-eyebrow{
+  color: var(--negro);
+  line-height: 0;
+  letter-spacing: 0;
+}
+
+.programa__intro {
+  max-width: 780px;
+  margin: 2rem auto 2.5rem;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--negro);
+  text-align: center;
+}
+
+.programa__accordion {
+  max-width: 960px;
+  margin: 3rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── Item (article) ─────────────────────────────────────── */
+.programa__item {
+  background: var(--blanco);
+  border: 3px solid var(--ficha-color, var(--naranja));
+  border-radius: 24px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.programa__item:has(.programa__trigger[aria-expanded="true"]) {
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.10);
+}
+
+/* ── Trigger ────────────────────────────────────────────── */
+.programa__trigger-wrap {
+  margin: 0;       /* reset heading margin */
+  font-size: 1rem; /* evita que <h3> suba el tamaño */
+}
+
+.programa__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.4rem 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: var(--negro);
+  transition: background 0.2s ease;
+}
+
+.programa__trigger:hover {
+  background: color-mix(in srgb, var(--ficha-color) 8%, transparent);
+}
+
+.programa__trigger-label {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--ficha-color, var(--naranja));
+  text-transform: uppercase;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 7rem;
+}
+
+.programa__trigger-subtitle {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--negro);
+  flex: 1;
+  letter-spacing: 0.02em;
+}
+
+/* Ícono +/× animado */
+.programa__trigger-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--ficha-color, var(--naranja));
+  position: relative;
+  transition: background 0.2s ease, transform 0.35s ease;
+}
+
+.programa__trigger-icon::before,
+.programa__trigger-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--ficha-color, var(--naranja));
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s ease, transform 0.35s ease;
+}
+
+.programa__trigger-icon::before {
+  width: 12px;
+  height: 2px; /* guión horizontal */
+}
+
+.programa__trigger-icon::after {
+  width: 2px;
+  height: 12px; /* guión vertical → forma la cruz */
+}
+
+/* Cuando está expandido: el ícono rota y se convierte en × */
+.programa__trigger[aria-expanded="true"] .programa__trigger-icon {
+  transform: rotate(45deg);
+  background: var(--ficha-color, var(--naranja));
+}
+
+.programa__trigger[aria-expanded="true"] .programa__trigger-icon::before,
+.programa__trigger[aria-expanded="true"] .programa__trigger-icon::after {
+  background: var(--blanco);
+}
+
+/* ── Panel ──────────────────────────────────────────────── */
+.programa__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.38s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.programa__panel.is-open {
+  max-height: 600px; /* valor mayor al contenido real; ajustá si la imagen es más alta */
+}
+
+.programa__panel-inner {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.2rem 2rem 2rem; /* el padding vive acá adentro, no en el panel */
+  text-align: left;
+}
+
+/* ── Media ──────────────────────────────────────────────── */
+.programa__ficha-media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--fondo);
+}
+
+.programa__ficha-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Body ───────────────────────────────────────────────── */
+.programa__ficha-body {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--negro);
+}
+
+.programa__ficha-body p {
+  margin-bottom: 0.65rem;
+}
+
+.programa__ficha-body p:last-of-type {
+  margin-bottom: 0;
+}
+
+.programa__ficha-duracion {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--ficha-color, var(--naranja));
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .programa__panel-inner {
+    grid-template-columns: 1fr;
+    padding: 0 1.2rem 1.6rem;
+    gap: 1.2rem;
+  }
+
+  .programa__ficha-media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .programa__trigger {
+    padding: 1.2rem 1.2rem;
+    gap: 0.8rem;
+  }
+
+  .programa__trigger-label {
+    font-size: 1.2rem;
+    min-width: 5.5rem;
+  }
+}
+
+/* ============================================================
+   VIDEO
+   ============================================================ */
+.curso-video {
+  background: var(--fondo);
+  padding: var(--sp-xl) 2rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.curso-video__media{
+  width:100%;
+  display:block;
+  border: radius 40px;px;
+}
+
+.curso-video__frame {
+  margin-top: 2rem;
+  border: 3px solid var(--negro);
+  border-radius: 8px;
+  aspect-ratio: 16 / 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.curso-video__placeholder {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  color: var(--negro);
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   TESTIMONIOS (ACTUALIZADO CON SVG INREFORMABLE)
+   ============================================================ */
+.curso-testimonios {
+  position: relative; /* Clave para el posicionamiento absoluto del fondo */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  /* El padding-top y bottom actúan como colchón para proteger las curvas superior e inferior */
+  padding: var(--sp-xl) 2rem; 
+  box-sizing: border-box;
+}
+
+/* Forzamos a que el contenido real de los textos flote por encima del SVG */
+.testimonios-contenido {
+  position: relative;
+  z-index: 2;
+}
+
+/* Contenedor del fondo que se estira con la sección */
+.testimonios-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Reglas comunes para las curvas superior e inferior */
+.curva-sup,
+.curva-inf {
+  width: 100%;
+  /* 150px de alto suele ser perfecto para que tu curva se note elegante sin comerse la pantalla. Ajusta si lo deseas */
+  height: 150px; 
+  /* Tu SVG pasado a DataURI (reemplazando el color fill por %23FD96C0) */
+  background-image: url('data:image/svg+xml;utf8,<svg width="1934" height="2213" viewBox="0 0 1934 2213" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1020.97 48.1915C1203.35 11.9297 1588.47 -38.7941 1933.68 47.4396V2137.31C1592.88 2057.68 1198.85 2117.93 1018.68 2151.11C483.083 2262.58 124.85 2197.56 12.6826 2151.11L0 48.3322C114.228 99.2362 477.736 170.271 1020.97 48.1915Z" fill="%23FD96C0"/></svg>');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+/* Encuadra solo el extremo de arriba del SVG */
+.curva-sup {
+  background-position: center top;
+}
+
+/* Absorbe toda la variación de la altura inyectando el color plano */
+.cuerpo-relleno {
+  flex: 1;
+  background-color: #FD96C0; /* Color idéntico al de tu SVG */
+  width: 100%;
+}
+
+/* Encuadra solo el extremo de abajo del SVG */
+.curva-inf {
+  background-position: center bottom;
+}
+
+/* ============================================================
+   EL RESTO DE TUS ESTILOS SE MANTIENEN IGUAL
+   ============================================================ */
+.curso-testimonios .section-eyebrow {
+  color: white !important;
+}
+
+.testimonios__carousel {
+  position: relative;
+  width: min(100%, 1100px);
+  margin: 1rem auto 0;
+}
+
+.curso-testimonios .carousel-arrow {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 5;
+  border-color: var(--blanco);
+  background: transparent;
+  color: var(--blanco);
+}
+
+.curso-testimonios .carousel-arrow--prev { left: 1rem; }
+.curso-testimonios .carousel-arrow--next { right: 1rem; }
+
+.testimonios__track {
+  position: relative;
+  min-height: 180px; /* Asegura un alto mínimo para el contenido dinámico absolute */
+}
+
+.testimonio {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.testimonio.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.testimonio__quote {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 1.1;
+  color: var(--blanco);
+  text-transform: uppercase;
+  max-width: 850px;
+  margin: 0 auto 1rem;
+}
+
+.testimonio__author {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--blanco);
+  opacity: 0.85;
+}
+
+.curso-testimonios .carousel-arrow:hover {
+  background: var(--blanco);
+  color: #FD96C0; /* Cambiado para coincidir con tu rosa directo */
+  border-color: var(--blanco);
+}
+
+/* ============================================================
+   INSCRIPCIÓN — rediseño Figma
+   ============================================================ */
+
+.inscripcion {
+  background: var(--fondo);
+  padding: var(--sp-xl) 2rem;
+}
+
+.inscripcion__inner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* ── Eyebrow ──────────────────────────────────────────────── */
+.inscripcion__eyebrow {
+  display: block;
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--negro);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+/* ── Layout 2 columnas ───────────────────────────────────── */
+.inscripcion__layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+/* ── Columna izquierda ───────────────────────────────────── */
+.inscripcion__left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inscripcion__title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: clamp(3rem, 4vw, 3.4rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--naranja);
+  margin: 0;
+}
+
+.inscripcion__desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  line-height: 1.6;
+  color: var(--negro);
+  max-width: 500px;
+  margin: 0;
+}
+
+.inscripcion__facts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  color: var(--negro);
+  line-height: 1.5;
+}
+
+.inscripcion__facts strong {
+  font-weight: 700;
+}
+
+/* ── Card naranja ────────────────────────────────────────── */
+.inscripcion__card {
+  background: var(--naranja);
+  border-radius: 28px;
+  padding: 1.8rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Campos (REEMPLAZAR ESTE BLOQUE) ─────────────────────── */
+.inscripcion__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left; /* ← Fuerza a que todo el bloque se alinee a la izquierda */
+  align-items: flex-start; /* ← Alinea los elementos internos al inicio */
+}
+
+.inscripcion__label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: left; /* ← Asegura la etiqueta a la izquierda */
+  width: 100%;
+}
+
+.inscripcion__input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 0;
+  outline: none;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  width: 100%;
+  text-align: left; /* ← Clave: El texto que escribe el usuario empieza a la izquierda */
+  transition: border-color 0.2s ease;
+  -webkit-text-fill-color: #fff;
+}
+
+.inscripcion__left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left; /* ← Fuerza el look editorial alineado a la izquierda */
+  align-items: flex-start;
+}
+
+/* Autofill — mantiene fondo naranja */
+.inscripcion__input:-webkit-autofill,
+.inscripcion__input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--naranja) inset;
+  -webkit-text-fill-color: #fff;
+  caret-color: #fff;
+}
+
+/* ── Botón ───────────────────────────────────────────────── */
+.inscripcion__btn {
+  align-self: center;
+  background: #fff;
+  color: var(--naranja);
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 2.4rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  margin-top: 0.5rem;
+}
+
+.inscripcion__btn:hover {
+  background: var(--negro);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.inscripcion__btn:active {
+  transform: translateY(0);
+}
+
+/* ── Estado de carga / enviado ───────────────────────────── */
+.inscripcion__btn.is-loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.inscripcion__btn.is-sent {
+  background: var(--verde, #29885d);
+  color: #fff;
+  pointer-events: none;
+}
+
+/* ── Mensaje de feedback ─────────────────────────────────── */
+.inscripcion__feedback {
+  display: none;
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+  margin-top: -0.5rem;
+}
+
+.inscripcion__feedback.is-visible {
+  display: block;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet (≤ 900px) */
+@media (max-width: 900px) {
+  .inscripcion__layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .inscripcion__title {
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+  }
+
+  .inscripcion__desc {
+    max-width: 100%;
+  }
+}
+
+/* Mobile (≤ 540px) */
+@media (max-width: 540px) {
+  .inscripcion {
+    padding: var(--sp-lg) 1.2rem;
+  }
+
+  .inscripcion__card {
+    border-radius: 20px;
+    padding: 1.8rem 1.4rem;
+    gap: 1.6rem;
+  }
+
+  .inscripcion__title {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .inscripcion__btn {
+    width: 100%;
+    text-align: center;
+  }
+}

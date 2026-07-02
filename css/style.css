@@ -746,7 +746,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    FOOTER
    ============================================================ */
 .footer {
-  background: var(--negro);
+  background: var(--rosa);
   color: var(--blanco);
   padding: var(--sp-lg) 2rem var(--sp-md);
 }
@@ -765,8 +765,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .footer__tagline {
   font-size: 0.82rem;
-  line-height: 1.6;
-  opacity: 0.6;
+  line-height: 1.2;
+  color: var(--blanco);
+  opacity: 1;
 }
 
 .footer__nav {
@@ -774,13 +775,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   gap: 0.75rem;
 }
+
 .footer__nav a {
   font-size: 0.82rem;
-  opacity: 0.75;
-  transition: opacity 0.15s;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: var(--blanco);
+  opacity: 1;
 }
+
 .footer__nav a:hover { opacity: 1; color: var(--naranja); }
 
 .footer__contact-title {
@@ -788,7 +789,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  opacity: 0.45;
+  opacity: 100%;
   margin-bottom: 0.8rem;
 }
 
@@ -797,12 +798,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   gap: 0.5rem;
 }
+
 .footer__contact a,
 .footer__contact p {
   font-size: 0.82rem;
-  opacity: 0.75;
-  transition: opacity 0.15s;
+  color: var(--blanco);
+  opacity: 1;
 }
+
 .footer__contact a:hover { opacity: 1; color: var(--rosa); }
 
 .footer__social-links {
@@ -812,7 +815,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .footer__social-icon {
   color: var(--blanco);
-  opacity: 0.7;
+  opacity: 100%;
   transition: opacity 0.15s, color 0.15s;
 }
 .footer__social-icon:hover { opacity: 1; color: var(--naranja); }

@@ -707,8 +707,6 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--negro);
-  text-decoration: underline;
-  text-underline-offset: 4px;
   text-decoration-thickness: 1.5px;
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
@@ -882,7 +880,6 @@
   display: block;
 }
 
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -923,4 +920,181 @@
     width: 100%;
     text-align: center;
   }
+
+  /* ============================================================
+     DETALLE DE CURSO: HERO MOBILE (FOTO ARRIBA, TEXTO ABAJO)
+     ============================================================ */
+  
+  .curso-hero {
+    min-height: auto !important; 
+    flex-direction: column-reverse !important; /* <--- CLAVE: Pone la visual arriba y el texto abajo */
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 2rem !important; /* Espacio prolijo entre el slider y el texto */
+    padding-left: 1.5rem !important; 
+    padding-right: 1.5rem !important;
+    padding-top: calc(var(--nav-h) + 1.5rem) !important; /* Colchón para que la navbar no pise la foto */
+    padding-bottom: 3.5rem !important;
+  }
+
+  /* --- Contenedor del Comparador arriba (CORREGIDO Y CENTRADO) --- */
+  .curso-hero__visual {
+    width: 100vw !important; /* Forza a que ocupe exactamente el 100% del ancho de la pantalla */
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important; /* Centra el bloque rompiendo limpiamente cualquier padding del padre */
+    margin-right: -50vw !important;
+    margin-top: 0 !important;
+    margin-bottom: 1.5rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: hidden !important;
+  }
+
+  .ba-slider {
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 1 / 1.05 !important; /* Proporción premium vertical e imponente */
+    border-radius: 0px !important; /* Sin esquinas para look 'edge-to-edge' de app nativa */
+  }
+
+  .ba-slider__img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Llena todo el espacio de forma perfecta */
+  }
+
+  /* --- Contenedor de Texto abajo --- */
+  .curso-hero__content {
+    max-width: 100% !important;
+    width: 100% !important;
+    text-align: left;
+  }
+
+  .curso-hero__title {
+    font-size: clamp(2.4rem, 11vw, 3.8rem) !important; 
+    line-height: 0.95 !important;
+    margin: 0.5rem 0 1rem !important;
+    word-break: break-word; 
+  }
+
+  /* Ocultamos el br manual de desktop */
+  .curso-hero__title br {
+    display: none !important;
+  }
+
+  .curso-hero__desc {
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+    max-width: 100% !important;
+    margin-bottom: 1.8rem !important;
+  }
+
+/* ============================================================
+     DETALLE DE CURSO: DE QUÉ SE TRATA MOBILE
+     ============================================================ */
+  
+  .curso-info {
+    padding: 3rem 1.5rem !important; /* Alineamos los márgenes laterales con el resto de la web */
+  }
+
+  .curso-info__grid {
+    grid-template-columns: 1fr !important; /* Pasamos a una sola columna vertical */
+    gap: 2.5rem !important;
+  }
+
+  /* Reseteamos el comportamiento flex de altura fija que traía de escritorio */
+  .curso-info__grid > div:first-child {
+    height: auto !important;
+    display: block !important; 
+  }
+
+  .curso-info__title {
+    font-size: clamp(2.2rem, 10vw, 3rem) !important; /* Evitamos que muerda los bordes */
+    line-height: 0.95 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .curso-info__desc {
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+    max-width: 100% !important;
+    margin-bottom: 2rem !important;
+  }
+
+  /* --- Las 4 Pastillas Informativas (Look 2x2) --- */
+  .curso-info__facts {
+    grid-template-columns: repeat(2, 1fr) !important; /* <--- CLAVE: Grilla de 2x2 */
+    gap: 0.75rem !important;
+    max-width: 100% !important;
+  }
+
+  .curso-fact {
+    min-height: 85px !important; /* Un toque más compactas en altura */
+    padding: 0.8rem !important;
+  }
+
+  .curso-fact__value {
+    font-size: 0.85rem !important; /* Achicamos un pelito la tipografía para asegurar lectura */
+    line-height: 1.2 !important;
+  }
+
+  /* --- Bloque de Imagen + CTA abajo --- */
+  .curso-info__media {
+    aspect-ratio: 4 / 3 !important; /* Formato más cómodo para celulares */
+    padding: 1.5rem !important;
+  }
+
+/* ============================================================
+     DETALLE DE CURSO: SECCIÓN VIDEO MOBILE (QUITAR ESPACIADO)
+     ============================================================ */
+  
+  /* Reemplazá .tu-seccion-video por la clase real de esa sección */
+  .tu-seccion-video {
+    min-height: auto !important; /* Resetea alturas fijas heredadas de desktop */
+    height: auto !important;
+    padding-top: 1rem !important; /* Achica el colchón de aire superior al mínimo */
+    margin-top: 0 !important; /* Elimina cualquier margen muerto */
+  }
+
+  /* Si el título "RESULTADOS" o la sección de arriba (.curso-info) 
+     dejó margen abajo, también lo neutralizamos */
+  .curso-info {
+    padding-bottom: 1.5rem !important; /* Ajusta la sección anterior para que no empuje tanto */
+  }
+/* ============================================================
+     BLINDAJE DE ESPACIOS TRABADOS EN MOBILE
+     ============================================================ */
+  
+  /* 1. Resetear la sección de arriba (el programa o contenido previo) */
+  /* Reemplazá '.curso-programa' por la clase real de esa sección si se llama distinto */
+  .curso-programa,
+  section[id="programa"] {
+    height: auto !important;
+    min-height: auto !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* 2. Resetear la sección del video (Resultados) */
+  /* Cambiá '.curso-resultados' por la clase real que envuelva al video */
+  .curso-resultados, 
+  section:has(video),
+  section:has(.resultados) {
+    height: auto !important;
+    min-height: auto !important;
+    padding-top: 1.5rem !important; /* Colchón mínimo y controlado */
+    margin-top: 0 !important;
+  }
+
+  /* 3. Forzar al título "RESULTADOS" a no empujar hacia abajo */
+  /* Si el texto blanco que dice 'RESULTADOS' tiene un margin superior gigante, lo domamos */
+  .curso-resultados h2,
+  .curso-resultados .section-eyebrow {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
 }

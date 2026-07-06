@@ -14,7 +14,7 @@
 
 :root {
   --rosa:    #FD96C0;
-  --amarillo:#FFE148;
+  --amarillo:#FFC800;
   --verde:   #137448;
   --azul:    #264D9D;
   --naranja: #F18446;
@@ -472,7 +472,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
   width: 100%;
   aspect-ratio: 3/4;
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='8' fill='%23F18446' opacity='0.9'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23fff'/%3E%3C/svg%3E") 16 16, crosshair;
+  
+  /* Agregamos ../ al inicio para salir de la carpeta del CSS */
+  cursor: url('../assets/pincel.svg') 6 58, crosshair;
+  
   touch-action: none;
 }
 
@@ -501,7 +504,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ============================================================
-   CURSOS
+   CURSOS (SECCIÓN COMPLETA)
    ============================================================ */
 .cursos {
   background: var(--fondo);
@@ -510,7 +513,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .cursos .section-eyebrow {
-  color: var(--negro); /* O el tono institucional que resalte con elegancia */
+  color: var(--negro);
   text-align: center;
   display: block;
   margin-bottom: 1rem;
@@ -522,109 +525,185 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-width: 640px;
   margin: 0 auto 3rem;
   color: var(--negro);
-  opacity: 100%;
 }
 
-.cursos__grid { /* Asegurate de usar el nombre exacto de tu clase de grilla */
+/* El contenedor que arma las 3 columnas del catálogo */
+.cursos__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;                  /* Espaciado intermedio idéntico al diseño */
-  max-width: 960px;             /* ◄ CLAVE: Limita el ancho para que no se estiren */
-  margin: 0 auto;               /* Centra el bloque de tarjetas en la pantalla */
-  padding: 2rem;
+  gap: 2.5rem;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
-/* 2. Las tarjetas individuales */
-.curso-card { /* Buscá la clase que represente a cada tarjeta de curso */
-  width: 100%;
-  aspect-ratio: 24 / 32;        /* ◄ CLAVE: Clava la proporción geométrica vertical del diseño */
-  border-radius: 40px;          /* ◄ CLAVE: Curvatura idéntica a tus tarjetas originales */
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2.5rem 2rem;         /* Margen interno para empujar textos e imágenes */
-  box-sizing: border-box;
-}
-
-/* ── Flip cards ──────────────────────────────────────────── */
+/* Contenedor principal de cada tarjeta individual */
 .curso-flip {
   perspective: 1200px;
-  height: 340px;
+  width: 100%;
+  aspect-ratio: 24 / 32; 
+  min-height: 440px;     
 }
 
 .curso-flip__inner {
   position: relative;
-  width: 100%; height: 100%;
+  width: 100%; 
+  height: 100%;
   transform-style: preserve-3d;
   transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
-  border-radius: 16px;
+  border-radius: 40px;  
 }
 
-/* Flip only one at a time — handled in JS by toggling .is-flipped */
-.curso-flip.is-flipped .curso-flip__inner { transform: rotateY(180deg); }
+.curso-flip.is-flipped .curso-flip__inner { 
+  transform: rotateY(180deg); 
+}
 
 .curso-flip__front,
 .curso-flip__back {
   position: absolute;
   inset: 0;
-  border-radius: 16px;
+  border-radius: 40px;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.6rem;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.curso-flip__back {
-  transform: rotateY(180deg);
-  gap: 1.2rem;
+/* ── DISEÑO DEL FRENTE ───────────────────────────────────── */
+.curso-flip__front {
+  justify-content: space-between;
+  padding: 2.5rem 2rem;
 }
 
 .curso-num {
+  position: absolute;
+  top: 1.8rem;
+  left: 2rem;
   font-family: var(--font-display);
-  font-variation-settings: 'wdth' 80;
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.4rem; 
   color: var(--blanco);
-  align-self: center;
-  margin-bottom: 0.3rem;
+  line-height: 1;
+}
+
+/* Regla general para la estrella (Frente y Dorso) */
+.curso-star {
+  position: absolute;
+  top: -12px;       /* La empuja un poquito hacia arriba afuera del borde */
+  right: -12px;     /* La empuja un poquito hacia la derecha afuera del borde */
+  width: 58px;      /* Tamaño exacto de tu Figma */
+  height: auto;
+  pointer-events: none;
+  z-index: 10;      /* Hace que flote por encima de la tarjeta */
+}
+
+/* 🌟 SUMÁ ESTA REGLA JUSTO ABAJO: Corrige la rotación 3D en la cara de atrás */
+.curso-star--back {
+  transform: rotateY(180deg);
 }
 
 .curso-img {
   width: 100%;
-  max-height: 200px;
+  max-height: 260px;
   object-fit: contain;
   margin: auto;
 }
 
 .curso-name {
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 800;
+  font-size: 1.35rem;
   color: var(--blanco);
   text-align: center;
-  line-height: 1.2;
-  margin-top: 0.6rem;
+  line-height: 1.15;
+  text-transform: uppercase; 
+  margin: 0;
+}
+
+/* ── DISEÑO DEL REVERSO ──────────────────────────────────── */
+.curso-flip__back {
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3.5rem 1.8rem 2.2rem; 
+}
+
+.curso-back-title {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--blanco);
+  text-align: center;
+  line-height: 1.15;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem; 
+}
+
+/* Contenedor que centra el bloque pero justifica el texto a la izquierda */
+.curso-back-content {
+  width: 100%;
+  max-width: 96%; 
+  text-align: left; 
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; 
 }
 
 .curso-back-desc {
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 0.9rem;
+  line-height: 1.45;
   color: var(--blanco);
-  text-align: center;
-  max-width: 240px;
+  margin: 0;
 }
 
+.curso-back-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.curso-back-list li {
+  color: var(--blanco);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.curso-back-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--blanco);
+}
+
+/* Botones en la parte inferior */
 .btn--white {
   background: var(--blanco, #ffffff);
-  
-  /* ── CAMBIÁ ESTA LÍNEA ── */
-  color: var(--naranja); /* En lugar de var(--blanco) o #fff */
+  color: var(--naranja);
+  padding: 0.8rem 2.2rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-top: auto; 
+  transition: transform 0.2s ease;
 }
+
+.btn--white:hover {
+  transform: scale(1.05);
+}
+
+.curso-flip__back[style*="var(--rosa)"] .btn--white {
+  color: var(--rosa);
+}
+
 
 /* ============================================================
    CHECKERED DIVIDER
@@ -744,10 +823,53 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ============================================================
+   CHECKERED DIVIDER
+   ============================================================ */
+.checkered-divider {
+  height: 48px;
+  background-image:
+    repeating-conic-gradient(var(--negro) 0% 25%, var(--blanco) 0% 50%);
+  background-size: 24px 24px;
+}
+
+/* ============================================================
+   CONTACTO / CIERRE (FINAL DE HOME)
+   ============================================================ */
+.contacto-cierre {
+  background: var(--rosa);
+  text-align: center;
+  padding: 6rem 2rem; /* Padding equilibrado y sin desfases */
+}
+
+.contacto-cierre__title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5.5vw, 5rem);
+  color: var(--blanco);
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 1.8rem;
+}
+
+.contacto-cierre__body {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: var(--blanco);
+  max-width: 700px; /* Le damos un poco más de margen para el nuevo texto */
+  margin: 0 auto 2.5rem;
+}
+
+/* Forzamos a que el botón se centre correctamente en el bloque */
+.contacto-cierre .btn--naranja {
+  display: inline-block;
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .footer {
-  background: var(--rosa);
+  background: var(--fondo);
   color: var(--blanco);
   padding: var(--sp-lg) 2rem var(--sp-md);
 }
@@ -762,12 +884,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.footer__logo { filter: brightness(0) invert(1); margin-bottom: 1rem; }
+.footer__logo { filter: brightness(0); margin-bottom: 1rem; }
 
 .footer__tagline {
   font-size: 0.82rem;
   line-height: 1.2;
-  color: var(--blanco);
+  color: var(--negro);
   opacity: 1;
 }
 
@@ -779,7 +901,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .footer__nav a {
   font-size: 0.82rem;
-  color: var(--blanco);
+  color: var(--negro);
   opacity: 1;
 }
 
@@ -803,7 +925,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .footer__contact a,
 .footer__contact p {
   font-size: 0.82rem;
-  color: var(--blanco);
+  color: var(--negro);
   opacity: 1;
 }
 
@@ -815,7 +937,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-top: 0.2rem;
 }
 .footer__social-icon {
-  color: var(--blanco);
+  color: var(--negro);
   opacity: 100%;
   transition: opacity 0.15s, color 0.15s;
 }

@@ -86,7 +86,7 @@
   object-fit: contain;
   pointer-events: none;
 }
-/* La imagen "antes" se recorta con clip-path según la posición del handle */
+
 .ba-slider__img--before {
   clip-path: inset(0 50% 0 0);
   transition: clip-path 0.05s linear;
@@ -97,86 +97,45 @@
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 2px;
+  width: 40px; 
   transform: translateX(-50%);
   cursor: ew-resize;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
-.ba-slider__line {
+/* MODIFICADO: Línea naranja y acortada */
+.ba-slider__handle::before {
+  content: "";
   position: absolute;
-  top: 5%;
-  bottom: 5%;
-  width: 5px;
-  background: var(--naranja);
+  top: 8%;       /* Al aumentar de 0% a 8%, se separa del borde superior */
+  bottom: 8%;    /* Al aumentar de 0% a 8%, se separa del borde inferior */
+  width: 3px;    
+  background: #F18446; /* Tu color naranja para la línea */
+  z-index: 1;
 }
 
+/* MODIFICADO: Círculo con fondo crema premium */
 .ba-slider__grip {
   position: relative;
-  width: 34px;
-  height: 34px;
+  width: 44px; 
+  height: 44px;
   border-radius: 50%;
-  background: var(--blanco);
-  border: 2px solid var(--negro);
-  color: var(--negro);
+  background: #FFFEF1; /* El fondo crema que me pasaste */
+  border: 2px solid #F18446; /* El borde también en naranja para integrarlo mejor */
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-  transition: transform 0.15s ease;
+  box-shadow: 0 4px 10px rgba(241, 132, 70, 0.15); /* Sombra sutil con tinte naranja */
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2; 
 }
 
 .ba-slider__handle:hover .ba-slider__grip,
 .ba-slider__handle:focus-visible .ba-slider__grip {
-  transform: scale(1.08);
-}
-
-/* ============================================================
-   FRANJA NARANJA — animación decorativa (barniz / pincelada)
-   ============================================================ */
-.curso-franja {
-  background: var(--naranja);
-  height: 140px;
-  overflow: hidden;
-  position: relative;
-}
-
-.curso-franja__inner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-}
-
-.curso-franja__stroke {
-  position: absolute;
-  height: 3px;
-  width: 40%;
-  background: rgba(255,255,255,0.55);
-  border-radius: 2px;
-  animation: franjaSlide 7s ease-in-out infinite;
-}
-.curso-franja__stroke--1 { top: 30%; animation-duration: 8s; }
-.curso-franja__stroke--2 { top: 52%; height: 2px; width: 28%; animation-duration: 6s; animation-delay: -2s; background: rgba(255,255,255,0.35); }
-.curso-franja__stroke--3 { top: 70%; height: 4px; width: 34%; animation-duration: 9.5s; animation-delay: -4s; background: rgba(255,255,255,0.4); }
-
-@keyframes franjaSlide {
-  0%   { left: -40%; opacity: 0; }
-  10%  { opacity: 1; }
-  50%  { left: 60%; opacity: 1; }
-  90%  { opacity: 0; }
-  100% { left: 100%; opacity: 0; }
-}
-
-.curso-franja__grain {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px);
-  background-size: 14px 14px;
-  opacity: 0.5;
+  transform: scale(1.12);
 }
 
 /* ============================================================
@@ -333,10 +292,10 @@
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.10);
 }
 
-/* ── Trigger ────────────────────────────────────────────── */
+/* ── Trigger (Cabecera del acordeón SIEMPRE NARANJA) ─────── */
 .programa__trigger-wrap {
-  margin: 0;       /* reset heading margin */
-  font-size: 1rem; /* evita que <h3> suba el tamaño */
+  margin: 0;       
+  font-size: 1rem; 
 }
 
 .programa__trigger {
@@ -345,25 +304,34 @@
   align-items: center;
   gap: 1.2rem;
   padding: 1.4rem 2rem;
-  background: none;
+  
+  /* CAMBIO CLAVE: Ahora es naranja y texto blanco por defecto (cerrada o abierta) */
+  background: var(--ficha-color, var(--naranja)) !important;
+  color: var(--blanco) !important;
+  
   border: none;
   cursor: pointer;
   text-align: left;
   font-family: inherit;
-  color: var(--negro);
-  transition: background 0.2s ease;
+  
+  /* Esquinas redondeadas arriba para acoplarse perfecto al contenedor */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  transition: background 0.25s ease, opacity 0.25s ease;
 }
 
+/* Hover opcional: se oscurece un penique al pasar el mouse para que se note que es clickeable */
 .programa__trigger:hover {
-  background: color-mix(in srgb, var(--ficha-color) 8%, transparent);
+  background: color-mix(in srgb, var(--ficha-color) 90%, #000000) !important;
 }
 
+/* Forzamos a que las tipografías internas sean SIEMPRE blancas */
 .programa__trigger-label {
   font-family: var(--font-display);
   font-variation-settings: 'wdth' 80;
   font-weight: 800;
   font-size: 1.5rem;
-  color: var(--ficha-color, var(--naranja));
+  color: var(--blanco) !important; /* Forzado a blanco */
   text-transform: uppercase;
   line-height: 1;
   flex-shrink: 0;
@@ -374,53 +342,51 @@
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 1rem;
-  color: var(--negro);
+  color: var(--blanco) !important; /* Forzado a blanco */
   flex: 1;
   letter-spacing: 0.02em;
 }
 
-/* Ícono +/× animado */
+/* ── Ícono (+ / X Animado) ──────────────────────────────── */
 .programa__trigger-icon {
   flex-shrink: 0;
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 2px solid var(--ficha-color, var(--naranja));
+  
+  /* CORRECCIÓN: El círculo ahora es blanco por defecto para que contraste sobre el fondo naranja */
+  background: var(--blanco) !important;
+  border: 2px solid var(--blanco) !important;
+  
   position: relative;
-  transition: background 0.2s ease, transform 0.35s ease;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Estado ABIERTO: Solo aplicamos la rotación de 45° para formar la X */
+.programa__trigger[aria-expanded="true"] .programa__trigger-icon {
+  transform: rotate(45deg); 
 }
 
 .programa__trigger-icon::before,
 .programa__trigger-icon::after {
   content: '';
   position: absolute;
-  background: var(--ficha-color, var(--naranja));
+  /* Las líneas internas se mantienen siempre naranjas para resaltar sobre el fondo blanco del círculo */
+  background: var(--ficha-color, var(--naranja)) !important;
   border-radius: 2px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: opacity 0.25s ease, transform 0.35s ease;
 }
 
 .programa__trigger-icon::before {
   width: 12px;
-  height: 2px; /* guión horizontal */
+  height: 2px; /* Línea horizontal del + */
 }
 
 .programa__trigger-icon::after {
   width: 2px;
-  height: 12px; /* guión vertical → forma la cruz */
-}
-
-/* Cuando está expandido: el ícono rota y se convierte en × */
-.programa__trigger[aria-expanded="true"] .programa__trigger-icon {
-  transform: rotate(45deg);
-  background: var(--ficha-color, var(--naranja));
-}
-
-.programa__trigger[aria-expanded="true"] .programa__trigger-icon::before,
-.programa__trigger[aria-expanded="true"] .programa__trigger-icon::after {
-  background: var(--blanco);
+  height: 12px; /* Línea vertical del + */
 }
 
 /* ── Panel ──────────────────────────────────────────────── */
@@ -508,27 +474,222 @@
 }
 
 /* ============================================================
-   VIDEO
+   DIVIDER PATTERNS (Estilo Editorial / Brutalista)
    ============================================================ */
-.curso-video {
-  background: var(--fondo);
-  padding: var(--sp-xl) 2rem;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  margin-top: -1.5rem;
+.divider-pattern {
+  width: 100%;
+  height: 48px; /* Mantiene la misma altura que ya usabas */
+  background-color: var(--blanco); /* Fondo base idéntico */
+}
+
+/* NUEVO: Patrón de Líneas Verticales (Imagen 1) */
+.divider-pattern--striped {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--negro),
+    var(--negro) 12px,      /* Ancho de la línea negra */
+    transparent 12px,
+    transparent 24px        /* Ciclo total de repetición */
+  );
+  /* Ajustamos el tamaño para que se alinee matemáticamente con el checkerboard */
+  background-size: 24px 100%; 
+}
+
+
+/* ============================================================
+   EL TALLER — flip cards diferenciales
+   ============================================================ */
+.differentials {
+  background: var(--naranja);
+  /* Reducimos el padding inferior (abajo) a la mitad o menos, manteniendo el superior */
+  padding: var(--sp-xl) 2rem 2rem 2rem; 
   text-align: center;
 }
 
-.curso-video__media{
-  width:100%;
-  display:block;
-  border: radius 40px;px;
+/* Reutilizamos la misma lógica que en tu sección programa */
+.differentials .section-eyebrow {
+  color: var(--blanco);
+  line-height: 0;
+  letter-spacing: 0;
+}
+
+.differentials__title {
+  max-width: 780px;
+  margin: 2rem auto 2.5rem;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--blanco);
+  text-align: center;
+
+} 
+
+/* Grilla contenedora */
+.differentials__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto; /* El margen inferior queda en 0 para no empujar el video hacia abajo */
+}
+
+/* --- Estructura del Flip --- */
+.flip-card {
+  background-color: transparent;
+  height: 320px; 
+  perspective: 1000px; 
+}
+
+.flip-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+/* --- CORRECCIÓN DE FLIP (SOLAPADO PERFECTO) --- */
+
+.flip-card__front, 
+.flip-card__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+  border-radius: 40px; 
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* --- FRENTE (Número absoluto, título al centro) --- */
+.flip-card__front {
+  color: var(--blanco);
+  justify-content: center; 
+  align-items: center;     
+  text-align: center;
+}
+
+.flip-card__number {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 700;
+  position: absolute;
+  top: 2.5rem;  
+  left: 2rem;  
+  margin: 0;
+}
+
+.flip-card__title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  line-height: 1.1;
+  width: 100%;
+  margin: 0; 
+}
+
+/* Tus colores de marca para los fondos */
+.card-yellow { background-color: var(--amarillo); } /* Ajustá al nombre de tu var */
+.card-green  { background-color: var(--verde); }    /* Ajustá al nombre de tu var */
+.card-blue   { background-color: var(--azul); }     /* Ajustá al nombre de tu var */
+
+
+/* --- DORSO (Espejado y corregido posición absoluta) --- */
+.flip-card__back {
+  background: var(--fondo); 
+  transform: rotateY(180deg); /* Se mantiene rotado atrás */
+  justify-content: center; /* Centrado vertical para el texto del dorso */
+  align-items: center;     /* Centrado horizontal */
+  text-align: center;
+}
+
+.flip-card__number-back {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 700;
+  position: absolute;
+  top: 2.5rem;  
+  left: 2rem;  
+  margin: 0;
+}
+
+.flip-card__text {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--negro);
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+
+/* Bordes y textos de color combinados */
+.border-yellow { 
+  border: 4px solid var(--amarillo); 
+  color: var(--amarillo);
+}
+.border-green { 
+  border: 4px solid var(--verde); 
+  color: var(--verde);
+}
+.border-blue { 
+  border: 4px solid var(--azul); 
+  color: var(--azul);
+}
+
+/* ============================================================
+   VIDEO
+   ============================================================ */
+.curso-video {
+  background: var(--naranja);
+  padding: var(--sp-xl) 2rem 180px 2rem; 
+  
+  /* ANTES: max-width: var(--max-w); margin: 0 auto;  <- esto angostaba TODA la sección */
+  /* AHORA: la hacemos full-bleed para que el fondo naranja llegue de punta a punta */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: -1.5rem;
+  
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Acá sí va la restricción de ancho, solo para el contenido (el video) */
+.curso-video__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* El ancho máximo se lo aplica este contenedor interno */
+.curso-video__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.curso-video__media {
+  width: 100%;
+  display: block;
+  border-radius: 40px; /* Corregido error de sintaxis que tenías: border: radius 40px;px; */
 }
 
 .curso-video__frame {
   margin-top: 2rem;
   border: 3px solid var(--negro);
-  border-radius: 8px;
+  border-radius: 44px;
   aspect-ratio: 16 / 8;
   display: flex;
   align-items: center;
@@ -548,17 +709,53 @@
    TESTIMONIOS (ACTUALIZADO CON SVG INREFORMABLE)
    ============================================================ */
 .curso-testimonios {
-  position: relative; /* Clave para el posicionamiento absoluto del fondo */
+  position: relative; 
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin-top: -60px; 
+  margin-bottom: 0;
   text-align: center;
-  /* El padding-top y bottom actúan como colchón para proteger las curvas superior e inferior */
   padding: var(--sp-xl) 2rem; 
   box-sizing: border-box;
+  background: transparent;
 }
+
+/* NUEVO: capa naranja detrás de la curva del SVG */
+.curso-testimonios::before {
+  content: "";
+  position: absolute;
+  top: -2px;              /* -2px para tapar cualquier línea de 1px por redondeo */
+  left: 0;
+  width: 100%;
+  height: 170px;           /* un poco más que el alto de .curva-sup (150px) para cubrir toda la variación de la curva */
+  background: var(--naranja);
+  z-index: 0;              /* debajo del SVG rosa (.testimonios-bg tiene z-index:1) */
+  pointer-events: none;
+}
+
+/* Evitamos descalces en las curvas vectoriales */
+.testimonios-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.curva-sup {
+  width: 100%;
+  height: 150px; 
+  background-image: url('data:image/svg+xml;utf8,<svg width="1934" height="2213" viewBox="0 0 1934 2213" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1020.97 48.1915C1203.35 11.9297 1588.47 -38.7941 1933.68 47.4396V2137.31C1592.88 2057.68 1198.85 2117.93 1018.68 2151.11C483.083 2262.58 124.85 2197.56 12.6826 2151.11L0 48.3322C114.228 99.2362 477.736 170.271 1020.97 48.1915Z" fill="%23FD96C0"/></svg>');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
 
 /* Forzamos a que el contenido real de los textos flote por encima del SVG */
 .testimonios-contenido {
@@ -690,6 +887,12 @@
 .inscripcion {
   background: var(--fondo);
   padding: var(--sp-xl) 2rem;
+  
+  /* Agregamos el mismo truco de Testimonios para que tape los costados con el color crema global */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  box-sizing: border-box;
 }
 
 .inscripcion__inner {

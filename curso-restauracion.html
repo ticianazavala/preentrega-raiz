@@ -43,37 +43,32 @@
 
       <div class="curso-hero__visual">
         <!-- ===== Comparador Before / After ===== -->
-        <div class="ba-slider" id="baSlider">
-          <div class="ba-slider__img ba-slider__img--after">
-            <img src="assets/despues.png" alt="Mueble restaurado, resultado final" draggable="false" />
-          </div>
-          <div class="ba-slider__img ba-slider__img--before" id="baBefore">
-            <img src="assets/antes.png" alt="Mueble antes de la restauración" draggable="false" />
-          </div>
-          <div class="ba-slider__handle" id="baHandle" role="slider" tabindex="0"
-               aria-label="Comparar antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-            <span class="ba-slider__line" aria-hidden="true"></span>
-            <span class="ba-slider__grip" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 3L2 8L6 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10 3L14 8L10 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
+       <div class="curso-hero__visual">
+  <div class="ba-slider" id="baSlider">
+    
+    <div class="ba-slider__img ba-slider__img--after">
+      <img src="assets/despues.png" alt="Mueble restaurado, resultado final" draggable="false" />
+    </div>
+    
+    <div class="ba-slider__img ba-slider__img--before" id="baBefore">
+      <img src="assets/antes.png" alt="Mueble antes de la restauración" draggable="false" />
+    </div>
+    
+    <div class="ba-slider__handle" id="baHandle" role="slider" tabindex="0"
+         aria-label="Comparar antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+      
+      <span class="ba-slider__grip" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="color: #F18446;">
+          <path d="M6 3L2 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 3L14 8L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
 
-    <!-- ===================== FRANJA NARANJA ===================== -->
-    <!-- Sección de identidad visual sin contenido definido: animación
-         propia (barniz/pincelada) hecha en CSS puro, sin librerías. -->
-    <section class="curso-franja" id="curso-franja" aria-hidden="true">
-      <div class="curso-franja__inner">
-        <span class="curso-franja__stroke curso-franja__stroke--1"></span>
-        <span class="curso-franja__stroke curso-franja__stroke--2"></span>
-        <span class="curso-franja__stroke curso-franja__stroke--3"></span>
-        <span class="curso-franja__grain" aria-hidden="true"></span>
-      </div>
+    </div>
+
+  </div>
+</div>
+
     </section>
 
     <!-- ===================== DE QUÉ SE TRATA ===================== -->
@@ -267,20 +262,82 @@
   </div>
 </section>
 
-    <!-- ===================== VIDEO ===================== -->
-    <section class="curso-video" id="curso-video">
-      <p class="section-eyebrow">RESULTADOS</p>
-      <div class="curso-video__frame">
-  <video
-    class="curso-video__media"
-    controls
-    preload="metadata"
-    playsinline
-  >
-    <source src="assets/video-curso.mp4" type="video/mp4">
-    Tu navegador no soporta el elemento video.
-  </video>
-</div>
+<div class="divider-pattern divider-pattern--striped" aria-hidden="true"></div>
+
+<!-- ===================== SECCIÓN DIFERENCIALES ===================== -->
+<section class="differentials" id="diferenciales">
+  <p class="section-eyebrow">EL TALLER</p>
+  <h2 class="differentials__title">¿Qué nos diferencia de los demás cursos de restauración de muebles?</h2>
+
+  <div class="differentials__grid">
+    
+    <!-- Tarjeta 01 -->
+    <div class="flip-card">
+      <div class="flip-card__inner">
+        <!-- Frente -->
+        <div class="flip-card__front card-yellow">
+          <span class="flip-card__number">01</span>
+          <h3 class="flip-card__title">Proyecto<br>Libre</h3>
+        </div>
+        <!-- Dorso -->
+        <div class="flip-card__back border-yellow">
+          <span class="flip-card__number-back">01</span>
+          <p class="flip-card__text">Traés tu mueble y tu idea y te ayudamos a hacerla realidad. No importa cuán difícil te parezca, lo logramos.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta 02 -->
+    <div class="flip-card">
+      <div class="flip-card__inner">
+        <!-- Frente -->
+        <div class="flip-card__front card-green">
+          <span class="flip-card__number">02</span>
+          <h3 class="flip-card__title">Secretos<br>de Oficio</h3>
+        </div>
+        <!-- Dorso -->
+        <div class="flip-card__back border-green">
+          <span class="flip-card__number-back">02</span>
+          <p class="flip-card__text">Te llevás tips, técnicas exclusivas y trucos reales que no están en tutoriales de Youtube o en Internet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta 03 -->
+    <div class="flip-card">
+      <div class="flip-card__inner">
+        <!-- Frente -->
+        <div class="flip-card__front card-blue">
+          <span class="flip-card__number">03</span>
+          <h3 class="flip-card__title">Kit DIY<br>Incluído</h3>
+        </div>
+        <!-- Dorso -->
+        <div class="flip-card__back border-blue">
+          <span class="flip-card__number-back">03</span>
+          <p class="flip-card__text">Te vas con el material y herramientas que necesitas para seguir transformando donde y como quieras.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="curso-video" id="curso-video">
+  <div class="curso-video__inner">
+    <p class="section-eyebrow">RESULTADOS</p>
+    <div class="curso-video__frame">
+      <video
+        class="curso-video__media"
+        controls
+        preload="metadata"
+        playsinline
+      >
+        <source src="assets/video-curso.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento video.
+      </video>
+    </div>
+  </div>
+</section>
 
     <!-- ===================== TESTIMONIOS ===================== -->
 <section class="curso-testimonios" id="testimonios">
@@ -311,7 +368,7 @@
           <cite class="testimonio__author">Julián, 11/2025.</cite>
         </blockquote>
         <blockquote class="testimonio" data-index="2">
-          <p class="testimonio__quote">"Aprendí una técnica que uso en todos mis proyectos"</p>
+          <p class="testimonio__quote">"Aprendí técnicas que uso en todos mis proyectos"</p>
           <cite class="testimonio__author">Sofía, 02/2026.</cite>
         </blockquote>
       </div>

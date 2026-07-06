@@ -48,7 +48,7 @@
     <section class="hero" id="hero">
       <div class="hero__content">
         <h1 class="hero__title">Dale un toque<br>moderno y creá<br>piezas únicas</h1>
-        <p class="hero__sub">Tu mueble puede tendrá nueva vida</p>
+        <p class="hero__sub">Tu mueble puede tener una nueva vida</p>
         <a href="#cursos" class="btn btn--naranja hero__cta js-scroll-cursos">Conocer más</a>
       </div>
       <div class="hero__visual">
@@ -66,7 +66,7 @@
     <p class="section-eyebrow">SOBRE RAÍZ</p>
     <h2 class="sobre__title">No "arreglamos" muebles,<br> los transformamos.</h2>
     <p class="sobre__body">
-      Inspirados por la filosofía del dueñero decor, transformamos muebles con<br>
+      Inspirados por la filosofía del dopamine decor, transformamos muebles con<br>
       identidad en piezas vibrantes. Ofrecemos cursos para que vos también puedas.
     </p>
     <a href="#cursos" class="btn btn--naranja js-scroll-cursos">Ver cursos</a>
@@ -98,7 +98,7 @@
     <div class="proceso__cards">
       <div class="proceso__card" id="card-diagnostico" data-step="diagnostico" hidden>
         <h3 class="proceso__card-title" style="color: var(--amarillo);">DIAGNÓSTICO</h3>
-        <p>Analizamos la estructura, los materiales y el estado de conservación del mueble para definir la mejor intervención, siempre respetando su valor<br>original y esencia.</p>
+        <p>Analizamos la estructura, los materiales y el estado del mueble para definir la mejor intervención, siempre respetando su valor<br>original y esencia.</p>
       </div>
       <div class="proceso__card" id="card-reparacion" data-step="reparacion" hidden>
         <h3 class="proceso__card-title" style="color: var(--verde);">REPARACIÓN</h3>
@@ -168,62 +168,86 @@
 
     </div>
 
-    <!-- ===================== CURSOS ===================== -->
-    <section class="cursos" id="cursos">
-      <p class="section-eyebrow">CURSOS</p>
-      <p class="cursos__intro">Con Raíz vas a aprender técnicas de restauración mediante propuestas prácticas y creativas. Vas a poder darle una nueva vida a los muebles que ya son tuyos.</p>
+ <section class="cursos" id="cursos">
+  <p class="section-eyebrow">CURSOS</p>
+  <p class="cursos__intro">Con Raíz vas a aprender técnicas de restauración mediante propuestas prácticas y creativas. Vas a poder darle una nueva vida a los muebles que ya son tuyos.</p>
 
-      <div class="cursos__grid">
+  <div class="cursos__grid">
 
-        <!-- Curso 1 -->
-        <div class="curso-flip" role="group" aria-label="Curso 01: Reparación inicial de muebles">
-          <div class="curso-flip__inner">
-            <!-- Frente -->
-            <div class="curso-flip__front" style="background: var(--amarillo);">
-              <span class="curso-num">01</span>
-              <img src="assets/card-01.png" alt="Reparación inicial de muebles" class="curso-img" />
-              <p class="curso-name">Reparación inicial<br>de muebles</p>
-            </div>
-            <!-- Reverso -->
-            <div class="curso-flip__back" style="background: var(--naranja);">
-              <p class="curso-back-desc">Aprendé a diagnosticar y reparar la estructura de muebles dañados. Técnicas de ensamblado, lijado y preparación de superficie para dejar la pieza lista para su transformación.</p>
-              <a href="#" class="btn btn--white">Ver más</a>
-            </div>
-          </div>
+    <div class="curso-flip" role="group" aria-label="Curso 01: REPARACIÓN ESTRUCTURAL">
+      <div class="curso-flip__inner">
+        <div class="curso-flip__front" style="background: var(--amarillo);">
+          <span class="curso-num">01</span>
+          <img src="assets/card-01.png" alt="Reparación inicial de muebles" class="curso-img" />
+          <p class="curso-name">Reparación<br>estructural</p>
         </div>
-
-        <!-- Curso 2 -->
-        <div class="curso-flip" role="group" aria-label="Curso 02: Técnicas de color, textura y diseño">
-          <div class="curso-flip__inner">
-            <div class="curso-flip__front" style="background: var(--verde);">
-              <span class="curso-num">02</span>
-              <img src="assets/card-02.png" alt="Técnicas de color, textura y diseño" class="curso-img" />
-              <p class="curso-name">Técnicas de color,<br>textura y diseño</p>
-            </div>
-            <div class="curso-flip__back" style="background: var(--rosa);">
-              <p class="curso-back-desc">Dominá el uso del color, lacas, patinas y texturas decorativas. Descubrí cómo combinar paletas modernas y acabados para crear una identidad visual única en cada pieza.</p>
-              <a href="#" class="btn btn--white">Ver más</a>
-            </div>
+        <div class="curso-flip__back" style="background: var(--naranja);">
+          <span class="curso-num">01</span>
+          <p class="curso-back-title">Reparación<br>estructural</p>
+          <div class="curso-back-content">
+            <p class="curso-back-desc">Aprendé a diagnosticar y reparar la estructura de tus muebles dañados. Con técnicas de ensamblado, lijado y preparación de superficie vas a dejar la pieza lista para su transformación.</p>
+            <ul class="curso-back-list">
+              <li>3 clases</li>
+              <li>Modalidad virtual</li>
+              <li>$65.000</li>
+            </ul>
           </div>
+          <a href="#" class="btn btn--white">Ver más</a>
         </div>
-
-        <!-- Curso 3 -->
-        <div class="curso-flip" role="group" aria-label="Curso 03: Restauración integral de la pieza">
-          <div class="curso-flip__inner">
-            <div class="curso-flip__front" style="background: var(--azul);">
-              <span class="curso-num">03</span>
-              <img src="assets/card-03.png" alt="Restauración integral de la pieza" class="curso-img" />
-              <p class="curso-name">Restauración<br>integral de la pieza</p>
-            </div>
-            <div class="curso-flip__back" style="background: var(--naranja);">
-              <p class="curso-back-desc">El proceso completo de principio a fin: análisis, reparación estructural, tratamiento de superficie y diseño final. Transformá un mueble de otra época en una pieza contemporánea.</p>
-              <a href="curso-restauracion.html" class="btn btn--white">Ver más</a>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </section>
+    </div>
+
+    <div class="curso-flip" role="group" aria-label="Curso 02: TÉCNICAS DE COLOR Y DISEÑO">
+      <div class="curso-flip__inner">
+        <div class="curso-flip__front" style="background: var(--verde);">
+          <span class="curso-num">02</span>
+          <img src="assets/card-02.png" alt="Técnicas de color, textura y diseño" class="curso-img" />
+          <p class="curso-name">Técnicas de<br>color y diseño</p>
+        </div>
+        <div class="curso-flip__back" style="background: var(--naranja);">
+          <span class="curso-num">02</span>
+          <p class="curso-back-title">Técnicas de<br>color y diseño</p>
+          <div class="curso-back-content">
+            <p class="curso-back-desc">Dominá el uso del color, lacas, patinas y texturas decorativas. Aprenderás a combinar paletas contemporáneas y acabados para que cada pieza tenga una identidad visual única.</p>
+            <ul class="curso-back-list">
+              <li>3 clases</li>
+              <li>Modalidad virtual</li>
+              <li>$80.000</li>
+            </ul>
+          </div>
+          <a href="#" class="btn btn--white">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="curso-flip" role="group" aria-label="Curso 03: RESTAURACIÓN INTEGRAL">
+      <div class="curso-flip__inner">
+        <div class="curso-flip__front" style="background: var(--azul);">
+          <img src="assets/estrella.svg" alt="Estrella decorativa" class="curso-star" />
+          <span class="curso-num">03</span>
+          <img src="assets/card-03.png" alt="Restauración integral de la pieza" class="curso-img" />
+          <p class="curso-name">Restauración<br>integral</p>
+        </div>
+        <div class="curso-flip__back" style="background: var(--rosa);">
+          <img src="assets/estrella.svg" alt="Estrella decorativa" class="curso-star curso-star--back" />
+          <span class="curso-num">03</span>
+          <p class="curso-back-title">Restauración<br>integral</p>
+          <div class="curso-back-content">
+            <p class="curso-back-desc">El proceso completo de principio a fin: análisis, reparación estructural junto a tratamiento de superficie y un diseño final. Transformarás tu mueble de otra época en una pieza contemporánea.</p>
+            <ul class="curso-back-list">
+              <li>4 clases</li>
+              <li>Modalidad presencial</li>
+              <li>$99.000</li>
+            </ul>
+          </div>
+          <a href="curso-restauracion.html" class="btn btn--white">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
   
     <!-- ===================== DIVIDER CHECKERED ===================== -->
     <div class="checkered-divider" aria-hidden="true"></div>
@@ -231,8 +255,8 @@
     <!-- ===================== CÁPSULA ===================== -->
     <section class="capsula" id="capsula">
   <p class="section-eyebrow section-eyebrow--dark">CÁPSULA</p>
-  <h2 class="capsula__title">Próximamente</h2>
-  <p class="capsula__sub">Piezas únicas ensambladas 100% a partir de retazos de muebles irrecuperables.</p>
+  <h2 class="capsula__title">Ensamblados</h2>
+  <p class="capsula__sub">Próximamente: piezas únicas 100% a partir de retazos de muebles irrecuperables.</p>
 
   <div class="capsula__grid">
 
@@ -264,6 +288,23 @@
     </div>
 
   </div>
+</section>
+
+<!-- ===================== DIVIDER CHECKERED ===================== -->
+    <div class="checkered-divider" aria-hidden="true"></div>
+
+    <!-- ===================== CONTACTO / CIERRE ===================== -->
+<section class="contacto-cierre" id="contacto">
+  <p class="section-eyebrow">CONTACTO</p>
+  
+  <h2 class="contacto-cierre__title">¿Listo para ponerte<br>manos a la obra?</h2>
+  
+  <p class="contacto-cierre__body">
+    Escribinos para reservar tu lugar, consultarnos por un proyecto o sacarte cualquier duda; estamos del otro lado para ayudarte a planificar tu próxima transformación.
+  </p>
+  
+  <!-- Reutilizamos tu clase de botón naranja -->
+  <a href="#" class="btn btn--naranja">Enviar mensaje</a>
 </section>
 
   </main>

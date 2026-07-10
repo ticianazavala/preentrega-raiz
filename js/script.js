@@ -74,7 +74,7 @@
 
 
 /* ─────────────────────────────────────────────────────────────
-   3. PROCESO — click-to-reveal cards (pop animation, one at a time)
+   3. PROCESO — hover-to-reveal cards (pop animation, one at a time)
    ───────────────────────────────────────────────────────────── */
 (function initProceso() {
   const buttons = document.querySelectorAll('.proceso__icon-btn');
@@ -91,22 +91,27 @@
   }
 
   buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const step      = btn.dataset.step;
+    // 🎯 EVENTO A: Cuando el mouse ENTRA al botón
+    btn.addEventListener('mouseenter', () => {
+      const step       = btn.dataset.step;
       const targetCard = document.getElementById('card-' + step);
-      const isActive  = btn.classList.contains('is-active');
 
-      // Hide all first
+      // Limpiamos cualquier otra tarjeta abierta primero
       hideAll();
 
-      if (!isActive) {
-        // Show the clicked card
+      if (targetCard) {
         targetCard.hidden = false;
-        // Force re-paint so animation triggers reliably
-        void targetCard.offsetWidth;
+        // Forzamos el re-paint para que tu animación 'popIn' de CSS explote de forma fluida
+        void targetCard.offsetWidth; 
         btn.classList.add('is-active');
         btn.setAttribute('aria-expanded', 'true');
       }
+    });
+
+    // 🎯 EVENTO B: Cuando el mouse SALE del botón
+    btn.addEventListener('mouseleave', () => {
+      // Escondemos todo para que la sección quede limpia y vacía con su altura fija
+      hideAll();
     });
   });
 })();
@@ -336,27 +341,46 @@
     });
   }
 
-  /* ── 8. NAVEGACIÓN: FLECHAS ────────────────────────────── */
-  btnPrev.addEventListener("click", () => {
-    activeIndex = (activeIndex - 1 + PROYECTOS.length) % PROYECTOS.length;
-    loadProject(activeIndex);
-  });
+  /* ── 8. NAVEGACIÓN: FLECHAS Y CARDS ────────────────────────────── */
 
-  btnNext.addEventListener("click", () => {
-    activeIndex = (activeIndex + 1) % PROYECTOS.length;
-    loadProject(activeIndex);
-  });
+// Esta función se encarga SOLO del aspecto visual de la flecha izquierda
+function updateArrowState() {
+  const btnPrev = document.getElementById("carousel-prev");
+  // Si estamos en el proyecto 0, se pone gris (clase is-disabled)
+  btnPrev.classList.toggle("is-disabled", activeIndex === 0);
+}
 
-  /* Cards laterales también son clickeables */
-  cardPrev.addEventListener("click", () => {
-    activeIndex = (activeIndex - 1 + PROYECTOS.length) % PROYECTOS.length;
-    loadProject(activeIndex);
-  });
+// Lógica de flecha anterior
+btnPrev.addEventListener("click", () => {
+  if (activeIndex === 0) return; // Si es el primero, no hace nada
+  activeIndex = (activeIndex - 1 + PROYECTOS.length) % PROYECTOS.length;
+  loadProject(activeIndex);
+  updateArrowState();
+});
 
-  cardNext.addEventListener("click", () => {
-    activeIndex = (activeIndex + 1) % PROYECTOS.length;
-    loadProject(activeIndex);
-  });
+// Lógica de flecha siguiente
+btnNext.addEventListener("click", () => {
+  activeIndex = (activeIndex + 1) % PROYECTOS.length;
+  loadProject(activeIndex);
+  updateArrowState();
+});
+
+// Lógica de card anterior (¡SIEMPRE FUNCIONA!)
+cardPrev.addEventListener("click", () => {
+  activeIndex = (activeIndex - 1 + PROYECTOS.length) % PROYECTOS.length;
+  loadProject(activeIndex);
+  updateArrowState();
+});
+
+// Lógica de card siguiente
+cardNext.addEventListener("click", () => {
+  activeIndex = (activeIndex + 1) % PROYECTOS.length;
+  loadProject(activeIndex);
+  updateArrowState();
+});
+
+// Llamada inicial para establecer el estado al cargar la página
+updateArrowState();
 
   /* ── 9. NAVEGACIÓN: SWIPE MOBILE ───────────────────────── */
   let swipeStartX = null;
@@ -395,6 +419,23 @@
   loadProject(activeIndex);
 
 })();
+
+function checkAnswer(cardId, userChoice) {
+  const card = document.getElementById(cardId);
+  // Obtenemos si es Realidad (true) o Mito (false) desde el HTML
+  const isActuallyTrue = card.getAttribute('data-correct') === 'true';
+
+  if (userChoice === isActuallyTrue) {
+    card.classList.add('flipped');
+  } else {
+    card.classList.add('shake');
+    setTimeout(() => card.classList.remove('shake'), 500);
+  }
+}
+
+function flipBack(cardId) {
+  document.getElementById(cardId).classList.remove('flipped');
+}
 
 /* ─────────────────────────────────────────────────────────────
    5. CURSOS — flip cards (hover on desktop, click on touch)

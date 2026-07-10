@@ -64,7 +64,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--blanco);
   margin-bottom: 1.2rem;
@@ -236,7 +236,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   object-fit: contain;
   transform: scale(1.05);    /* Un extra de escala si querés que tenga más impacto */
 }
-}
 
 /* ============================================================
    WAVE TRANSITIONS
@@ -253,9 +252,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    SOBRE RAÍZ
    ============================================================ */
 .sobre {
-  background: var(--rosa);
   text-align: center;
-  padding: var(--sp-xl) 2rem;
+  /* Ajustá estos dos valores a tu gusto para calibrar el aire fino: */
+  padding-top: 160px;    /* Controla el espacio libre arriba del título */
+  padding-bottom: 120px; /* Controla el espacio libre abajo del botón */
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .sobre__title {
@@ -282,18 +284,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    PROCESO
    ============================================================ */
 .proceso {
-  background: var(--blanco);
-  padding: var(--sp-lg) 2rem var(--sp-xl);
   text-align: center;
-  margin-top: 100px;
+  
+  /* ↕️ CONTROL DE AIRE GENERAL */
+  padding-top: 180px;    /* Cambiá este número para separar la sección de la curva rosa de arriba */
+  padding-bottom: 80px; /* Cambiá este número para empujar y separarla de la sección Proyectos de abajo */
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .proceso__title {
   font-family: var(--font-display);
   font-variation-settings: 'wdth' 80; /* Ancho condensado de Figma */
   font-weight: 800;
-  font-size: clamp(2.2rem, 5.5vw, 5rem); /* El mismo escalado perfecto */
-  color: var(--blanco);
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  color: var(--negro);
   text-transform: uppercase;
   text-align: center;
   line-height: 1.05;
@@ -312,7 +317,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   top: 50%;
   left: 0; right: 0;
   height: 6px;
-  background: var(--blanco);
+  background: var(--negro);
   transform: translateY(-50%);
 }
 
@@ -343,17 +348,24 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     pointer-events:none;
 }
 
-.proceso__icon-btn:hover { transform: scale(1.12); background: var(--amarillo); }
-.proceso__icon-btn.is-active { background: var(--amarillo); transform: scale(1.15); }
+/* Cambiá estas líneas en tu CSS: */
+.proceso__icon-btn:hover { transform: scale(1.12); background: transparent; }
+.proceso__icon-btn.is-active { transform: scale(1.15); background: transparent; }
 
 /* Cards Container */
 .proceso__cards {
-  max-width: 1140px; /* Ancho máximo ideal para que coincida con los iconos de arriba */
+  max-width: 1140px; 
   margin: 2rem auto 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 👈 Creamos las 3 columnas fijas de Figma */
+  grid-template-columns: repeat(3, 1fr); 
   width: 100%;
   padding: 0 3.4rem;
+
+  /* 🔒 Mantiene el espacio total reservado para que no salte el layout */
+  height: 280px; 
+  
+  /* 📐 NUEVO: Alinea las tarjetas arriba para que no se estiren hacia abajo */
+  align-items: start; 
 }
 
 .proceso__card {
@@ -380,7 +392,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 #card-diseno {
   grid-column: 3;
-}
 }
 
 @keyframes popIn {
@@ -417,7 +428,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--negro); /* O el tono institucional que resalte con elegancia */
   text-align: center;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .proyectos__title {
@@ -427,16 +438,52 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: clamp(1.8rem, 5vw, 3.5rem);
   color: var(--naranja);
   text-transform: uppercase;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+}
+
+.proyectos__carousel {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto; /* Centrado simple */
+  padding-top: 2rem; /* Esto empuja el bloque hacia abajo sin usar márgenes negativos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 2. FLECHAS: Ajustamos la posición relativa */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-arrow--prev { 
+  left: 5rem; /* Probá bajar este número (ej: 4rem, 3rem) para acercarlas más a la card */
+}
+.carousel-arrow--next { 
+  right: 5rem; /* Lo mismo acá, bajalo hasta que queden a la distancia justa */
 }
 
 .proyectos__grid {
   display: grid;
   grid-template-columns: 1fr 1.4fr 1fr;
   gap: 1.6rem;
-  max-width: var(--max-w);
-  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto; /* Sin márgenes negativos */
   align-items: center;
+  padding-bottom: 2rem;
+}
+
+/* 4. CARDS: Aquí está la clave para que no se vean enormes */
+.proyecto-card {
+  width: 100%;
+  aspect-ratio: 3/4; /* Mantenemos la forma */
 }
 
 /* Side placeholder cards */
@@ -485,22 +532,307 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--rosa);
   padding: 0.7rem 1.2rem;
   text-align: center;
+  white-space: nowrap; /* 👈 Esto evita que la fecha pase a la segunda línea */
 }
+
 .proyecto-reveal__name {
-  display: block;
+  display: inline; /* 👈 Pasó de block a inline */
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 0.85rem;
-  letter-spacing: 0em;
   text-transform: uppercase;
   color: var(--blanco);
 }
+
 .proyecto-reveal__date {
-  display: block;
-  font-size: 0.7rem;
+  display: inline; /* 👈 Pasó de block a inline */
+  font-size: 0.85rem; /* Ajusté un poco el tamaño para que combine mejor */
   color: var(--blanco);
-  opacity: 100%;
-  margin-top: 0.2rem;
+  margin-top: 0;
+  margin-left: 8px; /* 👈 Un poquito de aire a la izquierda de la fecha */
+  opacity: 0.9;
+}
+
+.carousel-arrow.is-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  /* Eliminamos pointer-events: none; para no bloquear nada más */
+}
+
+/* ============================================================
+   MITO O REALIDAD — sección completa
+   ============================================================ */
+
+/* ── Contenedor de sección ─────────────────────────────────── */
+.mito-realidad {
+  background: var(--naranja);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative; /* necesario para los pseudo-elementos */
+}
+
+/* ── Borde festón superior ── */
+.mito-realidad::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background: radial-gradient(
+    circle at 50% 100%,
+    var(--naranja) 66%,
+    #fffef1 67%
+  );
+  background-size: 40px 24px;
+  background-repeat: repeat-x;
+  background-position: center bottom;
+}
+
+/* ── Borde festón inferior ── */
+.mito-realidad::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background: radial-gradient(
+    circle at 50% 0%,
+    var(--naranja) 66%,
+    #fffef1 67%
+  );
+  background-size: 40px 24px;
+  background-repeat: repeat-x;
+  background-position: center top;
+}
+
+/* ── Título principal ──────────────────────────────────────── */
+.mito-realidad__titulo {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  color: var(--blanco);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* ── Grilla de cards ───────────────────────────────────────── */
+.mito-realidad__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 260px);
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   CARD — estructura y flip
+   ============================================================ */
+
+/* ── Contenedor externo de la card ─────────────────────────── */
+.mr-card {
+  background-color: transparent;
+  width: 100%;
+  height: 220px;
+  perspective: 1000px;
+}
+
+/* ── Contenedor interno que rota ───────────────────────────── */
+.mr-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+/* Estado flipped: se activa desde JS */
+.mr-card.flipped .mr-card__inner {
+  transform: rotateY(180deg);
+}
+
+/* ── Estilos compartidos: frente y dorso ───────────────────── */
+.mr-card__frente,
+.mr-card__dorso {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ============================================================
+   FRENTE DE LA CARD
+   ============================================================ */
+
+/* ── Fondo y color del frente ──────────────────────────────── */
+.mr-card__frente {
+  background-color: #fffef1;
+  color: #000000;
+  border-radius: 20px;
+  justify-content: flex-start;   /* ← cambia de center a flex-start */
+  padding-top: 1.4rem;           /* ← aire arriba */
+}
+
+/* ── Número de card ────────────────────────────────────────── */
+.mr-card__numero {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--naranja);
+  text-align: center;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Texto de la pregunta ──────────────────────────────────── */
+.mr-card__pregunta {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+/* ── Fila de botones (realidad / mito) ─────────────────────── */
+.mr-card__botones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Botón individual (ícono SVG) ──────────────────────────── */
+.mr-card__btn-opcion {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0.3rem;
+  transition: transform 0.2s ease;
+}
+
+.mr-card__btn-opcion:hover {
+  transform: scale(1.15);
+}
+
+/* ── Ícono dentro del botón ────────────────────────────────── */
+.mr-card__icono {
+  width: 35px;
+  height: 35px;
+  display: block;
+}
+
+/* ============================================================
+   DORSO DE LA CARD
+   ============================================================ */
+
+/* ── Base del dorso (siempre rotado) ───────────────────────── */
+.mr-card__dorso {
+  transform: rotateY(180deg);
+  color: var(--blanco);
+}
+
+/* ── Variante MITO — fondo rojo oscuro ─────────────────────── */
+.mr-card__dorso--mito {
+  background-color: #b71c1c;
+}
+
+/* ── Variante REALIDAD — fondo verde ───────────────────────── */
+.mr-card__dorso--realidad {
+  background-color: var(--verde);
+}
+
+/* ── Título del dorso (MITO / REALIDAD) ────────────────────── */
+.mr-card__dorso-titulo {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: var(--blanco);
+  margin-bottom: 0.6rem;
+}
+
+/* ── Texto explicativo del dorso ───────────────────────────── */
+.mr-card__dorso-texto {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--blanco);
+  margin-bottom: 1rem;
+}
+
+/* ── Botón "Volver" ────────────────────────────────────────── */
+.mr-card__btn-volver {
+  background-color: var(--blanco);
+  color: var(--negro);
+  border: none;
+  border-radius: 100px;
+  padding: 0.4rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.mr-card__btn-volver:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================================
+   ANIMACIÓN — respuesta incorrecta
+   ============================================================ */
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-10px); }
+  75%       { transform: translateX(10px); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .mito-realidad__grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: 560px;
+  }
+
+  .mr-card {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mito-realidad__grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+
+  .mr-card {
+    height: 210px;
+  }
 }
 
 /* ============================================================
@@ -510,12 +842,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--fondo);
   padding: var(--sp-xl) 2rem;
   text-align: center;
+  margin-top: 4rem;
 }
 
-.cursos .section-eyebrow {
+.cursos__titulo {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
   color: var(--negro);
+  text-transform: uppercase;
   text-align: center;
-  display: block;
   margin-bottom: 1rem;
 }
 
@@ -524,25 +861,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.4;
   max-width: 640px;
   margin: 0 auto 3rem;
+  margin-bottom: 1.5rem;
   color: var(--negro);
 }
 
-/* El contenedor que arma las 3 columnas del catálogo */
+/* Reducimos ligeramente el ancho máximo de la grilla para contener las tarjetas verticalmente */
 .cursos__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-  max-width: 1050px;
+  gap: 2rem; /* Bajamos de 2.5rem a 2rem para ganar espacio */
+  max-width: 960px; /* Reducido de 1050px */
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1rem; /* Menos espacio arriba/abajo */
 }
 
-/* Contenedor principal de cada tarjeta individual */
+/* Modificación de las dimensiones del contenedor individual */
 .curso-flip {
   perspective: 1200px;
   width: 100%;
-  aspect-ratio: 24 / 32; 
-  min-height: 440px;     
+  aspect-ratio: 3 / 4; /* Equivalente simplificado a 24/32 */
+  min-height: auto; /* ❌ ELIMINADO el 440px que rompía el alto en pantallas chicas */
 }
 
 .curso-flip__inner {
@@ -570,24 +908,31 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-sizing: border-box;
 }
 
-/* ── DISEÑO DEL FRENTE ───────────────────────────────────── */
+/* ── DISEÑO DEL FRENTE (CORREGIDO) ─────────────────────── */
 .curso-flip__front {
-  justify-content: space-between;
-  padding: 2.5rem 2rem;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  height: 100%;
+  position: relative; /* Clave para que la estrella no flote en cualquier lado */
+  box-sizing: border-box;
 }
 
+/* El número de la tarjeta arriba a la izquierda fijo */
 .curso-num {
   position: absolute;
-  top: 1.8rem;
-  left: 2rem;
+  top: 1.5rem;
+  left: 1.5rem;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.4rem; 
   color: var(--blanco);
   line-height: 1;
+  z-index: 5;
 }
 
 /* Regla general para la estrella (Frente y Dorso) */
+
 .curso-star {
   position: absolute;
   top: -12px;       /* La empuja un poquito hacia arriba afuera del borde */
@@ -603,13 +948,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: rotateY(180deg);
 }
 
-.curso-img {
-  width: 100%;
-  max-height: 260px;
-  object-fit: contain;
-  margin: auto;
-}
-
+/* Título con márgenes controlados */
 .curso-name {
   font-family: var(--font-body);
   font-weight: 800;
@@ -618,7 +957,44 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-align: center;
   line-height: 1.15;
   text-transform: uppercase; 
-  margin: 0;
+  margin: 2.2rem 0 1rem 0; /* Espacio para que conviva con el número */
+  width: 100%;
+}
+
+/* Caja blanca con alto fijo para que los muebles no la deformen */
+.curso-img-wrapper {
+  background-color: #fffef1;
+  width: 220px;
+  height: 170px; /* Alto fijo para que todas las cajas midan lo mismo */
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  margin-bottom: auto; /* Empuja el precio al fondo */
+  margin-top: 0.5rem;
+}
+
+/* Control estricto del tamaño de los muebles dentro del bloque blanco */
+.curso-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* Precios: les cambiamos el color a un gris/negro oscuro o el color de tus textos para que se lean sobre el fondo beige */
+.curso-price {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1.7rem;
+  color: var(--blanco); /* Cambiado de blanco a negro/oscuro para que sea legible abajo */
+  margin: 1.2rem 0 0 0;
+  text-align: center;
+  width: 100%;
 }
 
 /* ── DISEÑO DEL REVERSO ──────────────────────────────────── */
@@ -644,7 +1020,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Contenedor que centra el bloque pero justifica el texto a la izquierda */
 .curso-back-content {
   width: 100%;
-  max-width: 96%; 
+  max-width: 100%; 
   text-align: left; 
   display: flex;
   flex-direction: column;
@@ -704,39 +1080,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--rosa);
 }
 
-
-/* ============================================================
-   CHECKERED DIVIDER
-   ============================================================ */
-.checkered-divider {
-  height: 48px;
-  background-image:
-    repeating-conic-gradient(var(--negro) 0% 25%, var(--blanco) 0% 50%);
-  background-size: 24px 24px;
-}
-
 /* ============================================================
    CÁPSULA
    ============================================================ */
 .capsula {
-  background: var(--naranja);
+  background: var(--fondo);
   padding: var(--sp-xl) 2rem var(--sp-lg);
+  margin-top: -1rem;
+  margin-bottom: 3rem;
   text-align: center;
-}
-
-.capsula .section-eyebrow {
-  color: var(--blanco); /* O el tono institucional que resalte con elegancia */
-  text-align: center;
-  display: block;
-  margin-bottom: 1rem;
 }
 
 .capsula__title {
   font-family: var(--font-display);
   font-variation-settings: 'wdth' 80;
   font-weight: 800;
-  font-size: clamp(3rem, 8vw, 8rem);
-  color: var(--blanco);
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  color: var(--naranja);
   text-transform: uppercase;
   line-height: 0.95;
   margin-bottom: 1rem;
@@ -744,7 +1104,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .capsula__sub {
   font-size: 1rem;
-  color: var(--blanco);
+  color: var(--negro);
   max-width: 700px;
   margin: 0 auto 3rem;
   line-height: 1.2;
@@ -755,7 +1115,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.4rem;
-  max-width: var(--max-w);
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -789,8 +1149,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 100px;
-  min-height: 10%; /* Cubre la zona inferior de manera elegante */
+  height: 60px;
   
   /* Color de fondo con transparencia ajustable (negro al 75%) */
   background: rgba(0, 0, 0, 0.50); 
@@ -825,10 +1184,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ============================================================
    CHECKERED DIVIDER
    ============================================================ */
-.checkered-divider {
+/* Le sumamos el elemento 'div' adelante para darle más fuerza al selector */
+div.checkered-divider {
   height: 48px;
-  background-image:
-    repeating-conic-gradient(var(--negro) 0% 25%, var(--blanco) 0% 50%);
+  background-image: repeating-conic-gradient(var(--rosa) 0% 25%, var(--fondo) 0% 50%);
   background-size: 24px 24px;
 }
 
@@ -838,7 +1197,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .contacto-cierre {
   background: var(--rosa);
   text-align: center;
-  padding: 6rem 2rem; /* Padding equilibrado y sin desfases */
+  padding: 4rem 2rem; /* Padding equilibrado y sin desfases */
 }
 
 .contacto-cierre__title {
@@ -1185,24 +1544,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    ============================================================ */
 @media (max-width: 768px) {
 
-  /* --- NAVBAR MOBILE FIX --- */
+  /* --- NAVBAR MOBILE --- */
   .navbar__nav {
     display: none;
   }
+
   .navbar__burger {
     display: flex;
     cursor: pointer;
   }
-
-  /* ============================================================
-   VERSION MOBILE (Pantallas de menos de 768px)
-   ============================================================ */
-@media (max-width: 768px) {
-
-  /* --- NAVBAR MOBILE --- */
-  .navbar__nav { display: none; }
-  .navbar__burger { display: flex; cursor: pointer; }
-
 
   /* --- HERO MOBILE --- */
   .hero {
@@ -1380,11 +1730,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     display: none;
   }
 
-  /* ============================================================
-   VERSION MOBILE (Dentro de tu @media max-width: 768px)
-   ============================================================ */
-@media (max-width: 768px) {
-
   /* --- CAROUSEL PROYECTOS MOBILE --- */
   .proyectos__grid {
     grid-template-columns: 1fr !important; /* Pasamos a una columna solo en mobile */
@@ -1431,7 +1776,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     margin-top: 1.5rem;
     width: 100%;
   }
-}
 
 /* --- SECCIÓN CÁPSULA MOBILE --- */
   .capsula {

@@ -56,62 +56,74 @@
       </div>
     </section>
 
-<div class="brand-block-wrapper" style="position: relative; overflow: hidden; width: 100%;">
+    <!-- ===================== SOBRE RAÍZ ===================== -->
+     <section class="sobre" id="sobre" style="position: relative; background-color: transparent; padding-top: clamp(120px, 12vw, 180px); padding-bottom: clamp(100px, 12vw, 140px); width: 100%;">
   
-  <svg viewBox="0 0 1934 2213" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;">
-    <path d="M1020.97 48.1915C1203.35 11.9297 1588.47 -38.7941 1933.68 47.4396V2137.31C1592.88 2057.68 1198.85 2117.93 1018.68 2151.11C483.083 2262.58 124.85 2197.56 12.6826 2151.11L0 48.3322C114.228 99.2362 477.736 170.271 1020.97 48.1915Z" fill="#FD96C0"/>
-  </svg>
+  <div class="sobre-curve-top" style="position: absolute; top: 0; left: 0; width: 100%; height: clamp(120px, 12vw, 180px); overflow: hidden; z-index: 1; pointer-events: none;">
+    <svg viewBox="0 0 1934 2213" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice" style="position: absolute; top: 0; left: 0; width: 100%; height: auto;">
+      <path d="M1020.97 48.1915C1203.35 11.9297 1588.47 -38.7941 1933.68 47.4396V2137.31C1592.88 2057.68 1198.85 2117.93 1018.68 2151.11C483.083 2262.58 124.85 2197.56 12.6826 2151.11L0 48.3322C114.228 99.2362 477.736 170.271 1020.97 48.1915Z" fill="#FD96C0"/>
+    </svg>
+  </div>
 
-  <section class="sobre" id="sobre" style="position: relative; z-index: 2; background: transparent; padding-top: 180px; padding-bottom: 60px;">
-    <p class="section-eyebrow">SOBRE RAÍZ</p>
+  <div class="sobre-solid-bg" style="position: absolute; top: clamp(80px, 12vw, 120px); bottom: clamp(80px, 12vw, 120px); left: 0; width: 100%; background-color: #FD96C0; z-index: 1; pointer-events: none;"></div>
+
+  <div class="sobre-curve-bottom" style="position: absolute; bottom: 0; left: 0; width: 100%; height: clamp(120px, 12vw, 180px); overflow: hidden; z-index: 1; pointer-events: none;">
+    <svg viewBox="0 0 1934 2213" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice" style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;">
+      <path d="M1020.97 48.1915C1203.35 11.9297 1588.47 -38.7941 1933.68 47.4396V2137.31C1592.88 2057.68 1198.85 2117.93 1018.68 2151.11C483.083 2262.58 124.85 2197.56 12.6826 2151.11L0 48.3322C114.228 99.2362 477.736 170.271 1020.97 48.1915Z" fill="#FD96C0"/>
+    </svg>
+  </div>
+
+  <div class="sobre__inner" style="position: relative; z-index: 3; width: 100%;">
     <h2 class="sobre__title">No "arreglamos" muebles,<br> los transformamos.</h2>
     <p class="sobre__body">
       Inspirados por la filosofía del dopamine decor, transformamos muebles con<br>
       identidad en piezas vibrantes. Ofrecemos cursos para que vos también puedas.
     </p>
     <a href="#cursos" class="btn btn--naranja js-scroll-cursos">Ver cursos</a>
-  </section>
+  </div>
+</section>
 
-  <section class="proceso" id="proceso" style="position: relative; z-index: 2; background: transparent; padding-top: 40px; padding-bottom: 120px;">
-    <p class="section-eyebrow">NUESTRO PROCESO</p>
+    <!-- ===================== PROCESO ===================== -->
 
-    <h2 class="proceso__title">DEL POTENCIAL A PIEZA FINAL</h2>
+<section class="proceso" id="proceso" style="position: relative; width: 100%; background-color: var(--fondo);">
   
-    <div class="proceso__timeline">
-      <div class="proceso__line" aria-hidden="true"></div>
+  <p class="section-eyebrow" style="color: var(--negro); font-weight: 800; text-align: center; width: 100%;">NUESTRO PROCESO</p>
 
-      <div class="proceso__icons">
-       <button class="proceso__icon-btn" data-step="diagnostico">
-    <img src="assets/diagnostico.svg" alt="" class="proceso__icon-img">
-</button>
+  <h2 class="proceso__title">DEL POTENCIAL A PIEZA FINAL</h2>
 
-<button class="proceso__icon-btn" data-step="reparacion">
-    <img src="assets/reparacion.svg" alt="" class="proceso__icon-img">
-</button>
+  <div class="proceso__timeline">
+    <div class="proceso__line" aria-hidden="true"></div>
 
-<button class="proceso__icon-btn" data-step="diseno">
-    <img src="assets/diseno.svg" alt="" class="proceso__icon-img">
-</button>
-      </div>
+    <div class="proceso__icons">
+      <button class="proceso__icon-btn" data-step="diagnostico">
+        <img src="assets/diagnostico.svg" alt="" class="proceso__icon-img">
+      </button>
+
+      <button class="proceso__icon-btn" data-step="reparacion">
+        <img src="assets/reparacion.svg" alt="" class="proceso__icon-img">
+      </button>
+
+      <button class="proceso__icon-btn" data-step="diseno">
+        <img src="assets/diseno.svg" alt="" class="proceso__icon-img">
+      </button>
     </div>
+  </div>
 
-    <div class="proceso__cards">
-      <div class="proceso__card" id="card-diagnostico" data-step="diagnostico" hidden>
-        <h3 class="proceso__card-title" style="color: var(--amarillo);">DIAGNÓSTICO</h3>
-        <p>Analizamos la estructura, los materiales y el estado del mueble para definir la mejor intervención, siempre respetando su valor<br>original y esencia.</p>
-      </div>
-      <div class="proceso__card" id="card-reparacion" data-step="reparacion" hidden>
-        <h3 class="proceso__card-title" style="color: var(--verde);">REPARACIÓN</h3>
-        <p>Recuperamos la estabilidad y funcionalidad del mueble a través de nuevas técnicas de restauración que preservan su estructura, uniones, superficie y prolongan su vida útil.</p>
-      </div>
-      <div class="proceso__card" id="card-diseno" data-step="diseno" hidden>
-        <h3 class="proceso__card-title" style="color: var(--azul);">DISEÑO</h3>
-        <p>Una vez restaurada, la pieza se reinterpreta con una mirada actual. Colores, acabados y nuevas combinaciones le dan una identidad renovada sin perder su carácter.</p>
-      </div>
+  <div class="proceso__cards">
+    <div class="proceso__card" id="card-diagnostico" data-step="diagnostico" hidden>
+      <h3 class="proceso__card-title" style="color: var(--amarillo);">DIAGNÓSTICO</h3>
+      <p>Analizamos la estructura, los materiales y el estado del mueble para definir la mejor intervención, siempre respetando su valor<br>original y esencia.</p>
     </div>
-  </section>
-
-</div> ```
+    <div class="proceso__card" id="card-reparacion" data-step="reparacion" hidden>
+      <h3 class="proceso__card-title" style="color: var(--verde);">REPARACIÓN</h3>
+      <p>Recuperamos la estabilidad y funcionalidad del mueble a través de nuevas técnicas de restauración que preservan su estructura, uniones, superficie y prolongan su vida útil.</p>
+    </div>
+    <div class="proceso__card" id="card-diseno" data-step="diseno" hidden>
+      <h3 class="proceso__card-title" style="color: var(--azul);">DISEÑO</h3>
+      <p>Una vez restaurada, la pieza se reinterpreta con una mirada actual. Colores, acabados y nuevas combinaciones le dan una identidad renovada sin perder su carácter.</p>
+    </div>
+  </div>
+</section>
 
    <!-- ===================== PROYECTOS ===================== -->
 <section class="proyectos" id="proyectos">
@@ -168,51 +180,198 @@
 
     </div>
 
+   <section class="mito-realidad" id="mito-realidad">
+
+  <h2 class="mito-realidad__titulo">¿MITO O REALIDAD?</h2>
+
+  <div class="mito-realidad__grid">
+
+    <!-- CARD 1 — respuesta: MITO -->
+    <div class="mr-card" id="card-1" data-correct="false">
+      <div class="mr-card__inner">
+
+        <div class="mr-card__frente">
+          <span class="mr-card__numero">01.</span>
+          <p class="mr-card__pregunta">Si un mueble está muy deteriorado, lo mejor es reemplazarlo por uno completamente nuevo.</p>
+          <div class="mr-card__botones">
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-1', true)">
+              <img src="assets/realidad.svg" alt="Realidad" class="mr-card__icono">
+            </button>
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-1', false)">
+              <img src="assets/mito.svg" alt="Mito" class="mr-card__icono">
+            </button>
+          </div>
+        </div>
+
+        <div class="mr-card__dorso mr-card__dorso--mito">
+          <h3 class="mr-card__dorso-titulo">MITO</h3>
+          <p class="mr-card__dorso-texto">El desgaste no siempre determina el final de la pieza. Muchas veces los daños son reparables.</p>
+          <button class="mr-card__btn-volver" onclick="flipBack('card-1')">VOLVER</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CARD 2 — respuesta: REALIDAD -->
+    <div class="mr-card" id="card-2" data-correct="true">
+      <div class="mr-card__inner">
+
+        <div class="mr-card__frente">
+          <span class="mr-card__numero">02.</span>
+          <p class="mr-card__pregunta">Toda restauración de una pieza comienza mucho antes de tocar una lija o herramienta de reparo.</p>
+          <div class="mr-card__botones">
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-2', true)">
+              <img src="assets/realidad.svg" alt="Realidad" class="mr-card__icono">
+            </button>
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-2', false)">
+              <img src="assets/mito.svg" alt="Mito" class="mr-card__icono">
+            </button>
+          </div>
+        </div>
+
+        <div class="mr-card__dorso mr-card__dorso--realidad">
+          <h3 class="mr-card__dorso-titulo">REALIDAD</h3>
+          <p class="mr-card__dorso-texto">Antes de la intervención, se analiza la estructura y los materiales de la pieza para definir la estrategia.</p>
+          <button class="mr-card__btn-volver" onclick="flipBack('card-2')">VOLVER</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CARD 3 — respuesta: MITO -->
+    <div class="mr-card" id="card-3" data-correct="false">
+      <div class="mr-card__inner">
+
+        <div class="mr-card__frente">
+          <span class="mr-card__numero">03.</span>
+          <p class="mr-card__pregunta">Las piezas que ya no pueden restaurarse no tienen ningún valor, no queda nada por hacer.</p>
+          <div class="mr-card__botones">
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-3', true)">
+              <img src="assets/realidad.svg" alt="Realidad" class="mr-card__icono">
+            </button>
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-3', false)">
+              <img src="assets/mito.svg" alt="Mito" class="mr-card__icono">
+            </button>
+          </div>
+        </div>
+
+        <div class="mr-card__dorso mr-card__dorso--mito">
+          <h3 class="mr-card__dorso-titulo">MITO</h3>
+          <p class="mr-card__dorso-texto">En Raíz, los muebles que<br>no se pueden recuperar,<br>se usan para crear los de<br>la cápsula Ensamblados.</p>
+          <button class="mr-card__btn-volver" onclick="flipBack('card-3')">VOLVER</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CARD 4 — respuesta: MITO -->
+    <div class="mr-card" id="card-4" data-correct="false">
+      <div class="mr-card__inner">
+
+        <div class="mr-card__frente">
+          <span class="mr-card__numero">04.</span>
+          <p class="mr-card__pregunta">Restaurar un mueble significa volver a dejarlo exactamente igual a cuando era nuevo.</p>
+          <div class="mr-card__botones">
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-4', true)">
+              <img src="assets/realidad.svg" alt="Realidad" class="mr-card__icono">
+            </button>
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-4', false)">
+              <img src="assets/mito.svg" alt="Mito" class="mr-card__icono">
+            </button>
+          </div>
+        </div>
+
+        <div class="mr-card__dorso mr-card__dorso--mito">
+          <h3 class="mr-card__dorso-titulo">MITO</h3>
+          <p class="mr-card__dorso-texto">En Raíz, conservamos la historia de la pieza pero se reinterpreta con colores y acabados modernos.</p>
+          <button class="mr-card__btn-volver" onclick="flipBack('card-4')">VOLVER</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CARD 5 — respuesta: MITO -->
+    <div class="mr-card" id="card-5" data-correct="false">
+      <div class="mr-card__inner">
+
+        <div class="mr-card__frente">
+          <span class="mr-card__numero">05.</span>
+          <p class="mr-card__pregunta">Los muebles antiguos no son compatibles con el dopamine decor, no se pueden adaptar.</p>
+          <div class="mr-card__botones">
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-5', true)">
+              <img src="assets/realidad.svg" alt="Realidad" class="mr-card__icono">
+            </button>
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-5', false)">
+              <img src="assets/mito.svg" alt="Mito" class="mr-card__icono">
+            </button>
+          </div>
+        </div>
+
+        <div class="mr-card__dorso mr-card__dorso--mito">
+          <h3 class="mr-card__dorso-titulo">MITO</h3>
+          <p class="mr-card__dorso-texto">El dopamine decor usa objetos que generan emociones positivas,<br>todos son bienvenidos.</p>
+          <button class="mr-card__btn-volver" onclick="flipBack('card-5')">VOLVER</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CARD 6 — respuesta: REALIDAD -->
+    <div class="mr-card" id="card-6" data-correct="true">
+      <div class="mr-card__inner">
+
+        <div class="mr-card__frente">
+          <span class="mr-card__numero">06.</span>
+          <p class="mr-card__pregunta">No existe una única forma correcta de llevar adelante la restauración de un mueble o pieza.</p>
+          <div class="mr-card__botones">
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-6', true)">
+              <img src="assets/realidad.svg" alt="Realidad" class="mr-card__icono">
+            </button>
+            <button class="mr-card__btn-opcion" onclick="checkAnswer('card-6', false)">
+              <img src="assets/mito.svg" alt="Mito" class="mr-card__icono">
+            </button>
+          </div>
+        </div>
+
+        <div class="mr-card__dorso mr-card__dorso--realidad">
+          <h3 class="mr-card__dorso-titulo">REALIDAD</h3>
+          <p class="mr-card__dorso-texto">Cada intervención usa materiales y técnicas distintas. El diagnóstico define qué transformar.</p>
+          <button class="mr-card__btn-volver" onclick="flipBack('card-6')">VOLVER</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- ===================== CURSOS ===================== -->
+
  <section class="cursos" id="cursos">
-  <p class="section-eyebrow">CURSOS</p>
+    <h2 class="cursos__titulo">CURSOS</h2>
   <p class="cursos__intro">Con Raíz vas a aprender técnicas de restauración mediante propuestas prácticas y creativas. Vas a poder darle una nueva vida a los muebles que ya son tuyos.</p>
 
   <div class="cursos__grid">
 
-    <div class="curso-flip" role="group" aria-label="Curso 01: REPARACIÓN ESTRUCTURAL">
-      <div class="curso-flip__inner">
-        <div class="curso-flip__front" style="background: var(--amarillo);">
-          <span class="curso-num">01</span>
-          <img src="assets/card-01.png" alt="Reparación inicial de muebles" class="curso-img" />
-          <p class="curso-name">Reparación<br>estructural</p>
-        </div>
-        <div class="curso-flip__back" style="background: var(--naranja);">
-          <span class="curso-num">01</span>
-          <p class="curso-back-title">Reparación<br>estructural</p>
-          <div class="curso-back-content">
-            <p class="curso-back-desc">Aprendé a diagnosticar y reparar la estructura de tus muebles dañados. Con técnicas de ensamblado, lijado y preparación de superficie vas a dejar la pieza lista para su transformación.</p>
-            <ul class="curso-back-list">
-              <li>3 clases</li>
-              <li>Modalidad virtual</li>
-              <li>$65.000</li>
-            </ul>
-          </div>
-          <a href="#" class="btn btn--white">Ver más</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="curso-flip" role="group" aria-label="Curso 02: TÉCNICAS DE COLOR Y DISEÑO">
+    <!-- CURSO 01: REPARACIÓN INICIAL (Fondo Verde) -->
+    <div class="curso-flip" role="group" aria-label="Curso 01: REPARACIÓN INICIAL">
       <div class="curso-flip__inner">
         <div class="curso-flip__front" style="background: var(--verde);">
-          <span class="curso-num">02</span>
-          <img src="assets/card-02.png" alt="Técnicas de color, textura y diseño" class="curso-img" />
-          <p class="curso-name">Técnicas de<br>color y diseño</p>
+          <span class="curso-num">01</span>
+          <p class="curso-name">Reparación<br>inicial</p>
+          <div class="curso-img-wrapper">
+            <img src="assets/card-01.png" alt="Reparación inicial de muebles" class="curso-img" />
+          </div>
+          <p class="curso-price">$65.000</p>
         </div>
         <div class="curso-flip__back" style="background: var(--naranja);">
-          <span class="curso-num">02</span>
-          <p class="curso-back-title">Técnicas de<br>color y diseño</p>
+          <span class="curso-num">01</span>
+          <p class="curso-back-title">Reparación<br>inicial</p>
           <div class="curso-back-content">
-            <p class="curso-back-desc">Dominá el uso del color, lacas, patinas y texturas decorativas. Aprenderás a combinar paletas contemporáneas y acabados para que cada pieza tenga una identidad visual única.</p>
+            <p class="curso-back-desc">Aprendé a identificar y reparar la estructura de tu mueble usando técnicas de ensamblado, lijado y tratamiento de base.</p>
             <ul class="curso-back-list">
               <li>3 clases</li>
               <li>Modalidad virtual</li>
-              <li>$80.000</li>
             </ul>
           </div>
           <a href="#" class="btn btn--white">Ver más</a>
@@ -220,24 +379,27 @@
       </div>
     </div>
 
-    <div class="curso-flip" role="group" aria-label="Curso 03: RESTAURACIÓN INTEGRAL">
+    <!-- CURSO 02: RESTAURACIÓN INTEGRAL (Fondo Azul) -->
+    <div class="curso-flip" role="group" aria-label="Curso 02: RESTAURACIÓN INTEGRAL">
       <div class="curso-flip__inner">
         <div class="curso-flip__front" style="background: var(--azul);">
           <img src="assets/estrella.svg" alt="Estrella decorativa" class="curso-star" />
-          <span class="curso-num">03</span>
-          <img src="assets/card-03.png" alt="Restauración integral de la pieza" class="curso-img" />
+          <span class="curso-num">02</span>
           <p class="curso-name">Restauración<br>integral</p>
+          <div class="curso-img-wrapper">
+            <img src="assets/card-03.png" alt="Restauración integral de la pieza" class="curso-img" />
+          </div>
+          <p class="curso-price">$99.000</p>
         </div>
         <div class="curso-flip__back" style="background: var(--rosa);">
           <img src="assets/estrella.svg" alt="Estrella decorativa" class="curso-star curso-star--back" />
-          <span class="curso-num">03</span>
+          <span class="curso-num">02</span>
           <p class="curso-back-title">Restauración<br>integral</p>
           <div class="curso-back-content">
-            <p class="curso-back-desc">El proceso completo de principio a fin: análisis, reparación estructural junto a tratamiento de superficie y un diseño final. Transformarás tu mueble de otra época en una pieza contemporánea.</p>
+            <p class="curso-back-desc">El proceso completo de principio a fin: el análisis y reparación de la estructura junto a tratamientos de superficie y un diseño final.</p>
             <ul class="curso-back-list">
               <li>4 clases</li>
               <li>Modalidad presencial</li>
-              <li>$99.000</li>
             </ul>
           </div>
           <a href="curso-restauracion.html" class="btn btn--white">Ver más</a>
@@ -245,17 +407,40 @@
       </div>
     </div>
 
+    <!-- CURSO 03: TÉCNICAS DE COLOR Y DISEÑO (Fondo Verde) -->
+    <div class="curso-flip" role="group" aria-label="Curso 03: TÉCNICAS DE COLOR Y DISEÑO">
+      <div class="curso-flip__inner">
+        <div class="curso-flip__front" style="background: var(--verde);">
+          <span class="curso-num">03</span>
+          <p class="curso-name">Técnicas de<br>color y diseño</p>
+          <div class="curso-img-wrapper">
+            <img src="assets/card-02.png" alt="Técnicas de color, textura y diseño" class="curso-img" />
+          </div>
+          <p class="curso-price">$80.000</p>
+        </div>
+        <div class="curso-flip__back" style="background: var(--naranja);">
+          <span class="curso-num">03</span>
+          <p class="curso-back-title">Técnicas de<br>color y diseño</p>
+          <div class="curso-back-content">
+            <p class="curso-back-desc">Dominá el uso de colores, lacas, patinas y texturas decorativas. Aprenderás a combinar paletas con acabados contemporáneos.</p>
+            <ul class="curso-back-list">
+              <li>3 clases</li>
+              <li>Modalidad virtual</li>
+            </ul>
+          </div>
+          <a href="#" class="btn btn--white">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
   </div>
 </section>
 
-  
-    <!-- ===================== DIVIDER CHECKERED ===================== -->
-    <div class="checkered-divider" aria-hidden="true"></div>
-
     <!-- ===================== CÁPSULA ===================== -->
     <section class="capsula" id="capsula">
-  <p class="section-eyebrow section-eyebrow--dark">CÁPSULA</p>
-  <h2 class="capsula__title">Ensamblados</h2>
+  <h2 class="capsula__title">MUEBLES CÁPSULA</h2>
   <p class="capsula__sub">Próximamente: piezas únicas 100% a partir de retazos de muebles irrecuperables.</p>
 
   <div class="capsula__grid">
@@ -264,7 +449,7 @@
       <div class="capsula__img-wrap">
         <img src="assets/capsula-01.jpg" alt="Pieza de cápsula 1" class="capsula__img" />
         <div class="capsula__overlay">
-          <p class="capsula__overlay-text">Estructura de roble macizo recuperado de cómodas antiguas. Revestimiento laminado de madera de eucaliptus reciclado.</p>
+          <p class="capsula__overlay-text">Estructura de roble macizo recuperado de estantes antiguos.</p>
         </div>
       </div>
     </div>
@@ -273,7 +458,7 @@
       <div class="capsula__img-wrap">
         <img src="assets/capsula-02.jpg" alt="Pieza de cápsula 2" class="capsula__img" />
         <div class="capsula__overlay">
-          <p class="capsula__overlay-text">Tableros de MDF reciclado pintados con lacas sin solventes. Patas torneadas de<br>pino de pallets recuperados.</p>
+          <p class="capsula__overlay-text">Tableros de MDF reciclado pintados con lacas sin solventes.</p>
         </div>
       </div>
     </div>
@@ -282,7 +467,7 @@
       <div class="capsula__img-wrap">
         <img src="assets/capsula-03.jpg" alt="Pieza de cápsula 3" class="capsula__img" />
         <div class="capsula__overlay">
-          <p class="capsula__overlay-text">Estantería construida con listones de cedro provenientes de marcos y puertas antiguas. Terminación en aceite natural de linaza.</p>
+          <p class="capsula__overlay-text">Estantería construida a partir de cómodas antiguas.</p>
         </div>
       </div>
     </div>
@@ -295,7 +480,6 @@
 
     <!-- ===================== CONTACTO / CIERRE ===================== -->
 <section class="contacto-cierre" id="contacto">
-  <p class="section-eyebrow">CONTACTO</p>
   
   <h2 class="contacto-cierre__title">¿Listo para ponerte<br>manos a la obra?</h2>
   

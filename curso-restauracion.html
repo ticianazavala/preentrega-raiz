@@ -18,96 +18,126 @@
 <body>
 
   <!-- ===================== NAVBAR ===================== -->
-  <!-- Reutiliza la estructura .navbar del Home; en esta página no hay
-       menú de anclas, solo logo + CTA, tal como indica el diseño. -->
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
       <a href="index.html" class="navbar__logo" aria-label="RAÍZ inicio">
         <img src="assets/logo.svg" alt="RAÍZ" width="90" height="33" />
       </a>
-      <a href="#inscripcion" class="btn btn--naranja js-scroll-inscripcion">Inscribirme</a>
+      
+      <!-- Menú de anclas para escritorio -->
+      <nav class="navbar__nav" aria-label="Navegación del curso">
+        <a href="#curso-info" class="navbar__link">Detalles</a>
+        <a href="#programa" class="navbar__link">Programa</a>
+        <a href="#diferenciales" class="navbar__link">Taller</a>
+        <a href="#testimonios" class="navbar__link">Testimonios</a>
+        <a href="#inscripcion" class="navbar__link navbar__link--active">Inscribirme</a>
+      </nav>
+
+      <!-- Hamburger para mobile -->
+      <button class="navbar__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+
+    <!-- Menú desplegable para mobile -->
+    <nav class="navbar__mobile" id="mobileNav" aria-label="Menú móvil">
+      <a href="#curso-info" class="navbar__link">Detalles</a>
+      <a href="#programa" class="navbar__link">Programa</a>
+      <a href="#diferenciales" class="navbar__link">Taller</a>
+      <a href="#testimonios" class="navbar__link">Testimonios</a>
+      <a href="#inscripcion" class="navbar__link">Inscribirme</a>
+    </nav>
   </header>
 
   <main>
 
     <!-- ===================== HERO ===================== -->
-    <section class="curso-hero" id="curso-hero">
-      <div class="curso-hero__content">
-        <p class="section-eyebrow section-eyebrow--dark">CURSO 01</p>
-        <h1 class="curso-hero__title">Restauración<br> Integral</h1>
-        <p class="curso-hero__desc">Aprendé a restaurar y reinterpretar muebles con una mirada contemporánea.</p>
-        <a href="#programa" class="btn btn--naranja">Ver programa</a>
-      </div>
-
-
-      <div class="curso-hero__visual">
-        <!-- ===== Comparador Before / After ===== -->
-       <div class="curso-hero__visual">
-  <div class="ba-slider" id="baSlider">
-    
-    <div class="ba-slider__img ba-slider__img--after">
-      <img src="assets/despues.png" alt="Mueble restaurado, resultado final" draggable="false" />
-    </div>
-    
-    <div class="ba-slider__img ba-slider__img--before" id="baBefore">
-      <img src="assets/antes.png" alt="Mueble antes de la restauración" draggable="false" />
-    </div>
-    
-    <div class="ba-slider__handle" id="baHandle" role="slider" tabindex="0"
-         aria-label="Comparar antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-      
-      <span class="ba-slider__grip" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="color: #F18446;">
-          <path d="M6 3L2 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M10 3L14 8L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-
-    </div>
-
+<section class="curso-hero" id="curso-hero">
+  <div class="curso-hero__content">
+    <p class="section-eyebrow section-eyebrow--dark">CURSO 2</p>
+    <h1 class="curso-hero__title">Restauración<br> Integral</h1>
+    <p class="curso-hero__desc">Aprendé a restaurar y reinterpretar muebles con una mirada contemporánea.</p>
+    <a href="#programa" class="btn btn--naranja">Ver programa</a>
   </div>
-</div>
 
-    </section>
+  <div class="curso-hero__visual">
+    <!-- ===== Único bloque Paint Reveal (Sin carrusel) ===== -->
+    <div class="proyecto-reveal proyecto-reveal--hero" id="reveal-hero">
+      <canvas class="reveal-canvas" aria-label="Efecto de revelado: pintá para descubrir el mueble restaurado"></canvas>
+    </div>
+  </div>
+</section>
 
     <!-- ===================== DE QUÉ SE TRATA ===================== -->
-    <section class="curso-info" id="curso-info">
-      <p class="section-eyebrow section-eyebrow--dark">DE QUÉ SE TRATA</p>
+<section class="curso-info" id="curso-info">
+  <div class="curso-info__grid">
+    
+    <!-- COLUMNA IZQUIERDA: Textos y Facts -->
+    <div class="curso-info__text">
+      <h2 class="curso-info__title">DE QUÉ SE TRATA</h2>
+      <p class="curso-info__desc">
+        El curso combines la restauración de muebles con una mirada creativa sobre el diseño.
+        Vas a aprender a identificar material, reparar los daños estructurales, preparar la
+        superficie y elegir acabados que respeten la esencia de cada mueble, para convertirlo
+        en una pieza única.
+      </p>
 
-      <div class="curso-info__grid">
-        <div class="curso-info__text">
-          <h2 class="curso-info__title">Reinventar piezas</h2>
-          <p class="curso-info__desc">
-            El curso combina la restauración de muebles con una mirada creativa sobre el diseño.
-            Vas a aprender a identificar material, reparar los daños estructurales, preparar la
-            superficie y elegir acabados que respeten la esencia de cada mueble, para convertirlo
-            en una pieza única.
-          </p>
-
-          <!-- 4 bloques informativos — placeholders fáciles de editar -->
-          <div class="curso-info__facts">
-            <div class="curso-fact">
-              <span class="curso-fact__value">COSTO<br>$65.000</span>
-            </div>
-            <div class="curso-fact">
-              <span class="curso-fact__value">CLASES<br>PRESENCIALES</span>
-            </div>
-            <div class="curso-fact">
-              <span class="curso-fact__value">DÍAS<br>SÁBADOS</span>
-            </div>
-            <div class="curso-fact">
-              <span class="curso-fact__value">MATERIAL<br />INCLUÍDO</span>
-            </div>
+      <!-- Bloques con interacción Hover (Ícono + Info) -->
+      <div class="curso-info__facts">
+        <!-- Fact 1: Precio -->
+        <div class="curso-fact" tabindex="0">
+          <div class="curso-fact__icon">
+            <img src="assets/precio.svg" alt="Ícono Precio" class="fact-svg" />
+          </div>
+          <div class="curso-fact__content">
+            <span class="curso-fact__title">COSTO</span>
+            <span class="curso-fact__value">$65.000</span>
           </div>
         </div>
 
-        <div class="curso-info__media">
-          <img src="assets/curso-info.png" alt="Detalle del proceso de restauración" class="curso-info__img" />
-          <a href="#inscripcion" class="btn btn--naranja curso-info__cta">Inscribirme</a>
+        <!-- Fact 2: Calendario -->
+        <div class="curso-fact" tabindex="0">
+          <div class="curso-fact__icon">
+            <img src="assets/calendario.svg" alt="Ícono Calendario" class="fact-svg" />
+          </div>
+          <div class="curso-fact__content">
+            <span class="curso-fact__title">DÍAS</span>
+            <span class="curso-fact__value">SÁBADOS</span>
+          </div>
+        </div>
+
+        <!-- Fact 3: Ubicación -->
+        <div class="curso-fact" tabindex="0">
+          <div class="curso-fact__icon">
+            <img src="assets/ubicacion.svg" alt="Ícono Ubicación" class="fact-svg" />
+          </div>
+          <div class="curso-fact__content">
+            <span class="curso-fact__title">MODALIDAD</span>
+            <span class="curso-fact__value">PRESENCIAL</span>
+          </div>
+        </div>
+
+        <!-- Fact 4: Grupo -->
+        <div class="curso-fact" tabindex="0">
+          <div class="curso-fact__icon">
+            <img src="assets/grupo.svg" alt="Ícono Grupo" class="fact-svg" />
+          </div>
+          <div class="curso-fact__content">
+            <span class="curso-fact__title">GRUPO</span>
+            <span class="curso-fact__value">6 PERSONAS</span>
+          </div>
         </div>
       </div>
-    </section>
+    </div> <!-- 🌟 AQUÍ SE CIERRA LA COLUMNA IZQUIERDA -->
+
+    <!-- COLUMNA DERECHA: Imagen y CTA -->
+    <div class="curso-info__media">
+      <img src="assets/curso-info.png" alt="Detalle del proceso de restauración" class="curso-info__img" />
+      <a href="#inscripcion" class="btn btn--naranja curso-info__cta">Inscribirme</a>
+    </div>
+
+  </div>
+</section>
 
     <!-- ===================== PROGRAMA ===================== -->
 <section class="curso-programa" id="programa">

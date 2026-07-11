@@ -55,118 +55,64 @@
   margin-bottom: 1.4rem;
 }
 
+/* ── Ajustes del contenedor visual en el Hero ──────────────── */
 .curso-hero__visual {
   flex: 1 1 auto;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  max-width: 600px; /* Evita que crezca desmedidamente en pantallas gigantes */
+  width: 100%;
 }
 
-/* ── Comparador Before / After ─────────────────────────────── */
-.ba-slider {
+/* Adaptación del Paint-Reveal para el Hero */
+.proyecto-reveal--hero {
   position: relative;
   width: 100%;
-  max-width: 900px;
-  aspect-ratio: 4 / 3;
-  user-select: none;
-  touch-action: none;
+  aspect-ratio: 4/3; /* Respeta la proporción vertical de tus imágenes */
+  border-radius: 16px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
 }
 
-.ba-slider__img {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.proyecto-reveal--hero .reveal-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: url('../assets/pincel.svg') 6 58, crosshair; 
+  touch-action: none; /* Crucial para mobile */
 }
 
-.ba-slider__img img {
-  width: 135%;
-  height: 135%;
-  object-fit: contain;
-  pointer-events: none;
-}
-
-.ba-slider__img--before {
-  clip-path: inset(0 50% 0 0);
-  transition: clip-path 0.05s linear;
-}
-
-.ba-slider__handle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 40px; 
-  transform: translateX(-50%);
-  cursor: ew-resize;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-
-/* MODIFICADO: Línea naranja y acortada */
-.ba-slider__handle::before {
-  content: "";
-  position: absolute;
-  top: 8%;       /* Al aumentar de 0% a 8%, se separa del borde superior */
-  bottom: 8%;    /* Al aumentar de 0% a 8%, se separa del borde inferior */
-  width: 3px;    
-  background: #F18446; /* Tu color naranja para la línea */
-  z-index: 1;
-}
-
-/* MODIFICADO: Círculo con fondo crema premium */
-.ba-slider__grip {
-  position: relative;
-  width: 44px; 
-  height: 44px;
-  border-radius: 50%;
-  background: #FFFEF1; /* El fondo crema que me pasaste */
-  border: 2px solid #F18446; /* El borde también en naranja para integrarlo mejor */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(241, 132, 70, 0.15); /* Sombra sutil con tinte naranja */
-  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 2; 
-}
-
-.ba-slider__handle:hover .ba-slider__grip,
-.ba-slider__handle:focus-visible .ba-slider__grip {
-  transform: scale(1.12);
+/* Estado de carga */
+.reveal-canvas.is-loading {
+  opacity: 0.5;
 }
 
 /* ============================================================
-   DE QUÉ SE TRATA
+   DE QUÉ SE TRATA (INTERACTIVO)
    ============================================================ */
 .curso-info {
   background: var(--fondo);
   padding: var(--sp-xl) 3.5rem;
   max-width: var(--max-w);
   margin: 0 auto;
-  text-align: center;
-  
 }
 
-/* 1. Aseguramos que el Grid le permita estirarse */
 .curso-info__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--sp-lg);
-  align-items: stretch; /* Esto estira ambas columnas al mismo alto */
-  margin-top: 2rem;
+  align-items: center; /* 🌟 Cambiado a center para un balance más refinado y alineado */
   text-align: left;
 }
 
-/* 2. Forzamos al bloque izquierdo a ocupar todo el alto disponible y distribuir el espacio */
-.curso-info__grid > div:first-child, 
-.curso-info__content { /* Usá la clase que tenga tu contenedor izquierdo */
+.curso-info__text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%; /* Clave para que use el alto total estirado por el grid */
+  height: 100%;
 }
 
 .curso-info__title {
@@ -174,7 +120,7 @@
   font-variation-settings: 'wdth' 80;
   font-weight: 800;
   font-size: clamp(3.5rem, 4vw, 5rem);
-  color: var(--rosa);
+  color: var(--naranja);
   text-transform: uppercase;
   line-height: 1;
   margin-bottom: 1.2rem;
@@ -188,35 +134,100 @@
   margin-bottom: 2rem;
 }
 
+/* Contenedor general de los bloques */
 .curso-info__facts {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.9rem;
+  gap: 1.2rem;
   max-width: 580px;
 }
 
+/* Tarjeta individual (Invisible estructuralmente en reposo) */
 .curso-fact {
-  background: var(--rosa);
-  border-radius: 14px;
-  min-height: 100px;
+  position: relative;
+  background: transparent;
+  border-radius: 16px;
+  min-height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 0.6rem;
-  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* El ícono SVG suelto (Sin caja por defecto) */
+.curso-fact__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+  z-index: 1;
+}
+
+.fact-svg {
+  width: 54px; /* Un tamaño base un poco más controlado */
+  height: 54px; /* Forzamos un contenedor cuadrado */
+  object-fit: contain; /* Esto hace que el pin azul se achique para entrar perfectamente sin deformarse */
+}
+
+/* El contenedor de información que se REVELA */
+.curso-fact__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 0.5rem;
+  
+  /* 🌟 MODIFICADO: Fondo rosa pleno sin bordes */
+  background: var(--rosa);
+  border: none;
+  border-radius: 16px;
+  
+  /* Estado oculto inicial */
+  opacity: 0;
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  z-index: 2;
+}
+
+/* Textos dentro del contenedor revelado */
+.curso-fact__title {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--blanco); /* 🌟 MODIFICADO: Texto blanco */
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .curso-fact__value {
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--blanco);
-  line-height: 1.3;
+  font-weight: 800; /* 🌟 MODIFICADO: Mayor peso visual */
+  font-size: 0.9rem; /* Un toque más grande para balancear el peso */
+  color: var(--blanco); /* 🌟 MODIFICADO: Texto blanco */
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
+/* ── INTERACCIÓN EFECTO REVELADO (Hover & Focus) ── */
+
+.curso-fact:hover .curso-fact__icon,
+.curso-fact:focus-visible .curso-fact__icon {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.curso-fact:hover .curso-fact__content,
+.curso-fact:focus-visible .curso-fact__content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Columna derecha con imagen */
 .curso-info__media {
   position: relative;
-  background: var(--rosa);
   border-radius: 24px;
   aspect-ratio: 16 / 10;
   overflow: hidden;
@@ -238,12 +249,6 @@
   position: relative;
   z-index: 1;
   margin-bottom: 0.5rem;
-}
-
-/* Corrección de la volanta (eyebrow) específicamente para esta sección */
-.curso-info .section-eyebrow--dark {
-  color: #000000 !important;   /* Forzamos el color a negro puro */
-  letter-spacing: 0px;         /* Le damos el espaciado/interlineado entre letras */
 }
 
 /* ============================================================

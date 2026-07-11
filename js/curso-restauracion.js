@@ -56,66 +56,155 @@
   });
 })();
 
-
 /* ─────────────────────────────────────────────────────────────
-   3. COMPARADOR BEFORE / AFTER — arrastrable, mouse + touch
+   3. PAINT REVEAL HERO (Fijo - Sin Carrusel)
    ───────────────────────────────────────────────────────────── */
-(function initBeforeAfter() {
-  const slider  = document.getElementById('baSlider');
-  const before  = document.getElementById('baBefore');
-  const handle  = document.getElementById('baHandle');
-  if (!slider || !before || !handle) return;
+(function initPaintRevealHero() {
+  const canvas = document.querySelector(".proyecto-reveal--hero .reveal-canvas");
+  if (!canvas) return;
 
-  let dragging = false;
+  const ctx = canvas.getContext("2d");
 
-  function setPosition(percent) {
-    const clamped = Math.min(100, Math.max(0, percent));
-    before.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
-    handle.style.left = `${clamped}%`;
-    handle.setAttribute('aria-valuenow', Math.round(clamped));
+  // Ajustes internos del canvas (resolución lógica independiente del tamaño CSS)
+  const INTERNAL_W = 600;
+  const INTERNAL_H = 800;
+  const BRUSH      = 55; // Grosor del pincel
+
+  canvas.width  = INTERNAL_W;
+  canvas.height = INTERNAL_H;
+
+  // Canvas auxiliares para el efecto compuesto de revelado
+  const topCanvas  = document.createElement("canvas");
+  topCanvas.width  = INTERNAL_W;
+  topCanvas.height = INTERNAL_H;
+  const topCtx = topCanvas.getContext("2d");
+
+  const maskCanvas  = document.createElement("canvas");
+  maskCanvas.width  = INTERNAL_W;
+  maskCanvas.height = INTERNAL_H;
+  const maskCtx = maskCanvas.getContext("2d");
+
+  let antesImg   = null;
+  let despuesImg = null;
+  let imagesReady  = false;
+  let isDrawing    = false;
+
+  // Rutas directas a tus dos assets fijos
+  const ASSETS_HERO = {
+    antes:   "assets/antes.png",
+    despues: "assets/despues.png"
+  };
+
+  function draw() {
+    if (!imagesReady) return;
+
+    ctx.clearRect(0, 0, INTERNAL_W, INTERNAL_H);
+    // 1. Dibujamos el "después" de fondo
+    ctx.drawImage(despuesImg, 0, 0, INTERNAL_W, INTERNAL_H);
+
+    // 2. Preparamos el "antes" en el canvas virtual superior
+    topCtx.clearRect(0, 0, INTERNAL_W, INTERNAL_H);
+    topCtx.drawImage(antesImg, 0, 0, INTERNAL_W, INTERNAL_H);
+    
+    // 3. Restamos el camino que pintó el usuario mediante la máscara
+    topCtx.globalCompositeOperation = "destination-out";
+    topCtx.drawImage(maskCanvas, 0, 0);
+    topCtx.globalCompositeOperation = "source-over";
+
+    // 4. Pintamos el resultado arriba del fondo
+    ctx.drawImage(topCanvas, 0, 0);
   }
 
-  function percentFromClientX(clientX) {
-    const rect = slider.getBoundingClientRect();
-    return ((clientX - rect.left) / rect.width) * 100;
+  function paintAt(x, y, radius) {
+    const gradient = maskCtx.createRadialGradient(x, y, 0, x, y, radius);
+    gradient.addColorStop(0,   "rgba(0,0,0,1)");
+    gradient.addColorStop(0.7, "rgba(0,0,0,0.8)");
+    gradient.addColorStop(1,   "rgba(0,0,0,0)");
+    
+    maskCtx.fillStyle = gradient;
+    maskCtx.beginPath();
+    maskCtx.arc(x, y, radius, 0, Math.PI * 2);
+    maskCtx.fill();
   }
 
-  function onMove(e) {
-    if (!dragging) return;
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    setPosition(percentFromClientX(clientX));
+  function getCoords(e) {
+    const rect   = canvas.getBoundingClientRect();
+    const scaleX = INTERNAL_W / rect.width;
+    const scaleY = INTERNAL_H / rect.height;
+    const src    = e.touches ? e.touches[0] : e;
+    return {
+      x: (src.clientX - rect.left) * scaleX,
+      y: (src.clientY - rect.top)  * scaleY
+    };
   }
 
-  function startDrag(e) {
-    dragging = true;
-    onMove(e);
-  }
-
-  function stopDrag() {
-    dragging = false;
-  }
-
-  handle.addEventListener('mousedown', startDrag);
-  slider.addEventListener('mousedown', startDrag);
-  window.addEventListener('mousemove', onMove);
-  window.addEventListener('mouseup', stopDrag);
-
-  handle.addEventListener('touchstart', startDrag, { passive: true });
-  slider.addEventListener('touchstart', startDrag, { passive: true });
-  window.addEventListener('touchmove', onMove, { passive: true });
-  window.addEventListener('touchend', stopDrag);
-
-  /* Accesibilidad: mover con teclado (flechas) */
-  handle.addEventListener('keydown', (e) => {
-    const current = parseFloat(handle.style.left) || 50;
-    if (e.key === 'ArrowLeft')  setPosition(current - 5);
-    if (e.key === 'ArrowRight') setPosition(current + 5);
+  // Eventos de Mouse
+  canvas.addEventListener("mousedown", e => {
+    if (!imagesReady) return;
+    isDrawing = true;
+    const p = getCoords(e); paintAt(p.x, p.y, BRUSH); draw();
   });
 
-  /* Posición inicial: 50% */
-  setPosition(50);
-})();
+  canvas.addEventListener("mousemove", e => {
+    if (!isDrawing || !imagesReady) return;
+    const p = getCoords(e); paintAt(p.x, p.y, BRUSH); draw();
+  });
 
+  window.addEventListener("mouseup", () => { isDrawing = false; });
+  canvas.addEventListener("mouseleave", () => { isDrawing = false; });
+
+  // Eventos Touch (Mobile)
+  canvas.addEventListener("touchstart", e => {
+    if (!imagesReady) return;
+    e.preventDefault();
+    isDrawing = true;
+    const p = getCoords(e); paintAt(p.x, p.y, BRUSH); draw();
+  }, { passive: false });
+
+  canvas.addEventListener("touchmove", e => {
+    if (!isDrawing || !imagesReady) return;
+    e.preventDefault();
+    const p = getCoords(e); paintAt(p.x, p.y, BRUSH); draw();
+  }, { passive: false });
+
+  window.addEventListener("touchend", () => { isDrawing = false; });
+
+  // Helper para promesas de imágenes
+  function loadImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload  = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
+  // Carga e inicialización de imágenes fijas
+  canvas.classList.add("is-loading");
+  Promise.all([
+    loadImage(ASSETS_HERO.antes),
+    loadImage(ASSETS_HERO.despues)
+  ])
+  .then(([antes, despues]) => {
+    antesImg   = antes;
+    despuesImg = despues;
+    imagesReady = true;
+    
+    maskCtx.clearRect(0, 0, INTERNAL_W, INTERNAL_H); // Máscara limpia al inicio
+    canvas.classList.remove("is-loading");
+    draw();
+  })
+  .catch(err => {
+    console.error("Error cargando imágenes del Hero:", err);
+    canvas.classList.remove("is-loading");
+    ctx.fillStyle = "#f5f5f5";
+    ctx.fillRect(0, 0, INTERNAL_W, INTERNAL_H);
+    ctx.fillStyle = "#333";
+    ctx.font = "24px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("Error al cargar la experiencia visual", 300, 400);
+  });
+})();
 
 /* ─────────────────────────────────────────────────────────────
    PROGRAMA — accordion de clases

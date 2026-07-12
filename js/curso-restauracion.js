@@ -207,69 +207,45 @@
 })();
 
 /* ─────────────────────────────────────────────────────────────
-   PROGRAMA — accordion de clases
+   PROGRAMA — Lógica de Pestañas (Tabs) Laterales
    ───────────────────────────────────────────────────────────── */
-(function initPrograma() {
+(function initProgramaTabs() {
+  const container = document.querySelector('.programa__container');
+  if (!container) return;
 
-  const accordion = document.getElementById('programaAccordion');
-  if (!accordion) return;
+  const tabs = container.querySelectorAll('.programa__tab-btn');
+  const panels = container.querySelectorAll('.programa__panel');
 
-  const triggers = accordion.querySelectorAll('.programa__trigger');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetPanelId = tab.getAttribute('aria-controls');
 
-  function openPanel(trigger) {
-    const panelId = trigger.getAttribute('aria-controls');
-    const panel   = document.getElementById(panelId);
-    if (!panel) return;
+      // 1. Desactivar todos los botones
+      tabs.forEach(t => {
+        t.classList.remove('is-active');
+        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
+      });
 
-    trigger.setAttribute('aria-expanded', 'true');
-    panel.classList.add('is-open');
-  }
+      // 2. Ocultar todos los paneles de contenido
+      panels.forEach(panel => {
+        panel.classList.remove('is-active');
+        panel.setAttribute('hidden', 'true');
+      });
 
-  function closePanel(trigger) {
-    const panelId = trigger.getAttribute('aria-controls');
-    const panel   = document.getElementById(panelId);
-    if (!panel) return;
+      // 3. Activar el botón clickeado
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+      tab.removeAttribute('tabindex');
 
-    trigger.setAttribute('aria-expanded', 'false');
-    panel.classList.remove('is-open');
-  }
-
-  triggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-
-      /* Cerrar todos */
-      triggers.forEach(closePanel);
-
-      /* Si no estaba abierto, abrirlo */
-      if (!isExpanded) {
-        openPanel(trigger);
+      // 4. Mostrar el panel correspondiente
+      const targetPanel = document.getElementById(targetPanelId);
+      if (targetPanel) {
+        targetPanel.classList.add('is-active');
+        targetPanel.removeAttribute('hidden');
       }
-      /* Si ya estaba abierto y el usuario hizo click de nuevo,
-         queda cerrado (toggle natural). Quitá estas líneas si
-         preferís que siempre haya uno abierto. */
     });
   });
-
-  /* Teclado: las flechas arriba/abajo mueven el foco entre triggers */
-  accordion.addEventListener('keydown', e => {
-    if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) return;
-
-    const list  = [...triggers];
-    const index = list.indexOf(document.activeElement);
-    if (index === -1) return;
-
-    e.preventDefault();
-
-    let next;
-    if (e.key === 'ArrowDown') next = list[(index + 1) % list.length];
-    if (e.key === 'ArrowUp')   next = list[(index - 1 + list.length) % list.length];
-    if (e.key === 'Home')      next = list[0];
-    if (e.key === 'End')       next = list[list.length - 1];
-
-    next?.focus();
-  });
-
 })();
 
 /* ─────────────────────────────────────────────────────────────

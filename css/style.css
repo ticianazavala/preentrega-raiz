@@ -305,6 +305,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: 0; /* Letras juntas y potentes */
   margin-bottom: 4rem; /* Le da aire al título respecto de la línea de emojis */
 }
+
 /* Timeline row */
 .proceso__timeline {
   position: relative;

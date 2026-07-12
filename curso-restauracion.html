@@ -68,6 +68,8 @@
   </div>
 </section>
 
+<div class="divider-pattern divider-pattern--striped" aria-hidden="true"></div>
+
     <!-- ===================== DE QUÉ SE TRATA ===================== -->
 <section class="curso-info" id="curso-info">
   <div class="curso-info__grid">
@@ -76,7 +78,7 @@
     <div class="curso-info__text">
       <h2 class="curso-info__title">DE QUÉ SE TRATA</h2>
       <p class="curso-info__desc">
-        El curso combines la restauración de muebles con una mirada creativa sobre el diseño.
+        El curso combina la restauración de muebles con una mirada creativa sobre el diseño.
         Vas a aprender a identificar material, reparar los daños estructurales, preparar la
         superficie y elegir acabados que respeten la esencia de cada mueble, para convertirlo
         en una pieza única.
@@ -91,7 +93,7 @@
           </div>
           <div class="curso-fact__content">
             <span class="curso-fact__title">COSTO</span>
-            <span class="curso-fact__value">$65.000</span>
+            <span class="curso-fact__value">$99.000</span>
           </div>
         </div>
 
@@ -132,172 +134,107 @@
 
     <!-- COLUMNA DERECHA: Imagen y CTA -->
     <div class="curso-info__media">
-      <img src="assets/curso-info.png" alt="Detalle del proceso de restauración" class="curso-info__img" />
+      <img src="assets/curso-info.jpg" alt="Detalle del proceso de restauración" class="curso-info__img" />
       <a href="#inscripcion" class="btn btn--naranja curso-info__cta">Inscribirme</a>
     </div>
 
   </div>
 </section>
 
-    <!-- ===================== PROGRAMA ===================== -->
+<!-- ===================== PROGRAMA (TABS LATERALES) ===================== -->
 <section class="curso-programa" id="programa">
-  <p class="section-eyebrow section-eyebrow--dark">PROGRAMA</p>
-
-<p class="programa__intro">
+  
+  <!-- 1. TÍTULO Y BAJADA (AGREGADOS) -->
+  <h2 class="programa__title">Programa</h2>
+  <p class="programa__intro">
     Cuatro clases, un recorrido completo. Cada una está pensada para que avances paso a paso.
   </p>
+  
+    <div class="programa__container">
+    
+    <!-- Bloque Izquierdo: Botones limpios -->
+    <div class="programa__nav" role="tablist" aria-label="Clases del programa">
+      <button class="programa__tab-btn is-active" role="tab" aria-selected="true" aria-controls="panel-clase-1" id="tab-clase-1">
+        <span class="programa__tab-label">Clase 01.</span>
+      </button>
+      
+      <button class="programa__tab-btn" role="tab" aria-selected="false" aria-controls="panel-clase-2" id="tab-clase-2" tabindex="-1">
+        <span class="programa__tab-label">Clase 02.</span>
+      </button>
+      
+      <button class="programa__tab-btn" role="tab" aria-selected="false" aria-controls="panel-clase-3" id="tab-clase-3" tabindex="-1">
+        <span class="programa__tab-label">Clase 03.</span>
+      </button>
+      
+      <button class="programa__tab-btn" role="tab" aria-selected="false" aria-controls="panel-clase-4" id="tab-clase-4" tabindex="-1">
+        <span class="programa__tab-label">Clase 04.</span>
+      </button>
+    </div>
 
-  <div class="programa__accordion" id="programaAccordion">
-
-    <!-- CLASE 01 -->
-    <article class="programa__item" style="--ficha-color: var(--naranja);">
-      <h3 class="programa__trigger-wrap">
-        <button
-          class="programa__trigger"
-          type="button"
-          aria-expanded="true"
-          aria-controls="clase-panel-1"
-          id="clase-btn-1"
-        >
-          <span class="programa__trigger-label">Clase 01.</span>
-          <span class="programa__trigger-subtitle">Diagnóstico</span>
-          <span class="programa__trigger-icon" aria-hidden="true"></span>
-        </button>
-      </h3>
-      <div
-        class="programa__panel is-open"
-        id="clase-panel-1"
-        role="region"
-        aria-labelledby="clase-btn-1"
-      >
-        <div class="programa__panel-inner">
-          <div class="programa__ficha-media">
-            <img src="assets/clase-01.jpg" alt="Clase 1 — Diagnóstico inicial" />
-          </div>
-          <div class="programa__ficha-body">
-            <p><strong>Objetivo:</strong> identificar el estado del mueble y definir el plan de intervención.</p>
-            <p><strong>Contenidos:</strong> diagnóstico estructural, herramientas y técnicas de desarme seguro.</p>
-            <p><strong>Resultado:</strong> mueble listo para reparar con un plan de trabajo definido.</p>
-            <span class="programa__ficha-duracion">90m.</span>
-          </div>
+    <!-- Bloque Derecho: Fichas con borde rosa y tag inferior -->
+    <div class="programa__content">
+      
+      <!-- CONTENIDO CLASE 01 -->
+      <article class="programa__panel is-active" id="panel-clase-1" role="tabpanel" aria-labelledby="tab-clase-1">
+        <div class="programa__ficha-media">
+          <img src="assets/clase-01.jpg" alt="Clase 1 — Diagnóstico inicial" />
         </div>
-      </div>
-    </article>
-
-    <!-- CLASE 02 -->
-    <article class="programa__item" style="--ficha-color: var(--naranja);">
-      <h3 class="programa__trigger-wrap">
-        <button
-          class="programa__trigger"
-          type="button"
-          aria-expanded="false"
-          aria-controls="clase-panel-2"
-          id="clase-btn-2"
-        >
-          <span class="programa__trigger-label">Clase 02.</span>
-          <span class="programa__trigger-subtitle">Estructura</span>
-          <span class="programa__trigger-icon" aria-hidden="true"></span>
-        </button>
-      </h3>
-      <div
-        class="programa__panel"
-        id="clase-panel-2"
-        role="region"
-        aria-labelledby="clase-btn-2"
-      >
-        <div class="programa__panel-inner">
-          <div class="programa__ficha-media">
-            <img src="assets/clase-02.jpg" alt="Clase 2 — Reparación estructural" />
-          </div>
-          <div class="programa__ficha-body">
-            <p><strong>Objetivo:</strong> reparar uniones, rellenar faltantes y estabilizar la estructura.</p>
-            <p><strong>Contenidos:</strong> encolados, prensado, refuerzos y reemplazo de piezas dañadas.</p>
-            <p><strong>Resultado:</strong> estructura firme y lista para el tratamiento de superficie.</p>
-            <span class="programa__ficha-duracion">90m.</span>
-          </div>
+        <div class="programa__ficha-body">
+          <p><strong>Objetivo:</strong> identificar el estado de la pieza y definir el plan de intervención.</p>
+          <p><strong>Contenidos:</strong> diagnóstico estructural y técnicas de desarme seguro.</p>
+          <p><strong>Resultado:</strong> mueble listo para reparar con un plan de trabajo definido.</p>
+          <span class="programa__ficha-duracion">90m.</span>
         </div>
-      </div>
-    </article>
+      </article>
 
-    <!-- CLASE 03 -->
-    <article class="programa__item" style="--ficha-color: var(--naranja);">
-      <h3 class="programa__trigger-wrap">
-        <button
-          class="programa__trigger"
-          type="button"
-          aria-expanded="false"
-          aria-controls="clase-panel-3"
-          id="clase-btn-3"
-        >
-          <span class="programa__trigger-label">Clase 03.</span>
-          <span class="programa__trigger-subtitle">Superficie</span>
-          <span class="programa__trigger-icon" aria-hidden="true"></span>
-        </button>
-      </h3>
-      <div
-        class="programa__panel"
-        id="clase-panel-3"
-        role="region"
-        aria-labelledby="clase-btn-3"
-      >
-        <div class="programa__panel-inner">
-          <div class="programa__ficha-media">
-            <img src="assets/clase-03.jpg" alt="Clase 3 — Preparación de superficie" />
-          </div>
-          <div class="programa__ficha-body">
-            <p><strong>Objetivo:</strong> preparar la superficie y elegir el acabado según la pieza.</p>
-            <p><strong>Contenidos:</strong> lijado, sellado, lacas, pátinas y texturas decorativas.</p>
-            <p><strong>Resultado:</strong> superficie lista para la intervención final de diseño.</p>
-            <span class="programa__ficha-duracion">90m.</span>
-          </div>
+      <!-- CONTENIDO CLASE 02 -->
+      <article class="programa__panel" id="panel-clase-2" role="tabpanel" aria-labelledby="tab-clase-2" hidden>
+        <div class="programa__ficha-media">
+          <img src="assets/clase-02.jpg" alt="Clase 2 — Reparación estructural" />
         </div>
-      </div>
-    </article>
-
-    <!-- CLASE 04 -->
-    <article class="programa__item" style="--ficha-color: var(--naranja);">
-      <h3 class="programa__trigger-wrap">
-        <button
-          class="programa__trigger"
-          type="button"
-          aria-expanded="false"
-          aria-controls="clase-panel-4"
-          id="clase-btn-4"
-        >
-          <span class="programa__trigger-label">Clase 04.</span>
-          <span class="programa__trigger-subtitle">Identidad</span>
-          <span class="programa__trigger-icon" aria-hidden="true"></span>
-        </button>
-      </h3>
-      <div
-        class="programa__panel"
-        id="clase-panel-4"
-        role="region"
-        aria-labelledby="clase-btn-4"
-      >
-        <div class="programa__panel-inner">
-          <div class="programa__ficha-media">
-            <img src="assets/clase-04.jpg" alt="Clase 4 — Identidad y acabado final" />
-          </div>
-          <div class="programa__ficha-body">
-            <p><strong>Objetivo:</strong> definir la identidad final de la pieza y aplicar el acabado elegido.</p>
-            <p><strong>Contenidos:</strong> paletas de color, combinaciones y terminación profesional.</p>
-            <p><strong>Resultado:</strong> pieza única, restaurada y reinterpretada.</p>
-            <span class="programa__ficha-duracion">90m.</span>
-          </div>
+        <div class="programa__ficha-body">
+          <p><strong>Objetivo:</strong> reparar uniones, rellenar faltantes y estabilizar la estructura.</p>
+          <p><strong>Contenidos:</strong> encolados, prensado y reemplazo de piezas dañadas.</p>
+          <p><strong>Resultado:</strong> estructura firme y lista<br>para el tratamiento de superficie.</p>
+          <span class="programa__ficha-duracion">120m.</span>
         </div>
-      </div>
-    </article>
+      </article>
 
+      <!-- CONTENIDO CLASE 03 -->
+      <article class="programa__panel" id="panel-clase-3" role="tabpanel" aria-labelledby="tab-clase-3" hidden>
+        <div class="programa__ficha-media">
+          <img src="assets/clase-03.jpg" alt="Clase 3 — Preparación de superficie" />
+        </div>
+        <div class="programa__ficha-body">
+          <p><strong>Objetivo:</strong> preparar la superficie y elegir el acabado según la pieza.</p>
+          <p><strong>Contenidos:</strong> lijado, sellado, lacas, pátinas y texturas decorativas.</p>
+          <p><strong>Resultado:</strong> superficie lista para la intervención final de diseño.</p>
+          <span class="programa__ficha-duracion">90m.</span>
+        </div>
+      </article>
+
+      <!-- CONTENIDO CLASE 04 -->
+      <article class="programa__panel" id="panel-clase-4" role="tabpanel" aria-labelledby="tab-clase-4" hidden>
+        <div class="programa__ficha-media">
+          <img src="assets/clase-04.jpg" alt="Clase 4 — Identidad y acabado final" />
+        </div>
+        <div class="programa__ficha-body">
+          <p><strong>Objetivo:</strong> definir la identidad final de la pieza y aplicar el acabado elegido.</p>
+          <p><strong>Contenidos:</strong> paletas de colores y terminaciones profesional.</p>
+          <p><strong>Resultado:</strong> pieza única, restaurada y reinterpretada.</p>
+          <span class="programa__ficha-duracion">60m.</span>
+        </div>
+      </article>
+
+    </div>
   </div>
-</section>
 
-<div class="divider-pattern divider-pattern--striped" aria-hidden="true"></div>
+  </section>
 
 <!-- ===================== SECCIÓN DIFERENCIALES ===================== -->
 <section class="differentials" id="diferenciales">
-  <p class="section-eyebrow">EL TALLER</p>
-  <h2 class="differentials__title">¿Qué nos diferencia de los demás cursos de restauración de muebles?</h2>
+    <h2 class="differentials__title">Taller</h2>
+    <p class="differentials__intro">¿Qué nos diferencia de los demás cursos de restauración de muebles?</h2>
 
   <div class="differentials__grid">
     
@@ -306,14 +243,13 @@
       <div class="flip-card__inner">
         <!-- Frente -->
         <div class="flip-card__front card-yellow">
-          <span class="flip-card__number">01</span>
-          <h3 class="flip-card__title">Proyecto<br>Libre</h3>
-        </div>
+  <img src="assets/taller-mueble.svg" alt="" class="flip-card__icon" />
+  <h3 class="flip-card__title">Proyecto<br>Libre</h3>
+</div>
         <!-- Dorso -->
-        <div class="flip-card__back border-yellow">
-          <span class="flip-card__number-back">01</span>
-          <p class="flip-card__text">Traés tu mueble y tu idea y te ayudamos a hacerla realidad. No importa cuán difícil te parezca, lo logramos.</p>
-        </div>
+        <div class="flip-card__back bg-mueble">
+  <p class="flip-card__text">Traés tu mueble y tu idea y te ayudamos a hacerla realidad, no importa cuán difícil parezca.</p>
+</div>
       </div>
     </div>
 
@@ -322,14 +258,13 @@
       <div class="flip-card__inner">
         <!-- Frente -->
         <div class="flip-card__front card-green">
-          <span class="flip-card__number">02</span>
-          <h3 class="flip-card__title">Secretos<br>de Oficio</h3>
-        </div>
+  <img src="assets/taller-llave.svg" alt="" class="flip-card__icon" />
+  <h3 class="flip-card__title">Secretos<br>de Oficio</h3>
+</div>
         <!-- Dorso -->
-        <div class="flip-card__back border-green">
-          <span class="flip-card__number-back">02</span>
-          <p class="flip-card__text">Te llevás tips, técnicas exclusivas y trucos reales que no están en tutoriales de Youtube o en Internet.</p>
-        </div>
+        <div class="flip-card__back bg-tips">
+  <p class="flip-card__text">Te llevás tips, técnicas exclusivas y trucos reales que no están en tutoriales de Internet.</p>
+</div>
       </div>
     </div>
 
@@ -338,14 +273,13 @@
       <div class="flip-card__inner">
         <!-- Frente -->
         <div class="flip-card__front card-blue">
-          <span class="flip-card__number">03</span>
-          <h3 class="flip-card__title">Kit DIY<br>Incluído</h3>
-        </div>
+  <img src="assets/taller-kit.svg" alt="" class="flip-card__icon" />
+  <h3 class="flip-card__title">Kit DIY<br>Incluído</h3>
+</div>
         <!-- Dorso -->
-        <div class="flip-card__back border-blue">
-          <span class="flip-card__number-back">03</span>
-          <p class="flip-card__text">Te vas con el material y herramientas que necesitas para seguir transformando donde y como quieras.</p>
-        </div>
+        <div class="flip-card__back bg-kit">
+  <p class="flip-card__text">Te vas con los materiales y herramientas necesarias para seguir trabajando desde casa.</p>
+</div>
       </div>
     </div>
 
@@ -353,20 +287,17 @@
 </section>
 
 <section class="curso-video" id="curso-video">
-  <div class="curso-video__inner">
-    <p class="section-eyebrow">RESULTADOS</p>
-    <div class="curso-video__frame">
-      <video
-        class="curso-video__media"
-        controls
-        preload="metadata"
-        playsinline
-      >
-        <source src="assets/video-curso.mp4" type="video/mp4">
-        Tu navegador no soporta el elemento video.
-      </video>
-    </div>
-  </div>
+  <video
+    class="curso-video__media"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+  >
+    <source src="assets/video-curso.mp4" type="video/mp4">
+    Tu navegador no soporta el elemento video.
+  </video>
 </section>
 
     <!-- ===================== TESTIMONIOS ===================== -->
@@ -391,15 +322,19 @@
       <div class="testimonios__track" id="testiTrack">
         <blockquote class="testimonio is-active" data-index="0">
           <p class="testimonio__quote">"Ahora mi casa está llena de piezas únicas"</p>
-          <cite class="testimonio__author">Malena, 09/2025.</cite>
+          <cite class="testimonio__author">Malena López, 09/2025.</cite>
         </blockquote>
         <blockquote class="testimonio" data-index="1">
           <p class="testimonio__quote">"Le di una segunda vida a muebles que iba a tirar"</p>
-          <cite class="testimonio__author">Julián, 11/2025.</cite>
+          <cite class="testimonio__author">Julián Álvarez, 11/2025.</cite>
         </blockquote>
         <blockquote class="testimonio" data-index="2">
           <p class="testimonio__quote">"Aprendí técnicas que uso en todos mis proyectos"</p>
-          <cite class="testimonio__author">Sofía, 02/2026.</cite>
+          <cite class="testimonio__author">Sofía Morandi, 02/2026.</cite>
+        </blockquote>
+        <blockquote class="testimonio" data-index="3">
+          <p class="testimonio__quote">"Pude recuperar muebles que significa mucho para mí"</p>
+          <cite class="testimonio__author">Lucía Peña, 06/2026.</cite>
         </blockquote>
       </div>
 
@@ -415,8 +350,6 @@
     <!-- ===================== INSCRIPCIÓN ===================== -->
 <section class="inscripcion" id="inscripcion">
   <div class="inscripcion__inner">
-
-    <p class="inscripcion__eyebrow">INSCRIPCIÓN</p>
 
     <div class="inscripcion__layout">
 

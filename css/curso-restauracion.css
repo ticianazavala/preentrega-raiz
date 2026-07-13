@@ -279,6 +279,30 @@
   margin-bottom: 0.5rem;
 }
 
+/* 🌟 NUEVO: Control por clicks en Mobile sin romper desktop */
+@media (max-width: 768px) {
+  /* Cancelamos el hover en mobile para evitar conflictos visuales extraños */
+  .curso-fact:hover .curso-fact__icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .curso-fact:hover .curso-fact__content {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  /* Activamos los estilos solo cuando tiene la clase .is-active mediante JS */
+  .curso-fact.is-active .curso-fact__icon {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  
+  .curso-fact.is-active .curso-fact__content {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* ============================================================
    PROGRAMA — Split Lateral Minimal Rosa
    ============================================================ */
@@ -431,6 +455,12 @@
   display: block;
   width: 100%;
 }
+
+.programa__intro {
+    font-size: 1rem;      /* Achicamos un pelín el texto para mobile */
+    line-height: 1.4;       /* Interlineado más compacto y equilibrado */
+    margin: 0 auto 2.5rem;   /* Separación prolija respecto a los botones */
+  }
 
   .mobile-accordion-group {
   display: flex;
@@ -925,6 +955,11 @@
   background: var(--blanco);
   color: #FD96C0; /* Cambiado para coincidir con tu rosa directo */
   border-color: var(--blanco);
+}
+
+/* Ocultamos los puntitos por defecto en Desktop */
+.testimonios__dots {
+  display: none;
 }
 
 /* ============================================================
@@ -1453,5 +1488,37 @@
   padding: 60px 1.5rem 70px 1.5rem;
 }
 
+.testimonio__quote {
+    font-size: 1.8rem; /* Tamaño controlado para pantallas táctiles */
+    max-width: 300px;  /* Forzamos que rompa en una caja centralizada elegante */
+    line-height: 1.2;
+  }
+
+.testimonios__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 10; /* Para que quede por encima del fondo rosa */
+}
+
+.testimonios__dots .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--blanco);
+  border: none;
+  opacity: 0.4;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* El puntito del testimonio que está en pantalla */
+.testimonios__dots .dot.is-active {
+  opacity: 1;
+  transform: scale(1.2);
+}
 
 }

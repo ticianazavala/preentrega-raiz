@@ -230,6 +230,28 @@
 })();
 
 /* ─────────────────────────────────────────────────────────────
+   TOGGLE DE INFO EN MOBILE (CURSO FACTS)
+   ───────────────────────────────────────────────────────────── */
+(function initCursoFactsToggle() {
+  document.querySelectorAll('.curso-fact').forEach(fact => {
+    fact.addEventListener('click', function(e) {
+      // Solo ejecutamos la lógica si estamos en pantallas mobile/tablet
+      if (window.innerWidth <= 768) {
+        // Alternamos la clase activa en el elemento clickeado
+        this.classList.toggle('is-active');
+        
+        // Opcional: Cierra los otros íconos si abrís uno nuevo
+        document.querySelectorAll('.curso-fact').forEach(otherFact => {
+          if (otherFact !== this) {
+            otherFact.classList.remove('is-active');
+          }
+        });
+      }
+    });
+  });
+})();
+
+/* ─────────────────────────────────────────────────────────────
    4. PROGRAMA
    ───────────────────────────────────────────────────────────── */
 
@@ -405,23 +427,30 @@ document.querySelectorAll('.flip-card').forEach(card => {
 
 });
 
-/* ─────────────────────────────────────────────────────────────
-   5. TESTIMONIOS — carrusel con autoplay + flechas manuales
-   ───────────────────────────────────────────────────────────── */
 (function initTestimonios() {
   const items = document.querySelectorAll('.testimonio');
   const btnPrev = document.getElementById('testiPrev');
   const btnNext = document.getElementById('testiNext');
+  const dotsContainer = document.getElementById('testiDots');
   if (!items.length) return;
 
   let activeIndex = 0;
   const AUTOPLAY_MS = 5000;
   let autoplayTimer = null;
 
+  const dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
+
   function show(index) {
     activeIndex = (index + items.length) % items.length;
+    
+    // Cambia el testimonio activo
     items.forEach((item, i) => {
       item.classList.toggle('is-active', i === activeIndex);
+    });
+
+    // Cambia el puntito activo
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === activeIndex);
     });
   }
 
@@ -438,6 +467,15 @@ document.querySelectorAll('.flip-card').forEach(card => {
 
   if (btnNext) btnNext.addEventListener('click', () => { next(); startAutoplay(); });
   if (btnPrev) btnPrev.addEventListener('click', () => { prev(); startAutoplay(); });
+
+  // Agrega el click a cada puntito
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      const slideIndex = parseInt(e.target.getAttribute('data-slide'), 10);
+      show(slideIndex);
+      startAutoplay();
+    });
+  });
 
   show(0);
   startAutoplay();

@@ -286,6 +286,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ============================================================
+   FIX PARA FILTRACIÓN DE CURVAS SOBRE RAÍZ
+   ============================================================ */
+.sobre-curve-top,
+.sobre-curve-bottom {
+  /* Forzamos a que el contenedor sea un 2% más ancho que la pantalla */
+  width: 102% !important;
+  /* Lo desplazamos un 1% a la izquierda para centrar el exceso y ocultar el defecto */
+  left: -1% !important; 
+}
+
+/* ============================================================
    PROCESO
    ============================================================ */
 .proceso {
@@ -1603,12 +1614,17 @@ div.checkered-divider {
     padding-bottom: 0px; 
     gap: 0px; 
   }
+
   .hero__content {
     max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center; 
+    /* ¡SOLUCIÓN AQUÍ! Asegura que el texto y el botón estén al frente */
+    position: relative;
+    z-index: 2;
   }
+
   .hero__title {
     font-size: 2.1rem; 
     line-height: 1.2;
@@ -1622,6 +1638,7 @@ div.checkered-divider {
     max-width: 280px; 
   }
   .hero__cta { margin-bottom: 0px; }
+
   .hero__visual {
     width: 100%;
     display: flex;
@@ -1630,7 +1647,11 @@ div.checkered-divider {
     margin-top: -3.5rem;    
     margin-bottom: -2.5rem; 
     margin-right: 0;
+    /* Lo dejamos por detrás para que sus márgenes negativos no bloqueen clicks */
+    position: relative;
+    z-index: 1;
   }
+
   .hero__gif {
     max-width: 260px;       
     width: 100%;
@@ -1726,15 +1747,20 @@ div.checkered-divider {
     min-height:48px;
 }
 
-.timeline-btn{
-    width:48px;
-    height:48px;
-    border:none;
+.timeline-btn {
+    width: 48px;
+    height: 48px;
+    border: none;
     background:none;
     padding:0;
     flex-shrink:0;
     z-index:2;
     cursor:pointer;
+
+    /* ¡AÑADIR ESTO PARA EL CENTRADO PERFECTO! */
+    position: absolute;
+    /* (Centro de la línea: 26.5px) - (Mitad del botón: 24px) = 2.5px */
+    left: 2.5px; 
 }
 
 .timeline-btn img{
@@ -2002,6 +2028,30 @@ div.checkered-divider {
     display: none;
   }
 
+  /* CONTACTO CIERRE MOBILE */
+
+  .contacto-cierre {
+    padding: 4.5rem 1.5rem; /* Más aire arriba/abajo y mejor margen a los costados */
+  }
+
+  .contacto-cierre__title {
+    font-size: 2.2rem; /* Forzamos un tamaño con impacto pero controlado en mobile */
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Desactivamos el salto de línea de desktop para que el texto fluya natural */
+  .contacto-cierre__title br {
+    display: none; 
+  }
+
+  .contacto-cierre__body {
+    font-size: 0.95rem; /* Un tamaño más equilibrado para lectura en mano */
+    line-height: 1.5;   /* Más interlínea para que respire el bloque de texto */
+    max-width: 290px;   /* Encajonamos el ancho para que no queden líneas larguísimas */
+    margin: 0 auto 2.2rem;
+  }
+}
   
 } /* <-- REVISÁ QUE ESTA ÚLTIMA LLAVE ESTÉ PUESTA. Cierra el @media */
 

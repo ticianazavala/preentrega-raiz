@@ -271,6 +271,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 1.4rem;
 }
 
+/* Ocultar móvil por defecto */
+.sobre__title--mobile {
+  display: none;
+}
+
 .sobre__body {
   font-size: 1rem;
   line-height: 1.5;
@@ -414,6 +419,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.4;
   color: var(--negro);
   opacity: 100%;
+}
+
+/* Oculta la versión mobile por defecto */
+.proceso-mobile{
+    display: none;
 }
 
 /* ============================================================
@@ -811,29 +821,50 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   75%       { transform: translateX(10px); }
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 768px) {
-  .mito-realidad__grid {
-    grid-template-columns: 1fr 1fr;
-    max-width: 560px;
-  }
+/* ==========================================================
+   MITO / REALIDAD — MOBILE
+========================================================== */
 
-  .mr-card {
-    height: 200px;
-  }
+@media (max-width:768px){
+
+.mito-realidad{
+    overflow: visible;
 }
 
-@media (max-width: 480px) {
-  .mito-realidad__grid {
-    grid-template-columns: 1fr;
-    max-width: 320px;
+/* Aseguramos que los festones se mantengan en su lugar */
+  .mito-realidad::before,
+  .mito-realidad::after {
+    background-size: 30px 24px; /* Un poco más chicos para móvil */
   }
 
-  .mr-card {
-    height: 210px;
-  }
+.mito-realidad__grid{
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    justify-content:flex-start;
+    padding:8px 8px 16px;
+    margin:0;
+}
+
+/* ocultar scrollbar */
+.mito-realidad__grid::-webkit-scrollbar{
+    display:none;
+}
+
+.mito-realidad__grid{
+    scrollbar-width:none;
+}
+
+.mr-card{
+    flex:0 0 88%;
+    max-width:320px;
+    height:220px;
+    scroll-snap-align:center;
+}
+
 }
 
 /* ============================================================
@@ -874,6 +905,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-width: 960px; /* Reducido de 1050px */
   margin: 0 auto;
   padding: 1rem; /* Menos espacio arriba/abajo */
+}
+
+.curso-tap-hint {
+  display: none;
 }
 
 /* Modificación de las dimensiones del contenedor individual */
@@ -1562,7 +1597,7 @@ div.checkered-divider {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: calc(var(--nav-h) + 1.5rem); 
+    padding-top: calc(var(--nav-h) + 2rem); 
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     padding-bottom: 0px; 
@@ -1609,18 +1644,28 @@ div.checkered-divider {
   .sobre {
     padding-left: 2rem !important;
     padding-right: 2rem !important;
-    padding-top: 100px !important; 
-    padding-bottom: 40px !important;
+    padding-top: 70px !important; 
+    padding-bottom: 60px !important;
   }
   .sobre__title {
     font-size: 1.8rem; 
     line-height: 1.15;
     margin-bottom: 1.2rem;
   }
+
+  .sobre__title--desktop {
+    display: none;
+  }
+  
+  /* Mostrar versión móvil */
+  .sobre__title--mobile {
+    display: block;
+  }
+
   .sobre__body {
     font-size: 0.95rem;
     line-height: 1.45;
-    max-width: 100%; 
+    max-width: 90%; 
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
@@ -1629,107 +1674,122 @@ div.checkered-divider {
     display: none;
   }
 
-/* --- NUESTRO PROCESO MOBILE --- */
-  .proceso {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-    padding-top: 40px !important;
-    padding-bottom: 100px !important;
-  }
+/* ==========================================================
+   PROCESO MOBILE NUEVO
+========================================================== */
 
-  .proceso__title {
-    font-size: 1.8rem;
-    line-height: 1.15;
-    margin-bottom: 2.5rem;
-    text-align: center;
-  }
+@media (max-width:768px){
 
-  /* Contenedor del timeline horizontal centrado */
-  .proceso__timeline {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 2.5rem;
-    max-width: 280px; /* Acotamos el ancho para que no se disperse */
-    padding: 0;
-  }
+.proceso{
+    display:none;
+}
 
-  /* La línea vuelve a ser horizontal y perfectamente centrada */
-  .proceso__line {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 2px;
-    width: 100%;
-    background: var(--blanco);
-    z-index: 1;
-  }
+.proceso-mobile{
+    display:block;
+    padding:40px 24px 80px;
+    position:relative;
+}
 
-  /* Los botones se distribuyen de forma pareja sobre la línea */
-  .proceso__icons {
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-between;
-    width: 100%;
-    z-index: 2;
-  }
+.proceso-mobile .section-eyebrow{
+    display:block;
+    width:100%;
+    text-align:center;
+    font-family:var(--font-body);
+    font-size:.9rem;
+    font-weight:800;
+    text-transform:uppercase;
+    color:var(--negro);
+    margin-bottom:20px;
+}
 
-  .proceso__icon-btn {
-    width: 48px;
-    height: 48px;
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.timeline-mobile{
+    position:relative;
+    margin-top:100px;
+    min-height:350px;
+}
 
-  .proceso__icon-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+.timeline-mobile__line{
+    position:absolute;
+    left:24px;
+    top:10px;
+    height:335px;
+    width:5px;
+    background:var(--negro);
+    border-radius:999px;
+}
 
-  /* Contenedor de las tarjetas de texto */
-  .proceso__cards {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 0;
-  }
+.timeline-item{
+    position:relative;
+    display:flex;
+    align-items:center;
+    margin-bottom:95px;
+    min-height:48px;
+}
 
-  /* Tarjeta blanca centrada y compacta */
-  .proceso__card {
-    width: 100%;
-    max-width: 320px; /* Evita que desborde los lados del teléfono */
-    padding: 1.5rem;
-    border-radius: 20px;
-    background: var(--blanco);
-    text-align: center; /* Alineación centrada, más estética para este bloque */
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    box-sizing: border-box;
-  }
+.timeline-btn{
+    width:48px;
+    height:48px;
+    border:none;
+    background:none;
+    padding:0;
+    flex-shrink:0;
+    z-index:2;
+    cursor:pointer;
+}
 
-  .proceso__card-title {
-    font-size: 1.3rem;
-    margin-bottom: 0.7rem;
-  }
+.timeline-btn img{
+    width:48px;
+    display:block;
+}
 
-  .proceso__card p {
-    font-size: 0.9rem;
-    line-height: 1.45;
-    color: var(--negro);
-  }
+.timeline-card{
+    position:absolute;
+    left:72px;
+    top:50%;
+    transform:translateY(-50%);
+    width:calc(100% - 72px);
+    background:var(--blanco);
+    border-radius:24px;
+    padding:18px;
+    box-shadow:0 12px 25px rgba(0,0,0,.12);
+    z-index:5;
 
-  /* Anula los saltos de línea (<br>) internos de la tarjeta en mobile */
-  .proceso__card br {
-    display: none;
-  }
+    animation:popInMobile .25s ease;
+    will-change:transform, opacity;
+}
+
+.timeline-card h3{
+    font-family:var(--font-display);
+    font-size:1.8rem;
+    margin-bottom:.5rem;
+}
+
+.timeline-card p{
+    font-size:.82rem;
+    line-height:1.45;
+}
+
+.timeline-card[hidden]{
+    display:none !important;
+}
+
+/* ---------- Animación propia para mobile ---------- */
+
+@keyframes popInMobile{
+
+    from{
+        opacity:0;
+        transform:translateY(-50%) scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(-50%) scale(1);
+    }
+
+}
+
+}
 
   /* --- CAROUSEL PROYECTOS MOBILE --- */
   .proyectos__grid {
@@ -1777,6 +1837,83 @@ div.checkered-divider {
     margin-top: 1.5rem;
     width: 100%;
   }
+  
+  /* ── Cursos mobile — carrusel ──────────────────────────────── */
+.cursos {
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+
+.cursos__intro {
+  padding: 0 1.5rem;
+}
+
+.cursos__grid {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 1rem;
+  padding: 1rem 1.5rem 1.5rem;
+  max-width: 100%;
+  margin: 0;
+}
+
+.cursos__grid::-webkit-scrollbar {
+  display: none;
+}
+
+.curso-tap-hint {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: auto;
+  padding-top: 0.4rem;
+}
+
+.curso-flip {
+  flex: 0 0 260px;      /* ancho fijo de cada card */
+  width: 260px;
+  height: 360px;        /* alto fijo — sin aspect-ratio */
+  aspect-ratio: unset;  /* cancela el aspect-ratio de desktop */
+  scroll-snap-align: center;
+}
+
+.curso-img-wrapper {
+  width: 170px;
+  height: 140px;
+}
+
+.curso-name {
+  font-size: 1.1rem;
+  margin: 2rem 0 0.6rem 0;
+}
+
+.curso-price {
+  font-size: 1.4rem;
+  margin-top: 0.8rem;
+}
+
+.curso-back-title {
+  font-size: 1.1rem;
+}
+
+.curso-back-desc {
+  font-size: 0.85rem;
+}
+
+.curso-back-list li {
+  font-size: 0.85rem;
+}
+
+.curso-flip__back {
+  padding: 2.8rem 1.2rem 1.6rem;
+}
 
 /* --- SECCIÓN CÁPSULA MOBILE --- */
   .capsula {
@@ -1836,32 +1973,36 @@ div.checkered-divider {
     width: 100%;
   }
 
-  /* Desactivamos por completo el overlay oculto de desktop */
-  .capsula__overlay {
-    position: static !important;
-    transform: none !important;
-    background: var(--blanco) !important; /* Usamos fondo claro para contrastar con el naranja base */
-    height: auto !important;
-    min-height: auto !important;
-    padding: 1.5rem !important;
-    border-radius: 0 0 32px 32px; /* Redondeamos solo las esquinas de abajo */
-    margin-top: -20px; /* Hack sutil para emparchar el bloque con la imagen de arriba */
-    z-index: 1;
-  }
+  /* Overlay oculto por defecto en mobile */
+.capsula__overlay {
+  position: absolute !important;
+  transform: translateY(100%) !important;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  height: auto !important;
+  min-height: auto !important;
+  padding: 1.2rem 1.5rem !important;
+  border-radius: 0 0 32px 32px !important;
+}
 
-  /* Estilo del texto que ahora queda 100% visible abajo */
-  .capsula__overlay-text {
-    color: var(--negro) !important; /* Cambiamos a texto oscuro para que sea ultra legible */
-    font-size: 0.9rem !important;
-    line-height: 1.4 !important;
-    text-align: left !important;
-  }
+/* Se muestra al tocar — clase añadida por JS */
+.capsula__img-wrap.is-open .capsula__overlay {
+  transform: translateY(0) !important;
+}
+
+.capsula__overlay-text {
+  color: #fff !important;
+  font-size: 0.7rem !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+}
 
   /* Quitamos los saltos de línea forzados de escritorio */
   .capsula__overlay-text br {
     display: none;
   }
 
+  
 } /* <-- REVISÁ QUE ESTA ÚLTIMA LLAVE ESTÉ PUESTA. Cierra el @media */
 
 

@@ -72,50 +72,126 @@
   });
 })();
 
-
 /* ─────────────────────────────────────────────────────────────
-   3. PROCESO — hover-to-reveal cards (pop animation, one at a time)
-   ───────────────────────────────────────────────────────────── */
+   PROCESO
+───────────────────────────────────────────────────────────── */
+
 (function initProceso() {
-  const buttons = document.querySelectorAll('.proceso__icon-btn');
-  const cards   = document.querySelectorAll('.proceso__card');
 
-  function hideAll() {
-    cards.forEach(card => {
-      card.hidden = true;
-    });
+    const buttons = document.querySelectorAll('.proceso__icon-btn');
+    const cards = document.querySelectorAll('.proceso__card');
+
+    function hideAll() {
+
+        cards.forEach(card => {
+            card.hidden = true;
+        });
+
+        buttons.forEach(btn => {
+            btn.classList.remove('is-active');
+            btn.setAttribute('aria-expanded', 'false');
+        });
+
+    }
+
     buttons.forEach(btn => {
-      btn.classList.remove('is-active');
-      btn.setAttribute('aria-expanded', 'false');
+
+        /* ==========================
+           DESKTOP (hover)
+        ========================== */
+
+        btn.addEventListener('mouseenter', () => {
+
+            if (window.innerWidth <= 768) return;
+
+            const step = btn.dataset.step;
+            const card = document.getElementById('card-' + step);
+
+            hideAll();
+
+            card.hidden = false;
+
+            void card.offsetWidth;
+
+            btn.classList.add('is-active');
+            btn.setAttribute('aria-expanded', 'true');
+
+        });
+
+        btn.addEventListener('mouseleave', () => {
+
+            if (window.innerWidth <= 768) return;
+
+            hideAll();
+
+        });
+
+        /* ==========================
+           MOBILE (click)
+        ========================== */
+
+        btn.addEventListener('click', () => {
+
+            if (window.innerWidth > 768) return;
+
+            const step = btn.dataset.step;
+            const card = document.getElementById('card-' + step);
+
+            if (!card.hidden) {
+
+                hideAll();
+                return;
+
+            }
+
+            hideAll();
+
+            card.hidden = false;
+
+            btn.classList.add('is-active');
+            btn.setAttribute('aria-expanded', 'true');
+
+        });
+
     });
-  }
 
-  buttons.forEach(btn => {
-    // 🎯 EVENTO A: Cuando el mouse ENTRA al botón
-    btn.addEventListener('mouseenter', () => {
-      const step       = btn.dataset.step;
-      const targetCard = document.getElementById('card-' + step);
-
-      // Limpiamos cualquier otra tarjeta abierta primero
-      hideAll();
-
-      if (targetCard) {
-        targetCard.hidden = false;
-        // Forzamos el re-paint para que tu animación 'popIn' de CSS explote de forma fluida
-        void targetCard.offsetWidth; 
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-
-    // 🎯 EVENTO B: Cuando el mouse SALE del botón
-    btn.addEventListener('mouseleave', () => {
-      // Escondemos todo para que la sección quede limpia y vacía con su altura fija
-      hideAll();
-    });
-  });
 })();
 
+/* ==========================================
+   PROCESO MOBILE
+========================================== */
+
+(function(){
+
+const botones=document.querySelectorAll(".timeline-btn");
+const cards=document.querySelectorAll(".timeline-card");
+function cerrar(){
+
+cards.forEach(card=>card.hidden=true);
+
+}
+
+botones.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+const id=btn.dataset.card;
+const card=document.getElementById(id);
+const abierta=!card.hidden;
+
+cerrar();
+
+if(!abierta){
+
+card.hidden=false;
+
+}
+
+});
+
+});
+
+})();
 
 /* ─────────────────────────────────────────────────────────────
    4. PAINT REVEAL — canvas-based brush effect for Proyectos
@@ -478,15 +554,30 @@ function flipBack(cardId) {
       for hover; this adds keyboard support)
    ───────────────────────────────────────────────────────────── */
 (function initCapsulas() {
-  // Hotspot focus shows tooltip via CSS :focus sibling selector
-  // The CSS already handles hover. Keyboard (focus/blur) is handled
-  // by the tabindex="0" on .capsula__hotspot + CSS selector.
-  // No extra JS needed for basic behavior, but we add ESC to close.
+
+  // Teclado: ESC cierra el hotspot si existe
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (document.activeElement && document.activeElement.classList.contains('capsula__hotspot')) {
+      if (document.activeElement?.classList.contains('capsula__hotspot')) {
         document.activeElement.blur();
       }
     }
   });
+
+  // Touch: toggle del overlay al tocar la imagen
+  const isTouch = window.matchMedia('(hover: none)').matches;
+  if (!isTouch) return;
+
+  const wraps = document.querySelectorAll('.capsula__img-wrap');
+
+  wraps.forEach(wrap => {
+    wrap.addEventListener('click', () => {
+      const isOpen = wrap.classList.contains('is-open');
+      // Cierra todos
+      wraps.forEach(w => w.classList.remove('is-open'));
+      // Abre el tocado si no estaba abierto
+      if (!isOpen) wrap.classList.add('is-open');
+    });
+  });
+
 })();

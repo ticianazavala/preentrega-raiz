@@ -59,7 +59,7 @@
     </section>
 
     <!-- ===================== SOBRE RAÍZ ===================== -->
-     <section class="sobre" id="sobre" style="position: relative; background-color: transparent; padding-top: clamp(120px, 12vw, 180px); padding-bottom: clamp(100px, 12vw, 140px); width: 100%;">
+<section class="sobre" id="sobre" style="position: relative; background-color: transparent; padding-top: clamp(120px, 12vw, 180px); padding-bottom: clamp(100px, 12vw, 140px); width: 100%;">
   
   <div class="sobre-curve-top" style="position: absolute; top: 0; left: 0; width: 100%; height: clamp(120px, 12vw, 180px); overflow: hidden; z-index: 1; pointer-events: none;">
     <svg viewBox="0 0 1934 2213" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice" style="position: absolute; top: 0; left: 0; width: 100%; height: auto;">
@@ -76,7 +76,12 @@
   </div>
 
   <div class="sobre__inner" style="position: relative; z-index: 3; width: 100%;">
-    <h2 class="sobre__title">No "arreglamos" muebles,<br> los transformamos.</h2>
+    <!-- Título versión Desktop -->
+    <h2 class="sobre__title sobre__title--desktop">No "arreglamos" muebles,<br> los transformamos.</h2>
+    
+    <!-- Título versión Mobile -->
+    <h2 class="sobre__title sobre__title--mobile">No "arreglamos",<br> transformamos.</h2>
+    
     <p class="sobre__body">
       Inspirados por la filosofía del dopamine decor, transformamos muebles con<br>
       identidad en piezas vibrantes. Ofrecemos cursos para que vos también puedas.
@@ -125,6 +130,76 @@
       <p>Una vez restaurada, la pieza se reinterpreta con una mirada actual. Colores, acabados y nuevas combinaciones le dan una identidad renovada sin perder su carácter.</p>
     </div>
   </div>
+</section>
+
+<section class="proceso-mobile">
+
+  <p class="section-eyebrow">NUESTRO PROCESO</p>
+
+  <h2 class="proceso__title">
+    DEL POTENCIAL A<br>PIEZA FINAL
+  </h2>
+
+  <div class="timeline-mobile">
+
+    <div class="timeline-mobile__line"></div>
+
+    <div class="timeline-item">
+
+      <button class="timeline-btn" data-card="m-diagnostico">
+        <img src="assets/diagnostico.svg" alt="">
+      </button>
+
+      <div class="timeline-card" id="m-diagnostico">
+
+        <h3 style="color:var(--amarillo)">DIAGNÓSTICO</h3>
+
+        <p>
+          Analizamos estructura, material y estado del mueble para definir la intervención, respetando su valor original y esencia.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="timeline-item">
+
+      <button class="timeline-btn" data-card="m-reparacion">
+        <img src="assets/reparacion.svg" alt="">
+      </button>
+
+      <div class="timeline-card" id="m-reparacion" hidden>
+
+        <h3 style="color:var(--verde)">REPARACIÓN</h3>
+
+        <p>
+          Se recupera la funcionalidad y estabilidad del mueble a través de técnicas que preservan su estructura y vida útil.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="timeline-item">
+
+      <button class="timeline-btn" data-card="m-diseno">
+        <img src="assets/diseno.svg" alt="">
+      </button>
+
+      <div class="timeline-card" id="m-diseno" hidden>
+
+        <h3 style="color:var(--azul)">DISEÑO</h3>
+
+        <p>
+          Una vez restaurada, la pieza se reinterpreta con una mirada más actual. Los colores y acabados le dan una identidad renovada.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
    <!-- ===================== PROYECTOS ===================== -->
@@ -351,7 +426,7 @@
 
  <section class="cursos" id="cursos">
     <h2 class="cursos__titulo">CURSOS</h2>
-  <p class="cursos__intro">Con Raíz vas a aprender técnicas de restauración mediante propuestas prácticas y creativas. Vas a poder darle una nueva vida a los muebles que ya son tuyos.</p>
+  <p class="cursos__intro">Aprendé técnicas de restauración mediante propuestas prácticas y creativas y dale una nueva vida a los muebles que ya son tuyos.</p>
 
   <div class="cursos__grid">
 
@@ -365,6 +440,7 @@
             <img src="assets/card-01.png" alt="Reparación inicial de muebles" class="curso-img" />
           </div>
           <p class="curso-price">$65.000</p>
+          <span class="curso-tap-hint">Tocá para ver más</span>
         </div>
         <div class="curso-flip__back" style="background: var(--naranja);">
           <span class="curso-num">01</span>
@@ -373,7 +449,7 @@
             <p class="curso-back-desc">Aprendé a identificar y reparar la estructura de tu mueble usando técnicas de ensamblado, lijado y tratamiento de base.</p>
             <ul class="curso-back-list">
               <li>3 clases</li>
-              <li>Modalidad virtual</li>
+              <li>Modalidad presencial</li>
             </ul>
           </div>
           <a href="#" class="btn btn--white">Ver más</a>
@@ -392,6 +468,7 @@
             <img src="assets/card-03.png" alt="Restauración integral de la pieza" class="curso-img" />
           </div>
           <p class="curso-price">$99.000</p>
+          <span class="curso-tap-hint">Tocá para ver más</span>
         </div>
         <div class="curso-flip__back" style="background: var(--rosa);">
           <img src="assets/estrella.svg" alt="Estrella decorativa" class="curso-star curso-star--back" />
@@ -419,6 +496,7 @@
             <img src="assets/card-02.png" alt="Técnicas de color, textura y diseño" class="curso-img" />
           </div>
           <p class="curso-price">$80.000</p>
+          <span class="curso-tap-hint">Tocá para ver más</span>
         </div>
         <div class="curso-flip__back" style="background: var(--naranja);">
           <span class="curso-num">03</span>

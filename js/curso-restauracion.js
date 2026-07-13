@@ -17,6 +17,7 @@
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
 
+  // Ocultar/mostrar al hacer scroll
   let lastY = window.scrollY;
   let ticking = false;
 
@@ -37,6 +38,28 @@
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Hamburger — toggle menú mobile
+  const burger = document.getElementById('navBurger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  if (burger && mobileNav) {
+    burger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('is-open');
+      burger.classList.toggle('is-open', isOpen);
+      burger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Cerrar al tocar un link del menú mobile
+    mobileNav.querySelectorAll('.navbar__link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('is-open');
+        burger.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
 })();
 
 
@@ -207,46 +230,180 @@
 })();
 
 /* ─────────────────────────────────────────────────────────────
-   PROGRAMA — Lógica de Pestañas (Tabs) Laterales
+   4. PROGRAMA
    ───────────────────────────────────────────────────────────── */
-(function initProgramaTabs() {
-  const container = document.querySelector('.programa__container');
-  if (!container) return;
 
-  const tabs = container.querySelectorAll('.programa__tab-btn');
-  const panels = container.querySelectorAll('.programa__panel');
+(function () {
+  const isMobile = () => window.innerWidth <= 768;
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const targetPanelId = tab.getAttribute('aria-controls');
+  const buttons = document.querySelectorAll(".programa__tab-btn");
+  const panels = document.querySelectorAll(".programa__panel");
 
-      // 1. Desactivar todos los botones
-      tabs.forEach(t => {
-        t.classList.remove('is-active');
-        t.setAttribute('aria-selected', 'false');
-        t.setAttribute('tabindex', '-1');
-      });
+  function closeAll() {
+    buttons.forEach(btn => btn.classList.remove("is-active"));
+    panels.forEach(panel => panel.classList.remove("is-active"));
+  }
 
-      // 2. Ocultar todos los paneles de contenido
-      panels.forEach(panel => {
-        panel.classList.remove('is-active');
-        panel.setAttribute('hidden', 'true');
-      });
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const panel = document.getElementById(
+        button.getAttribute("aria-controls")
+      );
 
-      // 3. Activar el botón clickeado
-      tab.classList.add('is-active');
-      tab.setAttribute('aria-selected', 'true');
-      tab.removeAttribute('tabindex');
+      // MOBILE → comportamiento acordeón (abre/cierra)
+      if (isMobile()) {
+        const alreadyOpen = button.classList.contains("is-active");
 
-      // 4. Mostrar el panel correspondiente
-      const targetPanel = document.getElementById(targetPanelId);
-      if (targetPanel) {
-        targetPanel.classList.add('is-active');
-        targetPanel.removeAttribute('hidden');
+        closeAll();
+
+        if (!alreadyOpen) {
+          button.classList.add("is-active");
+          panel.classList.add("is-active");
+        }
+
+        return;
       }
+
+      // DESKTOP → comportamiento de tabs
+      closeAll();
+      button.classList.add("is-active");
+      panel.classList.add("is-active");
     });
   });
+
+  // Reordenar para mobile (solo una vez)
+  if (isMobile()) {
+    document.querySelectorAll(".programa__tab-btn").forEach(btn => {
+      const targetId = btn.getAttribute("aria-controls");
+      const panel = document.getElementById(targetId);
+
+      // Evita crear wrappers duplicados si el script vuelve a ejecutarse
+      if (btn.parentElement.classList.contains("mobile-accordion-group")) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "mobile-accordion-group";
+
+      btn.parentNode.insertBefore(wrapper, btn);
+      wrapper.appendChild(btn);
+      wrapper.appendChild(panel);
+    });
+  }
 })();
+
+/* ============================================================
+   DIFERENCIALES - CARRUSEL MOBILE
+   ============================================================ */
+
+(function () {
+
+  const cards = document.querySelectorAll('.flip-card');
+  const dots = document.querySelectorAll('.differentials__dots .dot');
+
+  if (!cards.length || !dots.length) return;
+
+  let current = 0;
+  let startX = 0;
+  let endX = 0;
+
+  function showCard(index) {
+
+    if (index < 0) index = 0;
+    if (index > cards.length - 1) index = cards.length - 1;
+
+    current = index;
+
+    const gap = 24; // espacio entre cards
+
+cards.forEach(card => {
+  card.style.transform = `translateX(calc(-${index * 100}% - ${index * gap}px))`;
+});
+
+    dots.forEach(dot => dot.classList.remove('is-active'));
+    dots[index].classList.add('is-active');
+  }
+
+
+  // Click en puntitos
+  dots.forEach((dot, index) => {
+
+    dot.addEventListener('click', () => {
+      showCard(index);
+    });
+
+  });
+
+
+  // Swipe táctil
+  cards.forEach(card => {
+
+    card.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+
+
+    card.addEventListener('touchend', (e) => {
+
+      endX = e.changedTouches[0].clientX;
+
+      const distance = startX - endX;
+
+      // deslizar hacia la izquierda → siguiente
+      if (distance > 50 && current < cards.length - 1) {
+        showCard(current + 1);
+      }
+
+      // deslizar hacia la derecha → anterior
+      if (distance < -50 && current > 0) {
+        showCard(current - 1);
+      }
+
+    });
+
+  });
+
+
+  function checkMobile() {
+
+    if (window.innerWidth <= 768) {
+
+      cards.forEach(card => {
+        card.style.transition = "transform 0.35s ease";
+      });
+
+      showCard(current);
+
+    } else {
+
+      cards.forEach(card => {
+        card.style.transform = "";
+      });
+
+    }
+
+  }
+
+
+  window.addEventListener("resize", checkMobile);
+
+  checkMobile();
+
+})();
+
+/* ============================================================
+   FLIP CARDS MOBILE - TAP PARA GIRAR
+   ============================================================ */
+
+document.querySelectorAll('.flip-card').forEach(card => {
+
+  card.addEventListener('click', () => {
+
+    if (window.innerWidth <= 768) {
+      card.classList.toggle('is-flipped');
+    }
+
+  });
+
+});
 
 /* ─────────────────────────────────────────────────────────────
    5. TESTIMONIOS — carrusel con autoplay + flechas manuales

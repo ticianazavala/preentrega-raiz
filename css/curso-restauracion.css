@@ -426,35 +426,98 @@
 
 /* ── Adaptación Móvil ───────────────────────────────────── */
 @media (max-width: 768px) {
-  .programa__container {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
+  /* Apilamos los botones verticalmente */
   .programa__nav {
-    flex-direction: row;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
+  display: block;
+  width: 100%;
+}
+
+  .mobile-accordion-group {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto 1rem;
+}
+
+.programa__tab-btn {
+  width: 100% !important;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  opacity: 0.7;
+}
+
+.programa__tab-label {
+  white-space: nowrap;
+}
+
+  /* Agregamos el ícono de '+' */
+  .programa__tab-btn::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
   }
 
-  .programa__tab-btn {
-    flex-shrink: 0;
-    width: auto;
-    padding: 0.8rem 1.4rem;
+  .programa__tab-btn.is-active::after {
+    transform: rotate(45deg); /* Se convierte en una 'x' al abrir */
   }
 
-  .programa__panel {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem;
+  /* Forzamos a que el grid tenga una sola columna */
+  .programa__container {
+    display: flex !important; /* Cambiamos a flex para controlar el orden */
+    flex-direction: column !important; /* Apilamos verticalmente */
+    gap: 1.5rem !important;
   }
 
-  .programa__panel-watermark {
-    position: static;
-    margin-top: 1.5rem;
-    text-align: right;
-    font-size: 2rem;
+  /* Aseguramos que el contenedor de contenido ocupe el 100% y esté debajo */
+  .programa__content {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    border: none !important; /* Quitamos el borde general */
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
   }
+
+ .programa__panel {
+  width: 100% !important;
+  margin-top: -0.5rem !important;
+  padding: 1.5rem !important;
+  border: 3px solid var(--rosa);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  background: var(--fondo);
+  box-sizing: border-box;
+}
+
+  .programa__panel.is-active {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+  .programa__ficha-media {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .programa__ficha-media img {
+    width: 100% !important; /* Foto grande arriba */
+    aspect-ratio: 16/9 !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+  }
+
+  .programa__ficha-body {
+    width: 100% !important;
+   font-size: 0.9rem;
+   line-height: 1.5;
+  }
+  
+
 }
 
 /* ============================================================
@@ -543,6 +606,10 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+}
+
+.flip-card__hint {
+  display: none;
 }
 
 /* --- FRENTE (Número absoluto, título al centro) --- */
@@ -1265,5 +1332,126 @@
     margin-top: 0 !important;
     padding-top: 0 !important;
   }
+
+@media (max-width: 768px) {
+  /* Reducimos drásticamente el espacio superior del divisor */
+  .divider-pattern {
+    margin-top: 2rem !important; /* Ajusta este valor si quieres más o menos espacio */
+    margin-bottom: 1rem !important;
+  }
+
+@media (max-width: 768px) {
+  /* --- Ajuste de las 4 pastillas en una sola fila --- */
+  .curso-info__facts {
+    display: flex !important; /* Cambiamos a flex para alinear en fila */
+    flex-wrap: nowrap !important; /* Evita que bajen de línea */
+    gap: 0.5rem !important; /* Espacio reducido entre íconos */
+    justify-content: space-between !important;
+    max-width: 100% !important;
+  }
+
+  .curso-fact {
+    min-height: 60px !important; /* Altura más compacta */
+    flex: 1; /* Todos ocupan el mismo ancho disponible */
+    padding: 0.2rem !important;
+  }
+
+  .fact-svg {
+    width: 40px !important; /* Achicamos el ícono para que quepa en fila */
+    height: 40px !important;
+  }
+
+  .curso-fact__title {
+    font-size: 0.45rem !important; /* Tipografía más pequeña para que no se corte */
+  }
+
+  .curso-fact__value {
+    font-size: 0.55rem !important;
+  }
+}
+
+/* MITO/REALIDAD EN MOBILE */
+.differentials__grid {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+.flip-card {
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.flip-card__front,
+.flip-card__back {
+  border-radius: 28px;
+  padding: 1.75rem;
+}
+.flip-card__icon {
+  width: 64px;
+  height: 64px;
+}
+
+.flip-card__title {
+  font-size: 1.8rem;
+}
+
+.flip-card__text {
+  font-size: 0.95rem;
+}
+
+.flip-card__hint {
+  display: block;
+  margin-top: 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--blanco);
+  opacity: 0.85;
+  letter-spacing: 0.05em;
+}
+
+.flip-card:hover .flip-card__inner {
+  transform: none;
+}
+
+.flip-card.is-flipped .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+/* Puntitos */
+.differentials__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.differentials__dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: var(--rosa);
+  opacity: 0.35;
+  cursor: pointer;
+}
+
+.differentials__dots .dot.is-active {
+  opacity: 1;
+}
+
+/* TESTIMONIOS */
+.curso-testimonios {
+  margin-top: -150px;
+  padding: 60px 1.5rem 70px 1.5rem;
+}
+
 
 }

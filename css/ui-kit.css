@@ -238,9 +238,9 @@ line-height:1.6;
 
 #buttons h2{
     font-family:var(--display);
-    font-size:4rem;
+    font-size: 4rem;
     text-transform:uppercase;
-    margin-bottom:0;
+    margin-bottom:0rem;
 }
 
 #buttons .section-description{
@@ -303,7 +303,7 @@ line-height:1.6;
 #recursos{
     max-width:1200px;
     margin:0 auto;
-    padding:4rem 2rem 8rem;
+    padding:4rem 2rem 3rem;
     border-top:3px solid var(--naranja);
 }
 
@@ -467,39 +467,54 @@ color:#fff;
 }
 
 /* ============================================================
-   ADAPTACIONES A MOBILE
+   RESET GLOBAL PARA EVITAR DESBORDES (No rompe desktop)
 ============================================================ */
-
-@media(max-width:768px){
-.kit-header h1{font-size:2.7rem}
-#typography h1{font-size:2.8rem}
+* {
+    box-sizing: border-box;
 }
 
-#recursos h2{
-    font-size:2.5rem;
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-.organic-preview{
-    height:420px;
-}
+/* ============================================================
+   ADAPTACIONES A MOBILE (General y Secciones Sueltas)
+============================================================ */
+@media (max-width: 768px) {
+    .kit-header h1 {
+        font-size: 2.7rem;
+    }
+    
+    #typography h1 {
+        font-size: 2.8rem;
+    }
 
-.organic-shape{
-    width:120%;
-    height:60%;
-}
+    #recursos h2 {
+        font-size: 2.5rem;
+    }
 
-.organic-content{
-    left:10%;
-    right:auto;
-    bottom:10%;
-    transform:none;
-    width:80%;
+    .organic-preview {
+        height: 420px;
+    }
+
+    .organic-shape {
+        width: 100%; /* Corregido de 120% a 100% para evitar que desborde a la derecha */
+        height: 60%;
+    }
+
+    .organic-content {
+        left: 10%;
+        right: auto;
+        bottom: 10%;
+        transform: none;
+        width: 80%;
+    }
 }
 
 /* ============================================================
    RESPONSIVE IDENTIDAD (MOBILE)
-   ============================================================ */
-
+============================================================ */
 @media (max-width: 768px) {
     .identidad {
         min-height: auto; /* Evita que quede un espacio gigante vacío abajo en mobile */
@@ -521,22 +536,23 @@ color:#fff;
     }
 
     .identidad__text {
-        font-size: 1.1rem; /* Ajuste tipográfico proporcional para mobile */
+        font-size: 1rem; /* Ajuste tipográfico proporcional para mobile */
+        max-width: 95%;
     }
 }
 
 /* ============================================================
    RESPONSIVE PALETA (MOBILE)
    ============================================================ */
-
 @media (max-width: 768px) {
     #paleta {
-        margin: 4rem auto; /* Reducimos el margen externo vertical */
-        padding: 2rem 1.5rem; /* Ajustamos padding lateral interno */
+        margin: 4rem auto; 
+        padding: 2rem 20px; /* Margen simétrico de 20px a izquierda y derecha */
+        width: 100%;
     }
 
     #paleta h2 {
-        font-size: 2.5rem; /* Reducimos el tamaño del título principal */
+        font-size: 2.2rem; /* Achicado levemente para que no empuje el diseño */
         line-height: 1.2;
         margin-top: 1rem;
     }
@@ -548,30 +564,30 @@ color:#fff;
 
     .palette-grid {
         margin-top: 2.5rem;
-        /* Cambiamos a 2 columnas en mobile. Si preferís una sola columna vertical, cambiá el 2 por un 1 */
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 1rem; /* Acortamos la distancia entre tarjetas */
+        /* minmax asegura que las columnas se encojan lo necesario para no desbordar */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); 
+        gap: 0.75rem; /* Espaciado un poco más compacto para ganar aire */
+        width: 100%;
     }
 
     .color-card {
-        height: 180px; /* Reducimos un poco la altura para que no ocupe tanto scroll */
-        padding: 1.5rem;
-        border-radius: 24px; /* Suavizamos las esquinas para pantallas más chicas */
+        height: 130px; /* Altura más baja para que guarde proporción en 2 columnas */
+        padding: 1rem; /* Menos padding interno para dar espacio al texto */
+        border-radius: 20px; 
     }
 
     .color-name {
-        font-size: 1.4rem; /* Ajuste proporcional del nombre del color */
+        font-size: 1.1rem; /* Tamaño optimizado para que entren palabras largas sin romperse */
     }
 
     .color-hex {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
     }
 }
 
 /* ============================================================
    RESPONSIVE SISTEMA TIPOGRÁFICO (MOBILE)
-   ============================================================ */
-
+============================================================ */
 @media (max-width: 768px) {
     #typography {
         padding: 4rem 1.5rem 6rem; /* Ajustamos espacio de la sección */
@@ -604,4 +620,56 @@ color:#fff;
         font-size: 1rem; /* Tipografía de lectura un poco más compacta */
         line-height: 1.5;
     }
+
+    #buttons h2 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-top: 1rem;
+    }
+
+    #buttons .section-description {
+    font-size: 1rem; /* Podés cambiar este tamaño si querés la tipografía más grande o chica */
+    margin-top: 1rem; /* Controla la distancia con el título 'BOTONES' */
+    margin-bottom: 2.5rem; /* Controla la distancia con las tarjetas de abajo */
+    max-width: 90%; /* Le da el mismo aire a la derecha para que no se pegue al borde */
+    line-height: 1.5;
+    }
+
+    #recursos h2 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-top: 1rem;
+    }
+
+    #recursos .section-description {
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    max-width: 90%; /* Aire visual a la derecha */
+    line-height: 1.5;
+    }
+
+    .organic-preview {
+    height: 240px; /* Un poco más baja para que no quede gigante en mobile */
+    width: 100%;
+    }
+
+
+/* ============================================================
+   RESPONSIVE ÍCONOS (MOBILE)
+   ============================================================ */
+.icons-preview {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Dos columnas exactas */
+    gap: 0.75rem; /* Espaciado más compacto */
+    width: 100%;
+}
+
+.icon-box {
+    padding: 1.2rem 0.5rem; /* Contenedores más chicos reduciendo el padding */
+    border-radius: 18px;
+    gap: 0.8rem;
+}
+
+.icon-box span {
+    font-size: 0.65rem; /* Tipografía un poco más chica para que la palabra no quiebre feo */
 }

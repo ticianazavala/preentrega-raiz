@@ -1,0 +1,607 @@
+
+:root{
+--rosa:#FD96C0;
+--naranja:#F18446;
+--verde:#137448;
+--azul:#264D9D;
+--amarillo:#FFC800;
+--fondo:#FFFEF1;
+--negro:#111;
+--blanco:#fff;
+--display:'Bricolage Grotesque',sans-serif;
+--body:'Inter',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:var(--fondo);
+font-family:var(--body);
+color:var(--negro);
+line-height:1.6;
+}
+
+/* ============================================================
+   IDENTIDAD
+   ============================================================ */
+
+.identidad{
+    min-height:100vh;
+    padding:20px 60px 80px;
+    display:flex;
+    flex-direction:column;
+}
+
+.identidad__content{
+    max-width:720px;
+    margin-top:110px;
+}
+
+.identidad__logo{
+  display: inline-block;
+  margin-bottom: 5rem;
+}
+
+.identidad__logo img{
+  width: auto;
+  height: 28px;
+}
+
+.identidad__eyebrow{
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--negro);
+  margin-bottom: 1rem;
+}
+
+.identidad__title{
+    font-family:var(--font-display);
+    font-size:5rem;
+    line-height:.88;
+    letter-spacing:-.03em;
+    color:var(--negro);
+    text-transform:uppercase;
+    margin-bottom:2rem;
+}
+
+.identidad__text{
+    max-width:700px;
+    font-size:1,5rem;
+    font-weight: 400;
+    line-height:1.4;
+}
+
+/* ============================================================
+   PALETA
+============================================================ */
+
+#paleta{
+    max-width:1200px;
+    margin: 8rem auto;
+    padding:4rem 2rem;
+    border-top:3px solid var(--naranja);
+}
+
+#paleta h2{
+    font-family:var(--display);
+    font-size:4rem;
+    text-transform:uppercase;
+    margin-bottom:0rem;
+}
+
+#paleta .section-description{
+    max-width:650px;
+    margin-bottom:4rem;
+    line-height:1.6;
+}
+
+.palette-grid{
+    margin-top:4rem;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2rem;
+}
+
+.color-card{
+    height:240px;
+    border-radius:36px;
+    padding:2rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    transition:.3s ease;
+}
+
+.color-card:hover{
+    transform:translateY(-8px);
+}
+
+.color-name{
+    font-family:var(--font-display);
+    font-size:2rem;
+    text-transform:uppercase;
+    margin-bottom:.4rem;
+}
+
+.color-hex{
+    font-size:1rem;
+    font-weight:600;
+    opacity:.8;
+}
+
+.rosa{
+    background:var(--rosa);
+    color:white;
+}
+
+.naranja{
+    background:var(--naranja);
+    color:white;
+}
+
+.fondo{
+    background:var(--fondo);
+    border:2px solid #ddd;
+    color:var(--negro);
+}
+
+.verde{
+    background:var(--verde);
+    color:white;
+}
+
+.amarillo{
+    background:var(--amarillo);
+    color:var(--negro);
+}
+
+.azul{
+    background:var(--azul);
+    color:white;
+}
+
+/* ============================================================
+   SISTEMA TIPOGRÁFICO
+============================================================ */
+
+#typography{
+    max-width:1200px;
+    margin:0 auto;
+    padding:4rem 2rem 8rem;
+    border-top:3px solid var(--naranja);
+}
+
+#typography h2{
+    font-family:var(--display);
+    font-size: 4rem;
+    text-transform:uppercase;
+    margin-bottom:0rem;
+}
+
+#typography .section-description{
+    max-width:650px;
+    line-height:1.6;
+    margin-bottom:4rem;
+}
+
+.typography-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+}
+
+.type-card{
+    background: var(--rosa);
+    border-radius:36px;
+    padding:2.5rem;
+}
+
+.type-label{
+    font-size: 1rem;
+    text-transform:uppercase;
+    color:var(--fondo);
+    margin-bottom:1rem;
+}
+
+.display-demo{
+    font-family:var(--display);
+    font-size:3.5rem;
+    line-height:1;
+    margin-bottom:1.5rem;
+    color:var(--fondo);
+}
+
+.body-demo{
+    font-family:var(--body);
+    font-size:1.2rem;
+    line-height:1.4;
+    margin-bottom:2rem;
+    color:var(--fondo);
+}
+
+.type-info{
+    opacity: 80%;
+    font-size: 1rem;
+    color:var(--fondo);
+}
+
+/* ============================================================
+   BOTONES
+============================================================ */
+
+#buttons{
+    max-width:1200px;
+    margin:0 auto;
+    padding:4rem 2rem 8rem;
+    border-top:3px solid var(--naranja);
+}
+
+#buttons h2{
+    font-family:var(--display);
+    font-size:4rem;
+    text-transform:uppercase;
+    margin-bottom:0;
+}
+
+#buttons .section-description{
+    max-width:650px;
+    line-height:1.6;
+    margin-bottom:4rem;
+}
+
+.buttons-content{
+    display:flex;
+    gap:2rem;
+    flex-wrap:wrap;
+}
+
+.button-card{
+    flex:1;
+    min-width:280px;
+    padding:2rem;
+    border-radius:24px;
+    background:var(--rosa);
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:1rem;
+}
+
+.button-label{
+    margin:0;
+    font-size:1rem;
+    font-weight:700;
+    text-transform:uppercase;
+    color: var(--fondo);
+}
+
+.btn{
+    border:none;
+    padding:1rem 2rem;
+    border-radius:999px;
+    font-family:var(--body);
+    font-size:1rem;
+    text-transform:uppercase;
+    font-weight:800;
+    cursor:default;
+}
+
+.btn.naranja{
+    background:var(--naranja);
+    color:#fff;
+}
+
+.btn.blanco{
+    background:#fff;
+    color:var(--naranja);
+}
+
+/* ============================================================
+   RECURSOS GRÁFICOS
+============================================================ */
+
+#recursos{
+    max-width:1200px;
+    margin:0 auto;
+    padding:4rem 2rem 8rem;
+    border-top:3px solid var(--naranja);
+}
+
+#recursos h2{
+    font-family:var(--display);
+    font-size:4rem;
+    text-transform:uppercase;
+    margin-bottom:0;
+}
+
+#recursos .section-description{
+    max-width:650px;
+    line-height:1.6;
+    margin-bottom:4rem;
+}
+
+/* ============================================================
+   ITEMS
+============================================================ */
+
+.resource-item{
+    margin-bottom:5rem;
+}
+
+.resource-label{
+    font-weight:800;
+    text-transform:uppercase;
+    margin-bottom:1.5rem;
+    font-size:.9rem;
+}
+
+/* ============================================================
+   FORMA ORGÁNICA
+============================================================ */
+
+.organic-preview {
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--fondo);
+    overflow: hidden; /* Evita que el SVG desborde los bordes redondeados */
+}
+
+.organic-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre todo el ancho de izquierda a derecha */
+    object-position: bottom; /* Ajusta esto (top, center o bottom) según qué parte de la curva quieras priorizar */
+}
+
+/* ============================================================
+   DIVISORES
+============================================================ */
+
+
+.divider-preview{
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+}
+
+.divider-box{
+    background:white;
+    border-radius:30px;
+    padding:2rem;
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.08);
+}
+
+.divider-box span{
+    display:block;
+    font-weight:800;
+    text-transform:uppercase;
+    margin-bottom:1rem;
+}
+
+.checkered-divider{
+    width:100%;
+    height:48px;
+
+    background-image:
+    repeating-conic-gradient(
+        var(--rosa) 0% 25%,
+        var(--fondo) 0% 50%
+    );
+
+    background-size:24px 24px;
+}
+
+.divider-pattern{
+    width:100%;
+    height:48px;
+}
+
+.divider-pattern--striped{
+    background-image:
+    repeating-linear-gradient(
+        90deg,
+        var(--rosa),
+        var(--rosa) 12px,
+        transparent 12px,
+        transparent 24px
+    );
+
+    background-size:24px 100%;
+}
+
+/* ============================================================
+   ÍCONOS
+============================================================ */
+
+.icons-preview {
+    display: grid;
+    /* Define columnas automáticas asegurando que entren uno al lado del otro */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.5rem;
+}
+
+.icon-box {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.icon-wrapper {
+    /* Forzamos el tamaño exacto de 64px de alto y ancho */
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.icon-box span {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #000000;
+    text-align: center;
+}
+
+.kit-footer{
+padding:3rem;
+text-align:center;
+background:#111;
+color:#fff;
+}
+
+/* ============================================================
+   ADAPTACIONES A MOBILE
+============================================================ */
+
+@media(max-width:768px){
+.kit-header h1{font-size:2.7rem}
+#typography h1{font-size:2.8rem}
+}
+
+#recursos h2{
+    font-size:2.5rem;
+}
+
+.organic-preview{
+    height:420px;
+}
+
+.organic-shape{
+    width:120%;
+    height:60%;
+}
+
+.organic-content{
+    left:10%;
+    right:auto;
+    bottom:10%;
+    transform:none;
+    width:80%;
+}
+
+/* ============================================================
+   RESPONSIVE IDENTIDAD (MOBILE)
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .identidad {
+        min-height: auto; /* Evita que quede un espacio gigante vacío abajo en mobile */
+        padding: 24px 20px 60px; /* Reducimos los márgenes laterales para ganar espacio */
+    }
+
+    .identidad__logo {
+        margin-bottom: 3rem; /* Menos espacio abajo del logo en mobile */
+    }
+
+    .identidad__content {
+        margin-top: 40px; /* Menos espacio arriba del contenido */
+    }
+
+    .identidad__title {
+        font-size: 2.8rem; /* Achicamos el tamaño para que la palabra no se corte */
+        line-height: 1;
+        margin-bottom: 1.5rem;
+    }
+
+    .identidad__text {
+        font-size: 1.1rem; /* Ajuste tipográfico proporcional para mobile */
+    }
+}
+
+/* ============================================================
+   RESPONSIVE PALETA (MOBILE)
+   ============================================================ */
+
+@media (max-width: 768px) {
+    #paleta {
+        margin: 4rem auto; /* Reducimos el margen externo vertical */
+        padding: 2rem 1.5rem; /* Ajustamos padding lateral interno */
+    }
+
+    #paleta h2 {
+        font-size: 2.5rem; /* Reducimos el tamaño del título principal */
+        line-height: 1.2;
+        margin-top: 1rem;
+    }
+
+    #paleta .section-description {
+        margin-top: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .palette-grid {
+        margin-top: 2.5rem;
+        /* Cambiamos a 2 columnas en mobile. Si preferís una sola columna vertical, cambiá el 2 por un 1 */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 1rem; /* Acortamos la distancia entre tarjetas */
+    }
+
+    .color-card {
+        height: 180px; /* Reducimos un poco la altura para que no ocupe tanto scroll */
+        padding: 1.5rem;
+        border-radius: 24px; /* Suavizamos las esquinas para pantallas más chicas */
+    }
+
+    .color-name {
+        font-size: 1.4rem; /* Ajuste proporcional del nombre del color */
+    }
+
+    .color-hex {
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE SISTEMA TIPOGRÁFICO (MOBILE)
+   ============================================================ */
+
+@media (max-width: 768px) {
+    #typography {
+        padding: 4rem 1.5rem 6rem; /* Ajustamos espacio de la sección */
+    }
+
+    #typography h2 {
+        font-size: 2.5rem; /* Achicamos título principal */
+        line-height: 1.2; /* Interlineado cerrado igual que la paleta */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .typography-content {
+        /* Pasamos de 2 columnas a 1 sola fila por tarjeta */
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+
+    .type-card {
+        padding: 2rem 1.5rem; /* Ajustamos el aire interno del bloque rosa */
+        border-radius: 28px;
+    }
+
+    .display-demo {
+        font-size: 2.3rem; /* Evita que el nombre de tu fuente rompa la tarjeta */
+        line-height: 1.1;
+    }
+
+    .body-demo {
+        font-size: 1rem; /* Tipografía de lectura un poco más compacta */
+        line-height: 1.5;
+    }
+}
